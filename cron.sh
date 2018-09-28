@@ -10,5 +10,5 @@ then
     git pull
 fi
 
-chmod 777 .
+chmod -R 777 .
 permit
