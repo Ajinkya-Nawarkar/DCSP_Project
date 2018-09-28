@@ -4,7 +4,7 @@ git reset --hard HEAD
 LOCAL=git rev_parse HEAD
 REMOTE=git ls-remote https://github.com/Ajinkya-Nawarkar/DCSP_Project.git HEAD
 
-if [$LOCAL != REMOTE]
+if ["$LOCAL" != "$REMOTE"]
 then
     git pull
 fi
