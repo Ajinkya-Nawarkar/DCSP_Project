@@ -1,5 +1,6 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
+cd /home/an839/public_html/DCSP/DCSP_Project/
 git reset --hard HEAD
 LOCAL=git rev_parse HEAD
 REMOTE=git ls-remote https://github.com/Ajinkya-Nawarkar/DCSP_Project.git HEAD
@@ -9,4 +10,5 @@ then
     git pull
 fi
 
+chmod 777 .
 permit
