@@ -1,9 +1,9 @@
 # DCSP_Project
 
 ## phpMyAdmin Database Account Details
-*Username* : 
+*Username* : cu81
 
-*Password* : 
+*Password* : aDqhvAtAp4ny5JMr
 
 ## [Website in action](http://pluto.cse.msstate.edu/~an839/DCSP/DCSP_Project/index.php)
 
