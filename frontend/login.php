@@ -1,105 +1,82 @@
-<?php include("login.php");?>
+<?php 
+    // include the database credentials
+    include("login.php");
+    // start the session
+    session_start();
+?>
+
+
 <!DOCTYPE html>
 <html lang='en'>
     <head>
         <meta charset="UTF-8">
-        <title>Log in to Website</title>
+        <title>Maroon Gaming Co</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
-            input {
-                margin-bottom: 0.5em;
-            }
-            .error {
-              color: #FF0000;
-            }
+            
         </style>
     </head>
     <body>
         <?php
+            
+            // getUsers($username): returns ['$username', '$type'] to be implemented
+            //
 
-            // start the session
-            session_start();
+            require_once(dirname(__DIR__)."/FrontEnd/Common.php");
+            require_once(dirname(__DIR__)."/Database/api.php");
 
-            if (isset($_SESSION['currentUser']))
+            $error_string = NULL;
+            // Initialize the object for Common.php
+            $common = new Common;
+
+            // Initialize database
+            $connection = new mysqli($hn, $un, $pw, $db);
+            if($connection->connect_error) die($connection->connect_error);
+
+            if (isset($_SESSION['username']))
+                common->redirectUser($_SESSION['type']);
+            
+            // Preserve the username to show if only password is incorrect
+            $username = isset($_POST['username']);
+            
+            if (isset($_POST['username']) && isset($_POST['password'])) 
             {
-              $session_type = $_SESSION['currentUser'];
+                $un_temp = mysql_entities_fix_string($connection, $_POST['username']);
+                $pw_temp = mysql_entities_fix_string($connection, $_POST['password']);
 
-              if ($session_type == 'user'){
-                header('Location: user_page.php');
-                exit();
-              }
-              else if ($session_type == 'admin'){
-                header('Location: admin_page.php');
-                exit();
-              }
-            }
-
-            $username = "";
-            $password = "";
-            $loginErr = "";
-          
-            if ($_SERVER['REQUEST_METHOD'] == 'POST')
-            {
-                $username = $_POST['username'];
-                $password = $_POST['password'];
-                //name validation
-                if((!empty($_POST['username'])) && (!empty($_POST['password'])))
+                // Initialize the object for Database.php
+                $database = new Database;
+                $result = $database->getUsers($un_temp);   
+            
+                if ($result)
                 {
-                    $loginErr = "";
-                    $username = $_POST['username'];
-                    $password = $_POST['password'];
+                    $token = common->hashPassword()
 
-                    // connect to the database
-                    $mysqli = new mysqli($hn, $un, $pw, $db);
-                    if ($mysqli->connect_error)
-                      die ($mysqli->connect_error);
-
-                    // create token (hashed password)
-                    $salt1    = "qm&h*";
-                    $salt2    = "pg!@";
-                    $passwordHash = hash('ripemd128', "$salt1$password$salt2");
-
-                    // 
-                    $query = "SELECT * FROM lab5_users WHERE username='$username' AND password='$passwordHash'";
-                    $result = $mysqli->query($query);    
-                    $row = $result->fetch_array();           
-                    
-                    // check if username / password were valid
-                    if (!$row){
-                        $loginErr = "Your username / password combination is incorrect";
-                    }
-                    // redirect the user
-                    else
+                    if ($token == $result[0]['password'])
                     {
-                      $type = $row['type'];
-                      $_SESSION['currentUser'] = $type;  
-
-                      if ($type == 'user'){
-                        header('Location: user_page.php');
-                        exit();
-                      }
-                      else if ($type == 'admin'){
-                        header('Location: admin_page.php');
-                        exit();
-                      }
-
+                        $error_string = NULL;
+                        common->setSession($un_temp, $result[0]['type']);
+                        redirectUser($result[0]['type']);
                     }
-
                 }
                 else 
-                    $loginErr = "You need to enter both username and password";
+                    $error_string = "Your username/password combination is incorrect. Try Again!";
             }
+            $error_string = "Your username/password combination is incorrect. Try Again!";
           
         ?>
+
+
         <h1>Welcome to <span style="font-style:italic; font-weight:bold; color: maroon">
                 Great Web Application</span>!</h1>
                 
         <p style="color: red">
         <!--Placeholder for error messages-->
-        <span class="error"><?php echo $loginErr; ?></span>
+        <span class="error"><?php echo $error_string; ?></span>
             <br><br>
         </p>
         
-        <form method="post" action="login_page.php">
+        <form method="post" action="login.php">
             <label>Username: </label>
             <input type="text" name="username" value="<?php echo $username;?>"> <br>
             <label>Password: </label>
@@ -108,7 +85,7 @@
         </form>
         
         <p style="font-style:italic">
-            Placeholder for "forgot password" link<br><br>
-            Placeholder for "create account" link
+            // Placeholder for "forgot password" link<br><br>
+            I am new here! <a href="#create">Create A New Account</a>
         </p>
 </html>
