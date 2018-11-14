@@ -19,8 +19,10 @@
     <body>
         <?php
             
-            // getUsers($username): returns ['$username', '$type'] to be implemented
-            //
+            // implement database->getUsers($username): returns ['$username', '$type'] 
+            // implement common->hashPassword(): returns hashed password
+            // implement common->setSession($type)
+            // implement common->mysql_entities_fix_string($connection, $variable): returns sanitized string (real_escape_string(), passed through htmlentities())
 
             require_once(dirname(__DIR__)."/FrontEnd/Common.php");
             require_once(dirname(__DIR__)."/Database/api.php");
@@ -41,8 +43,8 @@
             
             if (isset($_POST['username']) && isset($_POST['password'])) 
             {
-                $un_temp = mysql_entities_fix_string($connection, $_POST['username']);
-                $pw_temp = mysql_entities_fix_string($connection, $_POST['password']);
+                $un_temp = common->mysql_entities_fix_string($connection, $_POST['username']);
+                $pw_temp = common->mysql_entities_fix_string($connection, $_POST['password']);
 
                 // Initialize the object for Database.php
                 $database = new Database;
