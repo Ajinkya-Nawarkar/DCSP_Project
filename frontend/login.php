@@ -20,8 +20,7 @@
         <?php
             
             // implement database->getUsers($username): returns ['$username', '$type'] 
-            // implement common->hashPassword(): returns hashed password
-            // implement common->setSession($type)
+        
             // implement common->mysql_entities_fix_string($connection, $variable): returns sanitized string (real_escape_string(), passed through htmlentities())
 
             require_once(dirname(__DIR__)."/FrontEnd/Common.php");
@@ -35,8 +34,8 @@
             $connection = new mysqli($hn, $un, $pw, $db);
             if($connection->connect_error) die($connection->connect_error);
 
-            if (isset($_SESSION['username']))
-                common->redirectUser($_SESSION['type']);
+            if (isset($_SESSION['type']))
+                redirectUser();
             
             // Preserve the username to show if only password is incorrect
             $username = isset($_POST['username']);
@@ -58,13 +57,14 @@
                     {
                         $error_string = NULL;
                         common->setSession($un_temp, $result[0]['type']);
-                        redirectUser($result[0]['type']);
+                        redirectUser();
                     }
                 }
                 else 
                     $error_string = "Your username/password combination is incorrect. Try Again!";
             }
-            $error_string = "Your username/password combination is incorrect. Try Again!";
+            else
+                $error_string = "Your username/password combination is incorrect. Try Again!";
           
         ?>
 
@@ -90,4 +90,15 @@
             // Placeholder for "forgot password" link<br><br>
             I am new here! <a href="#create">Create A New Account</a>
         </p>
+
+    </body>
 </html>
+
+<?php
+    // redirect user to index.php
+    function redirectUser()
+    {
+        header('Location: index.php');
+        exit();
+    }
+?>
