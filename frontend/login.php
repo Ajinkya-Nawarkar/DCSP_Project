@@ -23,12 +23,12 @@
         
             // implement common->mysql_entities_fix_string($connection, $variable): returns sanitized string (real_escape_string(), passed through htmlentities())
 
-            require_once(dirname(__DIR__)."/FrontEnd/Common.php");
+            require_once(dirname(__DIR__)."/FrontEnd/common.php");
             require_once(dirname(__DIR__)."/Database/api.php");
 
             $error_string = NULL;
             // Initialize the object for Common.php
-            $common = new Common;
+            $common = new common;
 
             // Initialize database
             $connection = new mysqli($hn, $un, $pw, $db);
