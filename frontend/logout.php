@@ -10,6 +10,8 @@
         // destroy session
         session_unset();
         session_destroy();
+
+        // just a test big common 
         
     ?> 
     <body>
