@@ -1,6 +1,6 @@
 <?php
   
-	require_once(dirname(__DIR__)."/Models/errExceptions.php");
+	require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
 
   // Model class for function implementations of Item class
 
