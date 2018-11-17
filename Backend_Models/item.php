@@ -1,6 +1,7 @@
 <?php
   
 	require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
+   require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
   // Model class for function implementations of Item class
 
@@ -16,6 +17,7 @@
    	private $quantity; 
 
    	private $error; 
+      private $database;
 
    	function __construct($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity)
    	{
@@ -28,10 +30,10 @@
 	   	$this->priceUSD = $priceUSD;
 	   	$this->quantity = $quantity; 
 
-	   	$this->error = new errExceptions();
+	   	$this->error = new errExceptions;
+         $this->database = new dbAPI;
 
 	   	// Validate all necessary attributes with errors exceptions
-	   	$this->validateName();
 	   	$this->validatePriceUSD();
 	   	$this->validateQuantity();
 
@@ -49,30 +51,26 @@
    	function getPrice()			{	return $this->priceUSD;	}
    	function getQuantity()		{	return $this->quantity;	} 
 
-   	function validateName()
-   	{
-   		// To be implemented
-   	}
-
    	function validatePriceUSD()
    	{
-   		// To be implemented
+   		if (!is_float($this->priceUSD))
+            $this->error->addError("price", "Price needs to be float");
+         if ($this->priceUSD < 0)
+            $this->error->addError("price", "Price must be positive and greater than or equal to 1");
    	}
 
    	function validateQuantity()
    	{
-   		// To be implemented
+   		if(!is_numeric($this->quantity))
+            $this->error->addError("quantity","Quantity must be numeric.");
+         if($this->quantity < 0){
+         $this->error->addError("quantity","Quantity must be greater than or equal to 0.");
    	}
 
-   	function removeItem()
-   	{
-   		// To be implemented
-   	}
-
-   	function editQuantity($sku, $num)
-   	{
-   		// To be implemented
-   	}
+      function addItem()
+      {
+         $this->database->addItem($this);
+      }
   }
 
 ?>

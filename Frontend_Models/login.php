@@ -24,7 +24,7 @@
             // implement common->mysql_entities_fix_string($connection, $variable): returns sanitized string (real_escape_string(), passed through htmlentities())
 
             require_once(dirname(__DIR__)."/Backend_Models/common.php");
-            require_once(dirname(__DIR__)."/Database/api.php");
+            require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
             $error_string = NULL;
             // Initialize the object for Common.php
@@ -46,7 +46,7 @@
                 $pw_temp = common->mysql_entities_fix_string($connection, $_POST['password']);
 
                 // Initialize the object for Database.php
-                $database = new Database;
+                $database = new dbAPI;
                 $result = $database->getUsers($un_temp);   
             
                 if ($result)
