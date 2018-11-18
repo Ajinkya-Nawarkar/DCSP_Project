@@ -1,6 +1,6 @@
 <?php 
     // include the database credentials
-    include("login.php");
+    include("login_credentials.php");
     // start the session
     session_start();
 ?>
@@ -19,7 +19,7 @@
     <body>
         <?php
             
-            // implement database->getUsers($username): returns ['$username', '$type'] 
+            // implement database->getAllUsers($username): returns ['$username', '$type'] 
         
             // implement common->mysql_entities_fix_string($connection, $variable): returns sanitized string (real_escape_string(), passed through htmlentities())
 
@@ -47,7 +47,15 @@
 
                 // Initialize the object for Database.php
                 $database = new dbAPI;
-                $result = $database->getUsers($un_temp);   
+
+                // agreement validation
+                if(isset($_POST['admin_check']))
+                {
+                    $result = $database->getAllAdmins($un_temp);
+                    $checked = "checked";
+                }
+                else
+                    $result = $database->getAllUsers($un_temp);   
             
                 // Validate the password and set session variables
                 if ($result)
@@ -84,6 +92,8 @@
             <input type="text" name="username" value="<?php echo $username;?>"> <br>
             <label>Password: </label>
             <input type="password" name="password" value="<?php echo $password;?>"> <br>
+            <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
+            Are you an Admin?<br>
             <input type="submit" value="Log in">
         </form>
         
