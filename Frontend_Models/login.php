@@ -48,11 +48,11 @@
                 // Initialize the object for Database.php
                 $database = new dbAPI;
 
-                // agreement validation
+                // admin_check validation
                 if(isset($_POST['admin_check']))
                 {
                     $result = $database->getAllAdmins($un_temp);
-                    $checked = "checked";
+                    $admin_check = "checked";
                 }
                 else
                     $result = $database->getAllUsers($un_temp);   
