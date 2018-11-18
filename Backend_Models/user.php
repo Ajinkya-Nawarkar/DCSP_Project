@@ -23,6 +23,7 @@
       $this->password = $pw;
       $this->cart = $cart;
 
+      // Initialize new objects for all required classes
       $this->error = new errExceptions;
       $this->database = new dbAPI;
       $this->cart = new cart;
@@ -44,16 +45,19 @@
         $this->errs->addErr("username","Username must contain alphanumeric characters only.");
     }
 
+    // Addition of a new user to the database with its respective attributes
     function addUserToDB()
     {
       $this->database->newUser($this);
     }
 
+    // Addition of a new item to the current user's cart
     function addToUserCart($sku, $quantity)
     {
       $this->database->addToCart($this->username, $sku, $quantity);
     }
 
+    // Removal of an existing item from the current user's cart
     function removeFromUserCart($sku)
     {
       $this->database->removeFromCart($this->username, $sku);
@@ -62,5 +66,4 @@
   }
 
   ?>
-</body>
-</html>
+

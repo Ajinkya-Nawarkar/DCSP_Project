@@ -30,8 +30,9 @@
 	   	$this->priceUSD = $priceUSD;
 	   	$this->quantity = $quantity; 
 
+      // Initialize the objects for the exceptions and database classes
 	   	$this->error = new errExceptions;
-         $this->database = new dbAPI;
+      $this->database = new dbAPI;
 
 	   	// Validate all necessary attributes with errors exceptions
 	   	$this->validatePriceUSD();
@@ -67,10 +68,11 @@
          $this->error->addError("quantity","Quantity must be greater than or equal to 0.");
    	}
 
-      function addItem()
-      {
-         $this->database->addItem($this);
-      }
+    // Addition of a new item to the database with its respective attributes
+    function addItem()
+    {
+       $this->database->addItem($this);
+    }
   }
 
 ?>

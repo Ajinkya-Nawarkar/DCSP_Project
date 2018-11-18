@@ -49,6 +49,7 @@
                 $database = new dbAPI;
                 $result = $database->getUsers($un_temp);   
             
+                // Validate the password and set session variables
                 if ($result)
                 {
                     $token = common->hashPassword()
