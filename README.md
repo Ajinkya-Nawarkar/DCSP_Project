@@ -7,7 +7,7 @@
 
 ## [Website in action](http://pluto.cse.msstate.edu/~an839/DCSP/DCSP_Project/index.php)
 
-## CronTab setting: * * * * * ( sleep 30; /path/to/cron.sh)
+##### CronTab setting: * * * * * ( sleep 30; /path/to/cron.sh)
 
 ## Folder Structure: 
 * index.php     - main file which implements and makes calls to all other php files and functions
