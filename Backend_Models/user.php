@@ -1,32 +1,62 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>User</title>
-</head>
-<body>
-  <?php
+<?php
+  
+  require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
+  require_once(dirname(__DIR__)."/Database/dbAPI.php");
+  require_once(dirname(__DIR__)."/Frontend_Models/cart.php");
+
+  // Model class for function implementations of User class
+
   class User
   {
-    public $username;
+    private $username;
     private $password;
-    public $cart;
+    private $firstname;
+    private $lastname;
 
-    //constructor
-    public function __construct($un, $pw, $c)
+    private $error; 
+    private $database;
+    private $cart;
+
+    function __construct($un, $pw, $cart)
     {
       $this->username = $un;
       $this->password = $pw;
-      $this->cart = $c;
+      $this->cart = $cart;
+
+      $this->error = new errExceptions;
+      $this->database = new dbAPI;
+      $this->cart = new cart;
+
+      // Validate the username
+      $this->validateUsername();
+
+      // Throw the validation errors if exists
+      if ($this->error->hasError())
+        throw $this->error; 
     }
 
-    public function addToCart($item, $q)
+    function validateUsername()
     {
-      $this->cart[$item] = $q;
+      if (strlen($this->username < 4))
+        $this->error->addError("username","Username length must be greater than 3 characters.");
+
+      if(!ctype_alnum($this->username))
+        $this->errs->addErr("username","Username must contain alphanumeric characters only.");
     }
 
-    public function removeFromCart($item)
+    function addUserToDB()
     {
-      unset($this->cart[$item]);
+      $this->database->newUser($this);
+    }
+
+    function addToUserCart($sku, $quantity)
+    {
+      $this->database->addToCart($this->username, $sku, $quantity);
+    }
+
+    function removeFromUserCart($sku)
+    {
+      $this->database->removeFromCart($this->username, $sku);
     }
 
   }
