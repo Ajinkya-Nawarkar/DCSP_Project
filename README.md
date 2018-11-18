@@ -21,11 +21,9 @@
         Frontend_Models/userAccess.php   - Enables user functions 
         Frontend_Models/adminAccess.php  - Enables admin functions 
 
-        Backend_Models/design-top.php   - Implements the Design top for the homepage
-        Backend_Models/footer.php       - Implements the footer and access to all quick links for the user
-        Backend_Models/navigation.php   - Implements the navigation bar linking to inventory, login, logout, signup pages
-        Backend_Models/signup.php       - Enables the user to create an account
-        Backend_Models/logout.php       - Enables the user to logout while saving the current cookie session
-        Backend_Models/login.php        - Enables user or Admin login 
-        Backend_Models/userAccess.php   - Enables user functions 
-        Backend_Models/adminAccess.php  - Enables admin functions 
+        Backend_Models/common.php               - Implements the common class for implementations of the shared functions
+        Backend_Models/errException.php         - Implements the exception class for logging errors independently for different objects
+        Backend_Models/user.php                 - Implements the user class for function implementations of a user
+        Backend_Models/admin.php                - Implements the admin class for function implementations of a admin
+        Backend_Models/item.php                 - Implements the item class for function implementations of items
+         
