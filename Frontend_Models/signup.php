@@ -95,7 +95,7 @@
           if (!empty($_POST['password2'])) {
             $password2 = $_POST['password2'];
             if ($password1 != $password2) {
-              $pw2Error = "Your password entries do not match.";
+              $pw2Err = "Your password entries do not match.";
               $errFlg = True;
             }
           } else {
