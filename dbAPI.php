@@ -89,7 +89,24 @@ class dbAPI
     $conn->query($query);
     return true;
   }
+  public function addCart($username, $sku, $amount){
+    //Retrieve arrays from itemQuantity and itemList
+    $itemQuantQuery = "SELECT cartItemQuant FROM users WHERE username = '$username'";
+    $itemSkuQuery = "SELECT cartItem FROM users WHERE username = '$username'";
 
+    //Add item and item quatitiy to corresponding arrays
+    array_push($itemQuantQuery,"$amount");
+    array_push($itemSkuQuery,"$sku");
+    //Add queries to update overall inventory
+
+    //Send an updated query using the new itemQuantQuery and itemSKyQuery arrays
+    $query  = "UPDATE users SET cartItemQuant = '$itemQuantQuery' WHERE username = '$username'";
+    $conn->query($query);
+    $query  = "UPDATE users SET cartItem = '$itemSkuQuery' WHERE username = '$username'";
+    $conn->query($query);
+    return true;
+  }
+  }
   public function removeFromCart($name, $sku, $amount){
     //Retrieve arrays from itemQuantity and itemList
     $itemQuantQuery = "SELECT cartItemQuant FROM users WHERE username = '$username'";
