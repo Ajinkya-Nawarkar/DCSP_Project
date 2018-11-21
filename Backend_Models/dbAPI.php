@@ -16,7 +16,7 @@ class dbAPI
 
   //Function accepts any query and returns the result.
   public function query($query){
-    $result = $this->conn->query($query);
+    $result = mysqli_fetch_array($this->conn->query($query));
     return $result;
   }
 
@@ -46,7 +46,7 @@ class dbAPI
     return true;
   }
   public function getItem($sku){
-    $result = $this->conn->query("SELECT * FROM items WHERE sku = '$sku'");
+    $result = mysqli_fetch_array($this->conn->query("SELECT * FROM items WHERE sku = '$sku'"));
     return $result;
   }
 
@@ -71,9 +71,8 @@ class dbAPI
 
   public function editCartQuant($username, $sku, $amount){
     //Retrieve arrays from itemQuantity and itemList
-    $itemQuantQuery = "SELECT cartItemQuant FROM users WHERE username = '$username'";
-    $itemSkuQuery = "SELECT cartItem FROM users WHERE username = '$username'";
-
+    $itemQuantQuery = mysqli_fetch_array("SELECT cartItemQuant FROM users WHERE username = '$username'");
+    $itemSkuQuery = mysqli_fetch_array("SELECT cartItem FROM users WHERE username = '$username'");
     //Find the point in which both arrays correspond and edit the itemQuantQuery
     for($i = 0; $i < sizeof($itemQuantQuery); $i++){
       if($itemSkuQuery[$i] = $sku){
@@ -90,8 +89,8 @@ class dbAPI
   }
   public function addCart($username, $sku, $amount){
     //Retrieve arrays from itemQuantity and itemList
-    $itemQuantQuery = "SELECT cartItemQuant FROM users WHERE username = '$username'";
-    $itemSkuQuery = "SELECT cartItem FROM users WHERE username = '$username'";
+    $itemQuantQuery = mysqli_fetch_array("SELECT cartItemQuant FROM users WHERE username = '$username'");
+    $itemSkuQuery = mysqli_fetch_array("SELECT cartItem FROM users WHERE username = '$username'");
 
     //Add item and item quatitiy to corresponding arrays
     array_push($itemQuantQuery,"$amount");
@@ -107,8 +106,8 @@ class dbAPI
   }
   public function removeFromCart($name, $sku, $amount){
     //Retrieve arrays from itemQuantity and itemList
-    $itemQuantQuery = "SELECT cartItemQuant FROM users WHERE username = '$username'";
-    $itemSkuQuery = "SELECT cartItem FROM users WHERE username = '$username'";
+    $itemQuantQuery = mysqli_fetch_array("SELECT cartItemQuant FROM users WHERE username = '$username'");
+    $itemSkuQuery = mysqli_fetch_array("SELECT cartItem FROM users WHERE username = '$username'");
 
     //Find the point in which both arrays correspond and edit the itemQuantQuery
     for($i = 0; $i < sizeof($itemQuantQuery); $i++){
