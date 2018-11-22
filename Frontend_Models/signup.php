@@ -18,27 +18,18 @@
       # Will include navigation.php once it is functional
       //include("navigation.php");
 
-      ##################
-      # DATABASE COMMENTS
-      # This page is set up to confirm and validate the entry for a new user
-      # Still havent fleshed out the actual Database calls
-      # Needs to do the following:
-      #   - check if given username already exists in database
-      #   - add new user to database
-      #################
-      # OTHER: need to add entry sanitation
-      ####################
+      # STILL NEED TO IMPROVE ENTRY SANITATION
 
       if (isset($_SESSION['type'])) {
         redirectUser();
       }
 
       require_once(dirname(__DIR__)."/Backend_Models/common.php");
+      require_once(dirname(__DIR__)."/Backend_Models/user.php");
       require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
       # Initialize database
-      $connection = new mysqli($hn, $un, $pw, $db);
-      if($connection->connect_error) die($connection->connect_error);
+      $db = new dbAPI;
 
       # Initialize the object for Common.php
       $common = new common;
@@ -75,12 +66,18 @@
         if (!empty($_POST['userame'])) {
           $username = $_POST['username'];
           $check = False;
-          #########################
-          # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
-          ########################
-          if ($check) {
-            $unErr = "Username already exists. Please try another one.";
+          if (strlen($username) < 4 or !ctype_alnum($username)) {
+            $unErr = "Username must be at least 4 alphanumeric characters.";
             $errFlg = True;
+          } else {
+            # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
+            if ($db.query("SELECT username FROM users WHERE username='$username'")) {
+              $check = True;
+            }
+            if ($check) {
+              $unErr = "Username already exists. Please try another one.";
+              $errFlg = True;
+            }
           }
         } else {
           $unErr = "You must enter a username.";
@@ -115,10 +112,9 @@
 
       if (!$errFlg) {
         $encryptedPw = $common->hashPassword($password1);
-        #######################################
         # ADD USER TO DATABASE HERE
-        # make sure to initialize an empty cart
-        #######################################
+        $user = new User($username, $encryptedPw, $firstName, $lastName, NULL);
+        $db.newUser($user);
         $common->setSession($username, "user");
         redirectUser();
       }
