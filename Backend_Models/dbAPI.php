@@ -21,8 +21,16 @@ class dbAPI
   }
 
   public function newUser($user){
-    $query  = "INSERT INTO users (username, password, firstname, lastname, cartItem, cartItemQuant) "
-            . "VALUES('$user->username', '$user->password', '$user->firstname', '$user->lastname', '$user->cartItem')";
+    //Initialize a new user's cart with an array containing 50 indexes filled with 0's.
+    //When a user adds an item to their cart the value at the index equal to the item's sku
+    //will be changed to the amount of the item the user wants.
+    $array = array();
+    for($i = 0;$i < 50;$i++) {
+      $array[] = $i;
+      $array[$i] = 0;
+    }
+    $query  = "INSERT INTO users (username, password, firstname, lastname, cart) "
+            . "VALUES('$user->username', '$user->password', '$user->firstname', '$user->lastname', '$array')";
     $this->conn->query($query);
     return true;
   }
@@ -35,7 +43,7 @@ class dbAPI
 
   public function newAdmin($admin){
     $query  = "INSERT INTO admins (username, password) "
-            . "VALUES('$user->username', '$user->password')";
+            . "VALUES('$admin->username', '$admin->password')";
     $this->conn->query($query);
     return true;
   }
@@ -50,20 +58,20 @@ class dbAPI
     return $result;
   }
 
-  public function addItem($item){
+  public function addItemToDB($item){
     $query  = "INSERT INTO items (sku, name, platform, type, developer, description, priceUSD, quantity) "
             . "VALUES('$item->sku', '$item->name', '$item->platform', '$item->type', '$item->developer', '$item->description', '$item->priceUSD', '$item->quantity')";
     $this->conn->query($query);
     return true;
   }
 
-  public function removeItem($sku){
+  public function removeItemfromDB($sku){
     $query  = "DELETE FROM items WHERE sku = '$sku'";
     $this->conn->query($query);
     return true;
   }
 
-  public function editQuant($sku, $amount){
+  public function modifyItemQuantityInDB($sku, $amount){
     $query  = "UPDATE items SET quantity = '$amount' WHERE sku = '$sku'";
     $this->conn->query($query);
     return true;
@@ -71,60 +79,34 @@ class dbAPI
 
   public function editCartQuant($username, $sku, $amount){
     //Retrieve arrays from itemQuantity and itemList
-    $itemQuantQuery = mysqli_fetch_array("SELECT cartItemQuant FROM users WHERE username = '$username'");
-    $itemSkuQuery = mysqli_fetch_array("SELECT cartItem FROM users WHERE username = '$username'");
-    //Find the point in which both arrays correspond and edit the itemQuantQuery
-    for($i = 0; $i < sizeof($itemQuantQuery); $i++){
-      if($itemSkuQuery[$i] = $sku){
-        $itemQuantQuery[$i] = $amount;
-      }
-    }
-
+    $cartQuery = mysqli_fetch_array($this->conn->query("SELECT cart FROM users WHERE username = '$username'"));
+    $cartQuery[0][$sku] = $amount;
     //Add queries to update overall inventory
 
-    //Send an updated query using the new itemQuantQuery array
-    $query  = "UPDATE users SET cartItemQuant = '$itemQuantQuery' WHERE username = '$username'";
+    //Send an updated query using the new cartQuery array
+    $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->conn->query($query);
     return true;
   }
-  public function addCart($username, $sku, $amount){
+  public function addToCart($username, $sku, $amount){
     //Retrieve arrays from itemQuantity and itemList
-    $itemQuantQuery = mysqli_fetch_array("SELECT cartItemQuant FROM users WHERE username = '$username'");
-    $itemSkuQuery = mysqli_fetch_array("SELECT cartItem FROM users WHERE username = '$username'");
-
-    //Add item and item quatitiy to corresponding arrays
-    array_push($itemQuantQuery,"$amount");
-    array_push($itemSkuQuery,"$sku");
+    $cartQuery = mysqli_fetch_array($this->conn->query("SELECT cart FROM users WHERE username = '$username'"));
+    $cartQuery[0][$sku] = $amount;
     //Add queries to update overall inventory
-
-    //Send an updated query using the new itemQuantQuery and itemSKyQuery arrays
-    $query  = "UPDATE users SET cartItemQuant = '$itemQuantQuery' WHERE username = '$username'";
-    $this->conn->query($query);
-    $query  = "UPDATE users SET cartItem = '$itemSkuQuery' WHERE username = '$username'";
+    
+    //Send an updated query using the new cartQuery array
+    $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->conn->query($query);
     return true;
   }
-  public function removeFromCart($name, $sku, $amount){
+  public function removeFromCart($username, $sku){
     //Retrieve arrays from itemQuantity and itemList
-    $itemQuantQuery = mysqli_fetch_array("SELECT cartItemQuant FROM users WHERE username = '$username'");
-    $itemSkuQuery = mysqli_fetch_array("SELECT cartItem FROM users WHERE username = '$username'");
-
-    //Find the point in which both arrays correspond and edit the itemQuantQuery
-    for($i = 0; $i < sizeof($itemQuantQuery); $i++){
-      if($itemSkuQuery[$i] = $sku){
-        break;
-      }
-    }
-    //Delete occurances of the selected item
-    unset($itemQuantQuery[$i]);
-    unset($itemSkuQuery[$i]);
-
+    $cartQuery = mysqli_fetch_array($this->conn->query("SELECT cart FROM users WHERE username = '$username'"));
+    $cartQuery[0][$sku] = 0;
     //Add queries to update overall inventory
 
-    //Send an updated query using the new itemQuantQuery and itemSKyQuery arrays
-    $query  = "UPDATE users SET cartItemQuant = '$itemQuantQuery' WHERE username = '$username'";
-    $this->conn->query($query);
-    $query  = "UPDATE users SET cartItem = '$itemSkuQuery' WHERE username = '$username'";
+    //Send an updated query using the new cartQuery arrays
+    $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->conn->query($query);
     return true;
   }
