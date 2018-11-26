@@ -1,6 +1,4 @@
 <?php 
-    // include the database credentials
-    include("login_credentials.php");
     // start the session
     session_start();
 ?>
@@ -30,10 +28,6 @@
             // Initialize the object for Common.php
             $common = new common;
 
-            // Initialize database
-            $connection = new mysqli($hn, $un, $pw, $db);
-            if($connection->connect_error) die($connection->connect_error);
-
             if (isset($_SESSION['type']))
                 redirectUser();
             
@@ -42,11 +36,13 @@
             
             if (isset($_POST['username']) && isset($_POST['password'])) 
             {
-                $un_temp = common->mysql_entities_fix_string($connection, $_POST['username']);
-                $pw_temp = common->mysql_entities_fix_string($connection, $_POST['password']);
-
                 // Initialize the object for Database.php
                 $database = new dbAPI;
+
+                $un_temp = common->mysql_entities_fix_string($database->connection, $_POST['username']);
+                $pw_temp = common->mysql_entities_fix_string($database->connection, $_POST['password']);
+
+                
 
                 // admin_check validation
                 if(isset($_POST['admin_check']))
