@@ -13,11 +13,10 @@
   }
 
   require_once(dirname(__DIR__)."/Backend_Models/common.php");
+  require_once(dirname(__DIR__)."/Backend_Models/admin.php");
   require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
-  $connection = new mysqli($hn, $un, $pw, $db);
-  if ($connection->connect_error)
-    die($connection->connect_error);
+  $db = new dbAPI;
 
   # Initialize the object for Common.php
   $common = new common;
@@ -57,9 +56,10 @@
     if (!empty($_POST['unAdmin'])) {
       $unAdmin = $_POST['unAdmin'];
       $check = False;
-      #########################
       # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
-      ########################
+      if ($db.query("SELECT username FROM admins WHERE username='$unAdmin'")) {
+        $check = True;
+      }
       if ($check) {
         $unAdErr = "Username already exists. Please try another one.";
         $adErrFlg = True;
@@ -95,6 +95,8 @@
     #######################################
     # ADD ADMIN TO DATABASE HERE
     #######################################
+    $admin = new Admin($unAdmin, $encryptedPw, $fnAdmin, $lnAdmin);
+    $db.newAdmin($admin);
   }
 
   # Remove acccount (user/admin)
@@ -105,20 +107,30 @@
       $unRemove = $_POST['unRemove'];
       if (isset($_POST['adminCheck'])) {
         $adminCheck = "checked";
-        $admin = True;
+        $isAdmin = True;
       } else {
-        $admin = False
+        $isAdmin = False
       }
       $check = False;
-      #####################
       # CHECK IF USER/ADMIN USERNAME EXITS IN DATABASE (dependent on $admin)
-      #####################
+      if ($isAdmin) {
+        if ($db.query("SELECT username FROM admins WHERE username='$unRemove'")) {
+          $check = True;
+        }
+      } else {
+        if ($db.query("SELECT username FROM users WHERE username='$unRemove'")) {
+          $check = True;
+        }
+      }
       if ($check) {
         $unRemErr = "This username does not exist";
       } else {
-        #####################
-        # REMOVE USER/ADMIN ACCOUNT FROM RESPECTIVE DATABASE (dependent on $admin)
-        #####################
+        # REMOVE USER/ADMIN ACCOUNT FROM RESPECTIVE DATABASE
+        if ($isAdmin) {
+          $db.deleteAdmin($unRemove);
+        } else {
+          $db.deleteUser($unRemove);
+        }
       }
     }
   }
