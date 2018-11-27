@@ -7,7 +7,7 @@ class errExceptions extends Exception
 	private $errMap;
 	private $errPresent;
 
-	function __contruct()
+	function __contruct($exceptionItem = NULL, $code = 0, Exception $previous = null)
 	{
 		$this->errPresent = false;
 		$this->errMap = array();
