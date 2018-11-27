@@ -3,6 +3,8 @@
 <head>
 </head>
 <body>
+<?php include("frontend/design-top.php");?>
+<?php include("frontend/navigation.php");?>
   <?php
   ##################
   # DATABASE COMMENTS
@@ -103,5 +105,39 @@
     exit();
   }
   ?>
+    <form action="signup.php" style="border:1px solid #ccc">
+  <div class="container">
+    <h1>Sign Up</h1>
+    <p>Please fill in this form to create an account.</p>
+    <hr>
+
+    <label for="username"><b>Username</b></label>
+    <input type="text" placeholder="Username" name="username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="password" required>
+
+    <label for="psw-repeat"><b>Repeat Password</b></label>
+    <input type="password" placeholder="Repeat Password" name="password2" required>
+	
+	<label for="fstnm"><b>First Name</b></label>
+    <input type="txt" placeholder="Enter First Name" name="firstname" required>
+	
+	<label for="lstnm"><b>Last Name</b></label>
+    <input type="txt" placeholder="Enter Last Name" name="lastname" required>
+
+
+    <label>
+      
+    </label>
+
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button type="submit" class="signupbtn">Sign Up</button>
+    </div>
+  </div>
+</form>
+  <?php include("frontend/footer.php");?>
 </body>
 </html>
