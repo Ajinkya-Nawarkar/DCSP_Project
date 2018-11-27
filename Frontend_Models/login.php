@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang='en'>
     <head>
+        <link href="css.css" rel="stylesheet" id="bootstrap-css">
         <meta charset="UTF-8">
         <title>Maroon Gaming Co</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
