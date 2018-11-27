@@ -114,7 +114,7 @@
     </div>
 </div>
         
-
+<?php include("frontend/footer.php");?>
     </body>
 </html>
 
