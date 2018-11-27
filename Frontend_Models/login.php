@@ -8,6 +8,7 @@
 <html lang='en'>
     <head>
         <link href="css.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
         <title>Maroon Gaming Co</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
