@@ -114,7 +114,7 @@
         $encryptedPw = $common->hashPassword($password1);
         # ADD USER TO DATABASE HERE
         $user = new User($username, $encryptedPw, $firstName, $lastName, NULL);
-        $db.newUser($user);
+        $user->addUserToDB();
         $common->setSession($username, "user");
         redirectUser();
       }
