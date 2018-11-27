@@ -3,6 +3,7 @@
     <head>
         <title>Logged Out</title>
     </head>
+
     <?php
        // start the session
         session_start();
@@ -13,6 +14,8 @@
         
     ?> 
     <body>
+			<?php include("frontend/design-top.php");?>
+		<?php include("frontend/navigation.php");?>
         <h1>Logged Out</h1>
         <p>
             You are now logged out of the website.
@@ -20,5 +23,7 @@
         <p>
             <a href="login_page.php">Log in</a> again.
         </p>
+		
+		<?php include("frontend/footer.php");?>
     </body>
 </html>
