@@ -2,28 +2,16 @@
   
   require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
   require_once(dirname(__DIR__)."/Database/dbAPI.php");
-  require_once(dirname(__DIR__)."/Frontend_Models/cart.php");
 
   // Model class for function implementations of User class
 
   /*
+   
+   TODO: @JACK: removeAccountFromDB() to be implemented inside manageAccounts.php
 
-  TODO: @JACK You can just add these functions to cart.php 
+   */
 
-  // Addition of a new item to the current user's cart
-    function addToUserCart($sku, $quantity)
-    {
-      $this->database->addToCart($this->username, $sku, $quantity);
-    }
-
-    // Removal of an existing item from the current user's cart
-    function removeFromUserCart($sku)
-    {
-      $this->database->removeFromCart($this->username, $sku);
-    }
-  */
-
-  class User
+  class Admin
   {
     private $username;
     private $password;
@@ -32,12 +20,13 @@
 
     private $error; 
     private $database;
-    private $cart;
 
-    function __construct($un, $pw)
+    function __construct($un, $pw, $fn, $ln)
     {
       $this->username = $un;
       $this->password = $pw;
+      $this->firstname = $fn;
+      $this->lastname = $ln;      
 
       // Initialize new objects for all required classes
       $this->error = new errExceptions;
@@ -60,10 +49,10 @@
         $this->errs->addErr("username","Username must contain alphanumeric characters only.");
     }
 
-    // Addition of a new user to the database with its respective attributes
-    function addUserToDB()
+    // Addition of a new admin to the database with its respective attributes
+    function addAdminToDB()
     {
-      $this->database->newUser($this);
+      $this->database->newAdmin($this);
     }
 
   }

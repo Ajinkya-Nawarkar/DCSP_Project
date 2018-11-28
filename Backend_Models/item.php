@@ -69,9 +69,9 @@
    	}
 
     // Addition of a new item to the database with its respective attributes
-    function addItem()
+    function addItemToDB()
     {
-       $this->database->addItem($this);
+       $this->database->addItemToDB($this);
     }
   }
 
