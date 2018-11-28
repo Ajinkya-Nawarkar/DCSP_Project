@@ -14,8 +14,9 @@
         
     ?> 
     <body>
-			<?php include("frontend/design-top.php");?>
+
 		<?php include("frontend/navigation.php");?>
+			<?php include("frontend/design-top.php");?>
         <h1>Logged Out</h1>
         <p>
             You are now logged out of the website.
