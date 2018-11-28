@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body id="myPage">
-<?php include("frontend/navigation.php");?>
+<?php include("Frontend_Models/navigation.php");?>
 <?php include("frontend/design-top.php");?>
 <!--> This needs to be implemented, div class w3-quarter is the item div <!-->
 <!-- Work Row -->
