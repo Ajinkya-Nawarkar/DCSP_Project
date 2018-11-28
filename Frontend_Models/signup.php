@@ -3,8 +3,9 @@
 <head>
 </head>
 <body>
-<?php include("frontend/design-top.php");?>
 <?php include("frontend/navigation.php");?>
+<?php include("frontend/design-top.php");?>
+
   <?php
   ##################
   # DATABASE COMMENTS
@@ -113,19 +114,19 @@
 
     <label for="username"><b>Username</b></label>
     <input type="text" placeholder="Username" name="username" required>
-
+	<br><br>
     <label for="psw"><b>Password</b></label>
     <input type="password" placeholder="Enter Password" name="password" required>
-
+	<br><br>
     <label for="psw-repeat"><b>Repeat Password</b></label>
     <input type="password" placeholder="Repeat Password" name="password2" required>
-	
+	<br><br>
 	<label for="fstnm"><b>First Name</b></label>
     <input type="txt" placeholder="Enter First Name" name="firstname" required>
-	
+	<br><br>
 	<label for="lstnm"><b>Last Name</b></label>
     <input type="txt" placeholder="Enter Last Name" name="lastname" required>
-
+<br><br>
 
     <label>
       
