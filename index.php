@@ -166,7 +166,7 @@
 <div class="w3-card w3-white">
   <img src="/w3images/snow.jpg" alt="Snow" style="width:100%">
   <div class="w3-container">
-  <h3>Customer 1</h3>
+  <h3>Product 1</h3>
   <h4>Trade</h4>
   <p>Blablabla</p>
   <p>Blablabla</p>
@@ -178,9 +178,9 @@
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <img src="/w3images/lights.jpg" alt="Lights" style="width:100%">
+  
   <div class="w3-container">
-  <h3>Customer 2</h3>
+  <h3>product2 2</h3>
   <h4>Trade</h4>
   <p>Blablabla</p>
   <p>Blablabla</p>
