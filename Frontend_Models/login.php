@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 <html lang='en'>
     <head>
+	<!-->
         <link href="css.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
@@ -15,10 +16,12 @@
         <style>
             
         </style>
+		<!-->
     </head>
     <body>
-	<?php include("frontend/design-top.php");?>
 	<?php include("frontend/navigation.php");?>
+	<?php include("frontend/design-top.php");?>
+
         <?php
             
             // implement database->getAllUsers($username): returns ['$username', '$type'] 
