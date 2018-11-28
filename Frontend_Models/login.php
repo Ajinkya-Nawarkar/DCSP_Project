@@ -60,12 +60,12 @@
                 // Validate the password and set session variables
                 if ($result)
                 {
-                    $token = common->hashPassword()
+                    $token = $common->hashPassword()
 
                     if ($token == $result[0]['password'])
                     {
                         $error_string = NULL;
-                        common->setSession($un_temp, $result[0]['type']);
+                        $common->setSession($un_temp, $result[0]['type']);
                         redirectUser();
                     }
                 }
