@@ -7,7 +7,6 @@
 <!DOCTYPE html>
 <html lang='en'>
     <head>
-	<!-->
         <link href="css.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
@@ -16,12 +15,10 @@
         <style>
             
         </style>
-		<!-->
     </head>
     <body>
-	<?php include("frontend/navigation.php");?>
 	<?php include("frontend/design-top.php");?>
-
+	<?php include("frontend/navigation.php");?>
         <?php
             
             // implement database->getAllUsers($username): returns ['$username', '$type'] 
@@ -107,7 +104,7 @@
                         <div id="register-link" class="text-right">
                             <a href="signup.php" class="text-info">Register here</a>
                         </div>
-						    <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>
+						    <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
 							Are you an Admin?<br>
 							<input type="submit" value="Log in">
                     </form>
