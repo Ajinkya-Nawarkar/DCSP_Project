@@ -1,7 +1,4 @@
-<?php 
-    // start the session
-    session_start();
-?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
 
 <!DOCTYPE html>
@@ -60,12 +57,12 @@
                 // Validate the password and set session variables
                 if ($result)
                 {
-                    $token = common->hashPassword()
+                    $token = $common->hashPassword()
 
                     if ($token == $result[0]['password'])
                     {
                         $error_string = NULL;
-                        common->setSession($un_temp, $result[0]['type']);
+                        $common->setSession($un_temp, $result[0]['type']);
                         redirectUser();
                     }
                 }
