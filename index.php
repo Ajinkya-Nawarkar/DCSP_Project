@@ -30,7 +30,7 @@
 <div class="w3-top">
  <div class="w3-bar w3-theme-d2 w3-left-align">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gaming
+  <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>
   <?php
       //display different banner identification based on session type
         if(isset($_SESSION['type'])){
@@ -44,13 +44,28 @@
         }
       }
       else{
-        echo "random";
+        echo "";
       }
       ?></a>
-  <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Team</a>
-  <a href="#work" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Work</a>
-  <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Price</a>
-  <a href="#contact" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Contact</a>
+  
+  <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+  
+  <?php
+  	if(isset($_SESSION['type'])){
+      switch ($_SESSION['type']) {
+        case 'user':
+          echo "<a href='Frontend_Models/cart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
+          break;
+        case 'admin':
+          echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
+          break;
+      }
+    }
+    else{
+      echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Login</a>";
+    }
+    ?>
+  	<a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
     <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button" title="Notifications">Dropdown <i class="fa fa-caret-down"></i></button>     
     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
@@ -59,7 +74,7 @@
       <a href="#" class="w3-bar-item w3-button">Link</a>
     </div>
   </div>
-  <a href="#" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+  <a href="Frontend_Models/logout.php" class="w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal" title="Logout">
  </div>
 
   <!-- Navbar on small screens -->
