@@ -94,7 +94,7 @@ class dbAPI
     $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
     $cartQuery[0][$sku] = $amount;
     //Add queries to update overall inventory
-    
+
     //Send an updated query using the new cartQuery array
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
@@ -110,6 +110,15 @@ class dbAPI
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
+  }
+  
+  public function search($search) {
+    $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST($search IN NATURAL LANGUAGE MODE)";
+    $results = array();
+    while ($result = mysqli_fetch_array($query)) {
+      array_push($results, $result['sku']);
+    }
+    return $results;
   }
 }
 ?>
