@@ -74,6 +74,7 @@
       <a href="#" class="w3-bar-item w3-button">Link</a>
       <a href="#" class="w3-bar-item w3-button">Link</a>
     </div>
+    </div>
     <!-->
     <?php
   		if(isset($_SESSION['type'])){
@@ -83,7 +84,6 @@
 	        echo "";
 	      }
   	?>
-  </div>
  </div>
 
   <!-- Navbar on small screens -->
