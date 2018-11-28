@@ -2,6 +2,7 @@
 <?php include("frontend/navigation.php");?>
 <?php include("frontend/footer.php");?>
 
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
 <!DOCTYPE html>
 <html>
@@ -29,7 +30,23 @@
 <div class="w3-top">
  <div class="w3-bar w3-theme-d2 w3-left-align">
   <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
-  <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Logo</a>
+  <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gaming
+  <?php
+      //display different banner identification based on session type
+        if(isset($_SESSION['type'])){
+        switch ($_SESSION['type']) {
+          case 'user':
+            echo " - Basic User";
+            break;
+          case 'admin':
+            echo " - Administrator";
+            break;
+        }
+      }
+      else{
+        echo "random";
+      }
+      ?></a>
   <a href="#team" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Team</a>
   <a href="#work" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Work</a>
   <a href="#pricing" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Price</a>
