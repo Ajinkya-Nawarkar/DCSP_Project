@@ -43,8 +43,8 @@
                 // Initialize the object for Database.php
                 $database = new dbAPI;
 
-                $un_temp = common->mysql_entities_fix_string($database->connection, $_POST['username']);
-                $pw_temp = common->mysql_entities_fix_string($database->connection, $_POST['password']);
+                $un_temp = mysql_entities_fix_string($database->connection, $_POST['username']);
+                $pw_temp = mysql_entities_fix_string($database->connection, $_POST['password']);
 
                 
 
@@ -104,7 +104,7 @@
                         <div id="register-link" class="text-right">
                             <a href="signup.php" class="text-info">Register here</a>
                         </div>
-						    <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
+						    <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>
 							Are you an Admin?<br>
 							<input type="submit" value="Log in">
                     </form>
