@@ -75,10 +75,13 @@
       <a href="#" class="w3-bar-item w3-button">Link</a>
     </div>
     <!-->
-    	<?php
-  	if(isset($_SESSION['type'])){
-  		echo "<a href='Frontend_Models/logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true></i> Logout</a>"
-  	}
+    <?php
+  		if(isset($_SESSION['type'])){
+	  		echo "<a href='Frontend_Models/logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true></i> Logout</a>"
+	  	}
+	  	else{
+	        echo "";
+	      }
   	?>
   </div>
  </div>
