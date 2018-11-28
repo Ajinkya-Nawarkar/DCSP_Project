@@ -104,7 +104,7 @@
                         <div id="register-link" class="text-right">
                             <a href="signup.php" class="text-info">Register here</a>
                         </div>
-						    <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>
+						    <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
 							Are you an Admin?<br>
 							<input type="submit" value="Log in">
                     </form>
