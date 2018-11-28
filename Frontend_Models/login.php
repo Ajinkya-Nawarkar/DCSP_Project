@@ -1,12 +1,10 @@
-<?php 
-    // start the session
-    session_start();
-?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
 
 <!DOCTYPE html>
 <html lang='en'>
     <head>
+	<!-->
         <link href="css.css" rel="stylesheet" id="bootstrap-css">
 		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
@@ -15,10 +13,12 @@
         <style>
             
         </style>
+		<!-->
     </head>
     <body>
-	<?php include("frontend/design-top.php");?>
 	<?php include("frontend/navigation.php");?>
+	<?php include("frontend/design-top.php");?>
+
         <?php
             
             // implement database->getAllUsers($username): returns ['$username', '$type'] 
@@ -60,12 +60,12 @@
                 // Validate the password and set session variables
                 if ($result)
                 {
-                    $token = common->hashPassword()
+                    $token = $common->hashPassword()
 
                     if ($token == $result[0]['password'])
                     {
                         $error_string = NULL;
-                        common->setSession($un_temp, $result[0]['type']);
+                        $common->setSession($un_temp, $result[0]['type']);
                         redirectUser();
                     }
                 }
