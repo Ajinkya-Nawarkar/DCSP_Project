@@ -18,7 +18,6 @@
 
   $db = new dbAPI;
 
-  # Initialize the object for Common.php
   $common = new common;
 
   # Input variables
@@ -92,18 +91,14 @@
 
   if (!$adErrFlg) {
     $encryptedPw = $common->hashPassword($pw1Admin);
-    #######################################
     # ADD ADMIN TO DATABASE HERE
-    #######################################
     $admin = new Admin($unAdmin, $encryptedPw, $fnAdmin, $lnAdmin);
-    $db.newAdmin($admin);
+    $admin.addAdminToDB();
   }
 
   # Remove acccount (user/admin)
   if (!empty($_POST['remove_submit'])) {
     if (!empty($_POST['unRemove'])) {
-      $unRemErr = "You must enter an accounts username.";
-    } else {
       $unRemove = $_POST['unRemove'];
       if (isset($_POST['adminCheck'])) {
         $adminCheck = "checked";
@@ -112,7 +107,7 @@
         $isAdmin = False
       }
       $check = False;
-      # CHECK IF USER/ADMIN USERNAME EXITS IN DATABASE (dependent on $admin)
+      # CHECK IF USER/ADMIN USERNAME EXITS IN DATABASE (dependent on $isAdmin)
       if ($isAdmin) {
         if ($db.query("SELECT username FROM admins WHERE username='$unRemove'")) {
           $check = True;
@@ -132,6 +127,8 @@
           $db.deleteUser($unRemove);
         }
       }
+    } else {
+      $unRemErr = "You must enter an accounts username.";
     }
   }
   ?>
