@@ -62,7 +62,7 @@
       }
     }
     else{
-      echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Login</a>";
+      echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><span class='glyphicon glyphicon-log-in'></span> Login</a>";
     }
     ?>
   	<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
