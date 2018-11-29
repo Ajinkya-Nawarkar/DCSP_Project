@@ -1,7 +1,5 @@
 
-<?/*php include("Front/design-top.php");?>
-<?php include("frontend/navigation.php");?>
-<?php include("frontend/footer.php");*/?>
+
 
 <?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
