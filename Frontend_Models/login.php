@@ -11,6 +11,19 @@
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+            #login-column{
+                margin-left: 20px;
+                padding-left: 10px;
+            }
+            .text-center{
+            margin-top: -10px;
+            }
+            .form-group{
+                margin-top: 3px;
+            }
+        </style>
     </head>
     <body>
         <?php
@@ -88,8 +101,8 @@
             <div id="login-column" class="col-md-6">
                 <div class="login-box col-md-12">
                     <form id="login-form" class="form" action="login.php" method="post">
-                        <h2 class="text-center text-info">Sign In</h2>
-                        <h3 class="text-center text-info">Please sign in with your username and password below.</h3>
+                        <h2 class="text-center text-info"><b>Sign In</b></h2>
+                        <p class="text-center text-info"><b>Please sign in with your username and password below.</b></p>
                         
                         <div class="form-group">
                             <label for="username" class="text-info">Username:</label>
@@ -105,7 +118,7 @@
                             <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
 						      Are you an Admin?<br>
                         </div>
-						
+						<br>
                         <div class="form-group">
                             <input type="submit" value="Log in">
                         </div>
@@ -114,7 +127,7 @@
                 <br>
                 <br>
                 <div id="register-link" class="text-right">
-                    <p style="font-style:italic"><a href="signup.php" class="text-info">Register here</a></p>
+                    <p style="font-style:italic">I am new here.&emsp;&emsp;<a href="signup.php" class="text-info">Register here</a></p>
                 </div>
             </div>
         </div>
