@@ -8,9 +8,9 @@
         <meta charset="UTF-8">
         <title>Maroon Gaming Co</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            
-        </style>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     </head>
     <body>
         <?php
@@ -65,7 +65,15 @@
           
         ?>
 
+    <div class="w3-top">
+        <div class="w3-bar w3-theme-d2 w3-left-align">
 
+            <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
+            <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+
+            <a href='Frontend_Models/signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
+        </div>
+    </div>
                 
         <p style="color: red">
         <!--Placeholder for error messages-->
@@ -74,29 +82,29 @@
         </p>
         
 	<div id="login">
-    <h3 class="text-center text-white pt-5">Login form</h3>
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div class="login-box col-md-12">
                     <form id="login-form" class="form" action="login.php" method="post">
-                        <h3 class="text-center text-info">Login</h3>
+                        <h2 class="text-center text-info">Sign In</h2>
+                        <h3 class="text-center text-info">Please sign in with your username and passowrd below.</h3>
                         <div class="form-group">
-                            <label for="username" class="text-info">Username:</label><br>
+                            <label for="username" class="text-info">Username:</label>
                             <input type="text" name="username" id="username" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label for="password" class="text-info">Password:</label><br>
+                            <label for="password" class="text-info">Password:</label>
                             <input type="text" name="password" id="password" class="form-control">
-                        </div>
-                        <div id="register-link" class="text-right">
-                            <a href="signup.php" class="text-info">Register here</a>
                         </div>
 						    <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
 							Are you an Admin?<br>
 							<input type="submit" value="Log in">
                     </form>
                 </div>
+                <div id="register-link" class="text-right">
+                            <a href="signup.php" class="text-info">Register here</a>
+                        </div>
             </div>
         </div>
     </div>
