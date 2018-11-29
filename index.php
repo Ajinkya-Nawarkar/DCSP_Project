@@ -64,7 +64,8 @@
       echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><i class='fa fa-sign-in' aria-hidden='true'></i> Login</a>";
     }
     ?>
-  	<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+	<input type="text" placeholder="Search.." name="search">
+  	<a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
     <!-- >
     <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button" title="Notifications">Dropdown <i class="fa fa-caret-down"></i></button>     
