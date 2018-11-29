@@ -21,7 +21,12 @@
             margin-top: -10px;
             }
             .form-group{
-                margin-top: 3px;
+                margin-top: 5px;
+                padding-bottom: 3px;
+            }
+            .form-group-submit{
+                margin-top: 14px;
+                padding-bottom: 2px;
             }
         </style>
     </head>
@@ -118,26 +123,24 @@
                             <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
 						      Are you an Admin?<br>
                         </div>
-						<br>
-                        <div class="form-group">
+						
+                        <div class="form-group-submit">
                             <input type="submit" value="Log in">
                         </div>
                     </form>
                 </div>
                 <br>
-                <br>
                 <div id="register-link" class="text-right">
-                    <p style="font-style:italic">I am new here.&emsp;&emsp;<a href="signup.php" class="text-info">Register here</a></p>
+                    <p style="font-style:italic">I am new here.&emsp;&emsp;&emsp;<a href="signup.php" class="text-info">Register here</a></p>
                 </div>
             </div>
         </div>
     </div>
 </div>
         
-<div class="w3-top">
-    <div class="w3-bar w3-theme-d2 w3-left-align">
-    </div>
-</div>
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+    <h4>Maroon Gaming Co. @ 2018</h4>
+</footer>
 
     </body>
 </html>
