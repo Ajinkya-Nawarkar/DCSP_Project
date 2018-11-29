@@ -136,22 +136,16 @@ class dbAPI
     return $result;
   }
   public function getOneUser($username){
-    $result = query("SELECT username FROM users WHERE username = '$username'");
-    if(!result){
-      return true
-    }
-    else{
-      return false
-    }
+    $array = array('$username');
+    $result = mysqli_fetch_array($this->connection->query("SELECT type FROM users WHERE username = '$username'"));
+    array_push($array, '$result[0]');
+    return $array;
   }
   public function getOneAdmin($username){
-    $result = query("SELECT username FROM admins WHERE username = '$username'");
-    if(!result){
-      return true
-    }
-    else{
-      return false
-    }
+    $array = array('$username');
+    $result = mysqli_fetch_array($this->connection->query("SELECT type FROM users WHERE username = '$username'"));
+    array_push($array, '$result[0]');
+    return $array; 
   }
   
 }
