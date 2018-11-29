@@ -79,7 +79,6 @@ class dbAPI
   }
 
   public function editCartQuant($username, $sku, $amount){
-<<<<<<< HEAD
     //Retrieve arrays from items and users
     $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
     $currentInventoryQuant = mysqli_fetch_array($this->connection->query("SELECT quantity FROM items WHERE sku = '$sku'"));
@@ -92,20 +91,11 @@ class dbAPI
 
     //Send an updated query using the new cartQuery array
     $cartQuery[0][$sku] = $amount;
-=======
-    //Retrieve arrays from itemQuantity and itemList
-    $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
-    $cartQuery[0][$sku] = $amount;
-    //Add queries to update overall inventory
-
-    //Send an updated query using the new cartQuery array
->>>>>>> master
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
   }
   public function addToCart($username, $sku, $amount){
-<<<<<<< HEAD
     //Retrieve arrays from items and users
     $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
     $currentInventoryQuant = mysqli_fetch_array($this->connection->query("SELECT quantity FROM items WHERE sku = '$sku'"));
@@ -117,20 +107,11 @@ class dbAPI
 
     //Send an updated query using the new cartQuery array
     $cartQuery[0][$sku] = $amount;
-=======
-    //Retrieve arrays from itemQuantity and itemList
-    $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
-    $cartQuery[0][$sku] = $amount;
-    //Add queries to update overall inventory
-    
-    //Send an updated query using the new cartQuery array
->>>>>>> master
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
   }
   public function removeFromCart($username, $sku){
-<<<<<<< HEAD
     //Retrieve arrays from items and users
     $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
     $currentInventoryQuant = mysqli_fetch_array($this->connection->query("SELECT quantity FROM items WHERE sku = '$sku'"));
@@ -142,27 +123,36 @@ class dbAPI
 
     //Send an updated query using the new cartQuery arrays
     $cartQuery[0][$sku] = 0;
-=======
-    //Retrieve arrays from itemQuantity and itemList
-    $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
-    $cartQuery[0][$sku] = 0;
-    //Add queries to update overall inventory
-
-    //Send an updated query using the new cartQuery arrays
->>>>>>> master
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
   }
-<<<<<<< HEAD
   public function getAllUsers(){
     $result = query("SELECT username FROM users");
     return $result;
   }
   public function getAllAdmins(){
     $result = query("SELECT username FROM admins");
+    return $result;
   }
-=======
->>>>>>> master
+  public function getOneUser($username){
+    $result = query("SELECT username FROM users WHERE username = '$username'");
+    if(!result){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  public function getOneAdmin($username){
+    $result = query("SELECT username FROM admins WHERE username = '$username'");
+    if(!result){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  
 }
 ?>
