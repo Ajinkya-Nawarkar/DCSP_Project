@@ -1,6 +1,5 @@
 <?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
-
 <!DOCTYPE html>
 <html lang='en'>
     <head>
@@ -14,15 +13,9 @@
         </style>
     </head>
     <body>
-	<?php include("frontend/design-top.php");?>
-	<?php include("frontend/navigation.php");?>
         <?php
-            
-            // implement database->getAllUsers($username): returns ['$username', '$type'] 
-        
-            // implement common->mysql_entities_fix_string($connection, $variable): returns sanitized string (real_escape_string(), passed through htmlentities())
 
-            require_once(dirname(__DIR__)."/Backend_Models/common.php");
+            require_once(dirname(__DIR__)."/Backend_Models/Common.php");
             require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
             $error_string = NULL;
@@ -43,21 +36,19 @@
                 $un_temp = mysql_entities_fix_string($database->connection, $_POST['username']);
                 $pw_temp = mysql_entities_fix_string($database->connection, $_POST['password']);
 
-                
-
                 // admin_check validation
                 if(isset($_POST['admin_check']))
                 {
-                    $result = $database->getAllAdmins($un_temp);
+                    $result = $database->getOneAdmin($un_temp);
                     $admin_check = "checked";
                 }
                 else
-                    $result = $database->getAllUsers($un_temp);   
+                    $result = $database->getOneUser($un_temp);   
             
                 // Validate the password and set session variables
                 if ($result)
                 {
-                    $token = $common->hashPassword()
+                    $token = $common->hashPassword();
 
                     if ($token == $result[0]['password'])
                     {
