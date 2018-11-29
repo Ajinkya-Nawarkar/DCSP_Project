@@ -28,6 +28,10 @@
                 margin-top: 14px;
                 padding-bottom: 2px;
             }
+            footer{
+                margin-top: 200px;
+                padding-bottom: 200px;
+            }
         </style>
     </head>
     <body>
@@ -131,7 +135,7 @@
                 </div>
                 <br>
                 <div id="register-link" class="text-right">
-                    <p style="font-style:italic">I am new here.&emsp;&emsp;&emsp;<a href="signup.php" class="text-info">Register here</a></p>
+                    <p style="font-style:italic">I am new here.&emsp;&emsp;&emsp;<a style="color: teal" href="signup.php" class="text-info">Register here</a></p>
                 </div>
             </div>
         </div>
