@@ -1,6 +1,7 @@
-<?php include("frontend/design-top.php");?>
+
+<?/*php include("Front/design-top.php");?>
 <?php include("frontend/navigation.php");?>
-<?php include("frontend/footer.php");?>
+<?php include("frontend/footer.php");*/?>
 
 <?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
@@ -99,10 +100,11 @@
 
 <!-- Image Header -->
 <div class="w3-display-container w3-animate-opacity">
-  <img src="Assets/sailboat.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+  <img src="Assets/banner.png" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
 </div>
 
 <!-- Modal -->
+<!-->
 <div id="id01" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-top">
     <header class="w3-container w3-teal w3-display-container"> 
@@ -121,6 +123,7 @@
 </div>
 
 <!-- Team Container -->
+<!-->
 <div class="w3-container w3-padding-64 w3-center" id="team">
 <h2>OUR TEAM</h2>
 <p>Meet the team - our office rats:</p>
@@ -164,7 +167,7 @@
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <img src="/w3images/snow.jpg" alt="Snow" style="width:100%">
+  <!--><img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><!-->
   <div class="w3-container">
   <h3>Product 1</h3>
   <h4>Trade</h4>
@@ -192,7 +195,7 @@
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%">
+  <!--><img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%"><!-->
   <div class="w3-container">
   <h3>product 3</h3>
   <h4>Trade</h4>
@@ -207,12 +210,13 @@
 </div>
 
 <!-- Container -->
+<!-->
 <div class="w3-container" style="position:relative">
   <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
   style="position:absolute;top:-28px;right:24px">+</a>
 </div>
 
-<!-- Pricing Row -->
+
 <div class="w3-row-padding w3-center w3-padding-64" id="pricing">
     <h2>PRICING</h2>
     <p>Choose a pricing plan that fits your needs.</p><br>
@@ -274,7 +278,7 @@
     </div>
 </div>
 
-<!-- Contact Container -->
+
 <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
   <div class="w3-row">
     <div class="w3-col m5">
@@ -306,18 +310,19 @@
     </div>
   </div>
 </div>
-
+<!-->
 <!-- Image of location/map -->
 <img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
 
 <!-- Footer -->
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
   <h4>Follow Us</h4>
-  <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
+  <!--><a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Facebook"><i class="fa fa-facebook"></i></a>
   <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Twitter"><i class="fa fa-twitter"></i></a>
   <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
   <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
   <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  <!-->
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 
   <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
