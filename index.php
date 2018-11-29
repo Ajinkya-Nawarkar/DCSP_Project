@@ -161,7 +161,7 @@
 <div class="w3-card w3-white">
 
   <div class="w3-container">
-  <h3>productadsfadsfasfadsfa2</h3>
+  <h3>product 2</h3>
   <h4>Trade</h4>
   <p>Blablabla</p>
   <p>Blablabla</p>
@@ -176,7 +176,7 @@
   <!--<img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%">-->
   <div class="w3-container">
   <h3>product 3</h3>
-  <h4>Trade</h4>
+  <h4>Changed</h4>
   <p>Blablabla</p>
   <p>Blablabla</p>
   <p>Blablabla</p>
