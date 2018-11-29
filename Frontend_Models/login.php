@@ -19,6 +19,7 @@
             //require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
             $error_string = NULL;
+            $admin_check = "";
             // Initialize the object for Common.php
             $common = new common;
 
@@ -69,7 +70,7 @@
         <div class="w3-bar w3-theme-d2 w3-left-align">
 
             <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
-            <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+            <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
 
             <a href='Frontend_Models/signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
         </div>
@@ -88,29 +89,43 @@
                 <div class="login-box col-md-12">
                     <form id="login-form" class="form" action="login.php" method="post">
                         <h2 class="text-center text-info">Sign In</h2>
-                        <h3 class="text-center text-info">Please sign in with your username and passowrd below.</h3>
+                        <h3 class="text-center text-info">Please sign in with your username and password below.</h3>
+                        
                         <div class="form-group">
                             <label for="username" class="text-info">Username:</label>
-                            <input type="text" name="username" id="username" class="form-control">
+                            <input type="text" name="username" id="username" placeholder="Email Address / Username" class="form-control">
                         </div>
+                        
                         <div class="form-group">
                             <label for="password" class="text-info">Password:</label>
-                            <input type="text" name="password" id="password" class="form-control">
+                            <input type="text" name="password" id="password" placeholder="Password" class="form-control">
                         </div>
-						    <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
-							Are you an Admin?<br>
-							<input type="submit" value="Log in">
+						    
+                        <div class="form-group">
+                            <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
+						      Are you an Admin?<br>
+                        </div>
+						
+                        <div class="form-group">
+                            <input type="submit" value="Log in">
+                        </div>
                     </form>
                 </div>
+                <br>
+                <br>
                 <div id="register-link" class="text-right">
-                            <a href="signup.php" class="text-info">Register here</a>
-                        </div>
+                    <p style="font-style:italic"><a href="signup.php" class="text-info">Register here</a></p>
+                </div>
             </div>
         </div>
     </div>
 </div>
         
-<?php include("frontend/footer.php");?>
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align">
+    </div>
+</div>
+
     </body>
 </html>
 
