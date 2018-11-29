@@ -115,15 +115,15 @@
                         
                         <div class="form-group" style="margin-top: 30px">
                             <label for="username" class="text-info" style="margin-right: 10px;"><b>Username:</b></label>
-                            <input type="text" name="username" id="username" placeholder="&nbsp;&emsp;Email Address / Username" class="form-control" style="width: 225px;">
+                            <input type="text" name="username" id="username" placeholder="&nbsp;&emsp;Email Address / Username" class="form-control" style="width: 235px;">
                         </div>
                         
                         <div class="form-group">
                             <label for="password" class="text-info" style="margin-right: 13px"><b>Password:</b></label>
-                            <input type="text" name="password" id="password" placeholder="&emsp;&emsp;Password" class="form-control" style="width: 225px;">
+                            <input type="text" name="password" id="password" placeholder="&emsp;&nbsp;Password" class="form-control" style="width: 235px;">
                         </div>
 						    
-                        <div class="form-group" style="margin-top: 5px">
+                        <div class="form-group" style="margin-top: 10px">
                             <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
 						      Are you an Admin?<br>
                         </div>
@@ -135,7 +135,7 @@
                 </div>
                 <br>
                 <div id="register-link" class="text-right">
-                    <p style="font-style:italic">I am new here.<a style="color: teal;padding-left: 40px" href="signup.php" class="text-info">Register here</a></p>
+                    <p style="font-style:italic">I am new here.<a style="color: teal;padding-left: 100px" href="signup.php" class="text-info">Register here</a></p>
                 </div>
             </div>
         </div>
