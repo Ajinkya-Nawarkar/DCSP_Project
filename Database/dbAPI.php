@@ -79,37 +79,80 @@ class dbAPI
   }
 
   public function editCartQuant($username, $sku, $amount){
-    //Retrieve arrays from itemQuantity and itemList
+    //Retrieve arrays from items and users
     $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
-    $cartQuery[0][$sku] = $amount;
-    //Add queries to update overall inventory
+    $currentInventoryQuant = mysqli_fetch_array($this->connection->query("SELECT quantity FROM items WHERE sku = '$sku'"));
+
+    //Update overall inventory
+    $updatedInventory = $cartQuery[0][$sku] - $amount;
+    $updatedInventory = $currentInventoryQuant[0] + $updatedInventory;
+    $query  = "UPDATE items SET quantity = '$updatedInventory' WHERE sku = '$sku'";
+    $this->connection->query($query);
 
     //Send an updated query using the new cartQuery array
+    $cartQuery[0][$sku] = $amount;
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
   }
   public function addToCart($username, $sku, $amount){
-    //Retrieve arrays from itemQuantity and itemList
+    //Retrieve arrays from items and users
     $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
-    $cartQuery[0][$sku] = $amount;
+    $currentInventoryQuant = mysqli_fetch_array($this->connection->query("SELECT quantity FROM items WHERE sku = '$sku'"));
+
     //Add queries to update overall inventory
-    
+    $updatedInventory = $currentInventoryQuant[0] - $amount;
+    $query  = "UPDATE items SET quantity = '$updatedInventory' WHERE sku = '$sku'";
+    $this->connection->query($query);
+
     //Send an updated query using the new cartQuery array
+    $cartQuery[0][$sku] = $amount;
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
   }
   public function removeFromCart($username, $sku){
-    //Retrieve arrays from itemQuantity and itemList
+    //Retrieve arrays from items and users
     $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
-    $cartQuery[0][$sku] = 0;
+    $currentInventoryQuant = mysqli_fetch_array($this->connection->query("SELECT quantity FROM items WHERE sku = '$sku'"));
+
     //Add queries to update overall inventory
+    $updatedInventory = $currentInventoryQuant[0] + $cartQuery[0][$sku];
+    $query  = "UPDATE items SET quantity = '$updatedInventory' WHERE sku = '$sku'";
+    $this->connection->query($query);
 
     //Send an updated query using the new cartQuery arrays
+    $cartQuery[0][$sku] = 0;
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
   }
+  public function getAllUsers(){
+    $result = query("SELECT username FROM users");
+    return $result;
+  }
+  public function getAllAdmins(){
+    $result = query("SELECT username FROM admins");
+    return $result;
+  }
+  public function getOneUser($username){
+    $result = query("SELECT username FROM users WHERE username = '$username'");
+    if(!result){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  public function getOneAdmin($username){
+    $result = query("SELECT username FROM admins WHERE username = '$username'");
+    if(!result){
+      return true
+    }
+    else{
+      return false
+    }
+  }
+  
 }
 ?>
