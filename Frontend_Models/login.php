@@ -22,7 +22,7 @@
         
             // implement common->mysql_entities_fix_string($connection, $variable): returns sanitized string (real_escape_string(), passed through htmlentities())
 
-            require_once(dirname(__DIR__)."/Backend_Models/common.php");
+            require_once(dirname(__DIR__)."/Backend_Models/Common.php");
             require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
             $error_string = NULL;
