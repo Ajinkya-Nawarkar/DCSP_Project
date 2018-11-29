@@ -147,7 +147,7 @@
 <div class="w3-card w3-white">
   <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
   <div class="w3-container">
-  <h3>Product 1</h3>
+  <h3>Product 10000000</h3>
   <h4>Trade</h4>
   <p>Blablabla</p>
   <p>Blablabla</p>
