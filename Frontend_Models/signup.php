@@ -1,7 +1,4 @@
-<?php
-    include("login.php");
-    session_start();
-?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -9,15 +6,34 @@
         <meta charset="UTF-8">
         <title>Maroon Gaming Co</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+        <style>
+            #login-column{
+                margin-left: 30px;
+                padding-left: 10px;
+            }
+            .text-center{
+            margin-top: -10px;
+            }
+            .form-group{
+                margin-top: 5px;
+                padding-bottom: 3px;
+            }
+            .form-group-submit{
+                margin-top: 14px;
+                padding-bottom: 2px;
+            }
+            footer{
+                margin-top: 200px;
+                padding-bottom: 200px;
+            }
         </style>
     </head>
     <body>
       <?php
-      # Will include navigation.php once it is functional
-      //include("navigation.php");
-
       # STILL NEED TO IMPROVE ENTRY SANITATION
 
       if (isset($_SESSION['type'])) {
@@ -120,6 +136,18 @@
       }
       # Below is very basic html to make the page functional.
       ?>
+
+      <div class="w3-top">
+        <div class="w3-bar w3-theme-d2 w3-left-align">
+
+            <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
+            <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+
+            <a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Login'><i class='fa fa-sign-in' aria-hidden='true'></i>  Log in</a>
+        </div>
+      </div>
+
+
       <form method="post" action="signup.php">
         <label>First Name: </label>
         <input type="text" name="firstName" value="<?php echo $firstName; ?>">
@@ -143,8 +171,16 @@
 
         <input type="submit" value="Sign Up">
       </form>
+    
+
+
+
     </body>
 </html>
+
+
+
+
 <?php
     // redirect user to index.php
     function redirectUser()
