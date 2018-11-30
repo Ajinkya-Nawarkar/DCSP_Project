@@ -74,7 +74,7 @@
             /* Float cancel and signup buttons and add an equal width */
             .cancelbtn, .signupbtn {
               float: left;
-              width: 25%;
+              width: 50%;
               padding: 20px;
             }
 
@@ -226,8 +226,8 @@
       <form action="/action_page.php" style="border:1px solid #ccc">
         <div align="center" class="container">
           
-          <h2 style="margin-top:15px; margin-bottom: 7px" class="text-center text-info"><b>Sign Up</b></h2>
-          <p class="text-center text-info"><b>Please fill in this form to create an account.</b></p>
+          <h2 style="margin-top:15px; margin-bottom: 10px" class="text-center text-info"><b>Sign Up</b></h2>
+          <p style="margin-top: 10px; margin-bottom:20px" class="text-center text-info"><b>Please fill in this form to create an account.</b></p>
 
           <label for="firstName"><b>First Name</b></label><br>
           <input type="text" placeholder="Enter your first name" name="firstName" required value="<?php echo $firstName; ?>">
