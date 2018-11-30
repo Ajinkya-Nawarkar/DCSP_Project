@@ -13,10 +13,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
-            #login-column{
-                margin-left: 30px;
-                padding-left: 10px;
-            }
             .text-center{
             margin-top: -10px;
             }
@@ -119,7 +115,7 @@
             <br><br>
         </p>
         
-	<div id="login">
+	<div align="center" id="login">
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
