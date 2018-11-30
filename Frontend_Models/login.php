@@ -13,10 +13,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
-            #login-column{
-                margin-left: 30px;
-                padding-left: 10px;
-            }
             .text-center{
             margin-top: -10px;
             }
@@ -29,8 +25,23 @@
                 padding-bottom: 2px;
             }
             footer{
-                margin-top: 200px;
+                margin-top: 160px;
                 padding-bottom: 200px;
+            }
+            body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
+
+            input[type=text], input[type=password] {
+                width: 25%;
+                padding: 15px;
+                margin: 5px 0 5px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
             }
         </style>
     </head>
@@ -38,12 +49,12 @@
         <?php
 
             require_once(dirname(__DIR__)."/Backend_Models/Common.php");
-            //require_once(dirname(__DIR__)."/Database/dbAPI.php");
+            require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
+            // Initialize the variables and object for Common.php
             $error_string = NULL;
             $admin_check = "";
-            // Initialize the object for Common.php
-            $common = new common;
+            $common = new Common;
 
             if (isset($_SESSION['type']))
                 redirectUser();
@@ -71,7 +82,7 @@
                 // Validate the password and set session variables
                 if ($result)
                 {
-                    $token = $common->hashPassword();
+                    $token = $common->hashPassword($pw_temp);
 
                     if ($token == $result[0]['password'])
                     {
@@ -94,7 +105,7 @@
             <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
             <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
 
-            <a href='Frontend_Models/signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
+            <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
         </div>
     </div>
                 
@@ -104,7 +115,7 @@
             <br><br>
         </p>
         
-	<div id="login">
+	<div align="center" id="login">
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
@@ -115,12 +126,12 @@
                         
                         <div class="form-group" style="margin-top: 30px">
                             <label for="username" class="text-info" style="margin-right: 10px;"><b>Username:</b></label>
-                            <input type="text" name="username" id="username" placeholder="&nbsp;&emsp;Email Address / Username" class="form-control" style="width: 235px;">
+                            <input type="text" name="username" id="username" placeholder="&nbsp;&emsp;Email Address / Username" class="form-control" style="width: 235px;" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="password" class="text-info" style="margin-right: 13px"><b>Password:</b></label>
-                            <input type="text" name="password" id="password" placeholder="&emsp;&nbsp;Password" class="form-control" style="width: 235px;">
+                            <input type="text" name="password" id="password" placeholder="&emsp;&nbsp;Password" class="form-control" style="width: 235px;" required>
                         </div>
 						    
                         <div class="form-group" style="margin-top: 10px">
@@ -129,13 +140,13 @@
                         </div>
 						
                         <div class="form-group-submit">
-                            <input type="submit" value="Log in">
+                            <input style="background-color: #4CAF50; color: white" type="submit" value="Log in">
                         </div>
                     </form>
                 </div>
                 <br>
                 <div id="register-link" class="text-right">
-                    <p style="font-style:italic">I am new here.<a style="color: teal;padding-left: 100px" href="signup.php" class="text-info">Register here</a></p>
+                    <p style="font-style:italic">I am new here.<a style="margin-left:100px" href="signup.php" class="w3-bar-item w3-button w3-teal">Sign Up here</a></p>
                 </div>
             </div>
         </div>
@@ -153,7 +164,7 @@
     // redirect user to index.php
     function redirectUser()
     {
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     }
 
