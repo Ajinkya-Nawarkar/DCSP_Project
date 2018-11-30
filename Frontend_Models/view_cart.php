@@ -56,7 +56,7 @@ session_start();
       ?>
 
       <form action='view_cart.php' method='post'>
-        <h2><?php $_SESSION['username']?>'s Cart</h2><br>
+        <h2><?php $username ?>'s Cart</h2><br>
         <table>
           <tr><th>SKU</th><th>Name</th><th>Price</th><th>Quantity</th><th>Remove</th></tr>
           <?php
