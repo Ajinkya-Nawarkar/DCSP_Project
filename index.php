@@ -4,6 +4,79 @@
 <!DOCTYPE html>
 <html>
 <title>Maroon Gaming</title>
+<style>
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+* {box-sizing: border-box;}
+body {font-family: Verdana, sans-serif;}
+.mySlides {display: none;}
+img {vertical-align: middle;}
+
+/* Slideshow container
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+*/
+
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+/* The dots/bullets/indicators */
+.dot {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active {
+  background-color: #717171;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .text {font-size: 11px}
+}
+</style>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
@@ -64,9 +137,10 @@
       echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><i class='fa fa-sign-in' aria-hidden='true'></i> Login</a>";
     }
     ?>
-	<input type="text" placeholder="Search.." name="search">
+	<!-- >
+  <input type="text" placeholder="Search.." name="search">
   	<a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
-    <!-- >
+
     <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button" title="Notifications">Dropdown <i class="fa fa-caret-down"></i></button>
     <div class="w3-dropdown-content w3-card-4 w3-bar-block">
@@ -98,8 +172,35 @@
 </div>
 
 <!-- Image Header -->
-<div class="w3-display-container w3-animate-opacity">
-  <img src="Assets/banner.png" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+
+
+<div class="slideshow-container">
+
+<div class="mySlides fade">
+  <div class="numbertext">1 / 3</div>
+  <img src="Assets\banner.png" style="width:100%;min-height:350px;max-height:300px;">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">2 / 3</div>
+  <img src="Assets\switch.jpg" style="width:100%;min-height:350px;max-height:300px;">
+
+</div>
+
+<div class="mySlides fade">
+  <div class="numbertext">3 / 3</div>
+  <img src="Assets\ps4.jpg" style="width:100%;min-height:350px;max-height:300px;">
+
+</div>
+
+</div>
+<br>
+
+<div style="text-align:center">
+  <span class="dot"></span>
+  <span class="dot"></span>
+  <span class="dot"></span>
 </div>
 
 <!-- Modal
@@ -125,7 +226,9 @@
 
 
 
-<div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+<div class="w3-column-paddingTop w3-row-padding w3-padding-64 w3-theme-l1" id="work">
+<input type="text" id="myInput" onsubmit="myFunction()" placeholder="Search for items.." title="Type in a name">
+
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
@@ -141,16 +244,16 @@
   if(isset($_SESSION['type'])){
     switch ($_SESSION['type']) {
       case 'user':
-        echo "user";
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
         break;
       case 'admin':
-        echo "admin";
-        echo "admin2";
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
         break;
     }
   }
   else{
-    echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><i class='fa fa-sign-in' aria-hidden='true'></i> Login</a>";
+    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
   }
 
    ?>
@@ -164,44 +267,130 @@
 <div class="w3-card w3-white">
   <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
   <div class="w3-container">
-  <h3>Product 1</h3>
+  <h3>Product test</h3>
   <h4>Trade</h4>
   <p>Blablabla</p>
   <p>Blablabla</p>
   <p>Blablabla</p>
   <p>Blablabla</p>
+  <?php
+  if(isset($_SESSION['type'])){
+    switch ($_SESSION['type']) {
+      case 'user':
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+        break;
+      case 'admin':
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
+        break;
+    }
+  }
+  else{
+    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+  }
+
+   ?>
+
+
   </div>
   </div>
 </div>
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-
+  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
   <div class="w3-container">
-  <h3>product2 2</h3>
+  <h3>Product test</h3>
   <h4>Trade</h4>
   <p>Blablabla</p>
   <p>Blablabla</p>
   <p>Blablabla</p>
   <p>Blablabla</p>
+  <?php
+  if(isset($_SESSION['type'])){
+    switch ($_SESSION['type']) {
+      case 'user':
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+        break;
+      case 'admin':
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
+        break;
+    }
+  }
+  else{
+    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+  }
+
+   ?>
+
+
   </div>
   </div>
 </div>
-
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <!--<img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%">-->
+  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
   <div class="w3-container">
-  <h3>product 3</h3>
+  <h3>Product test</h3>
   <h4>Trade</h4>
   <p>Blablabla</p>
   <p>Blablabla</p>
   <p>Blablabla</p>
   <p>Blablabla</p>
+  <?php
+  if(isset($_SESSION['type'])){
+    switch ($_SESSION['type']) {
+      case 'user':
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+        break;
+      case 'admin':
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
+        break;
+    }
+  }
+  else{
+    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+  }
+
+   ?>
+
+
   </div>
   </div>
 </div>
+<div class="w3-quarter">
+<div class="w3-card w3-white">
+  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
+  <div class="w3-container">
+  <h3>Product test</h3>
+  <h4>Trade</h4>
+  <p>Blablabla</p>
+  <p>Blablabla</p>
+  <p>Blablabla</p>
+  <p>Blablabla</p>
+  <?php
+  if(isset($_SESSION['type'])){
+    switch ($_SESSION['type']) {
+      case 'user':
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+        break;
+      case 'admin':
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
+        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
+        break;
+    }
+  }
+  else{
+    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+  }
 
+   ?>
+
+
+  </div>
+  </div>
 </div>
 
 <!--
@@ -276,7 +465,7 @@
 
 <div class="w3-container w3-padding-64 w3-center" id="team">
 <h2>OUR TEAM</h2>
-<p>Meet the team - our office rats:</p>
+<p>Meet the team - the maroon gamers:</p>
 
 <div class="w3-row"><br>
 
@@ -383,6 +572,25 @@ function openNav() {
     } else {
         x.className = x.className.replace(" w3-show", "");
     }
+}
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("mySlides");
+    var dots = document.getElementsByClassName("dot");
+    for (i = 0; i < slides.length; i++) {
+       slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    for (i = 0; i < dots.length; i++) {
+        dots[i].className = dots[i].className.replace(" active", "");
+    }
+    slides[slideIndex-1].style.display = "block";
+    dots[slideIndex-1].className += " active";
+    setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
 </script>
 
