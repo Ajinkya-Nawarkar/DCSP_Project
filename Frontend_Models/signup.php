@@ -200,7 +200,6 @@
         $common->setSession($username, "user");
         redirectUser();
       }
-      # Below is very basic html to make the page functional.
       ?>
 
       <div class="w3-top">
@@ -223,7 +222,7 @@
         </div>
       </div>
     
-      <form action="/action_page.php" style="border:1px solid #ccc">
+      <form action="/signup.php" style="border:1px solid #ccc">
         <div align="center" class="container">
           
           <h2 style="margin-top:15px; margin-bottom: 10px" class="text-center text-info"><b>Sign Up</b></h2>
@@ -256,7 +255,7 @@
           <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
           <div class="clearfix">
-            <button type="button" class="cancelbtn">Cancel</button>
+            <a href="login.php"><button type="button" class="cancelbtn">Cancel</button></a>
             <button type="submit" value="Sign Up" class="signupbtn">Sign Up</button>
           </div>
         </div>
@@ -268,8 +267,6 @@
 
     </body>
 </html>
-
-
 
 
 <?php
