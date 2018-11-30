@@ -31,3 +31,9 @@
         Backend_Models/admin.php                - Implements the admin class for function implementations of a admin
         Backend_Models/item.php                 - Implements the item class for function implementations of items
          
+## Database Dummy Accounts: 
+
+        user1           - password1
+        user2           - password2
+        admin1          - admin1
+        admin2          - admin2
