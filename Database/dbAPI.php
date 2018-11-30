@@ -6,10 +6,10 @@ class dbAPI
 
 
   public function __construct(){
-    private $hn = "pluto.cse.msstate.edu";
-    private $un = "cu81";
-    private $pw = "aDqhvAtAp4ny5JMr";
-    private $db = "cu81";
+    $hn = "pluto.cse.msstate.edu";
+    $un = "cu81";
+    $pw = "aDqhvAtAp4ny5JMr";
+    $db = "cu81";
 
     $this->connection = new mysqli($hn, $un, $pw, $db);
     if ($this->connection->connect_error) die($this->connection->connect_error);
