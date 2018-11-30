@@ -84,10 +84,10 @@
                 {
                     $token = $common->hashPassword($pw_temp);
 
-                    if ($token == $result[0]['password'])
+                    if ($token == $result[1])
                     {
                         $error_string = NULL;
-                        $common->setSession($un_temp, $result[0]['type']);
+                        $common->setSession($un_temp, $result[2]);
                         redirectUser();
                     }
                 }
@@ -131,7 +131,7 @@
                         
                         <div class="form-group">
                             <label for="password" class="text-info" style="margin-right: 13px"><b>Password:</b></label>
-                            <input type="text" name="password" id="password" placeholder="&emsp;&nbsp;Password" class="form-control" style="width: 235px;" required>
+                            <input type="password" name="password" id="password" placeholder="&emsp;&nbsp;Password" class="form-control" style="width: 235px;" required>
                         </div>
 						    
                         <div class="form-group" style="margin-top: 10px">
