@@ -105,7 +105,7 @@
         redirectUser();
       }
 
-      require_once(dirname(__DIR__)."/Backend_Models/common.php");
+      require_once(dirname(__DIR__)."/Backend_Models/Common.php");
       require_once(dirname(__DIR__)."/Backend_Models/user.php");
       require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
