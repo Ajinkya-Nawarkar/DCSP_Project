@@ -208,7 +208,7 @@
             <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
             <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
 
-            <a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Login'><i class='fa fa-sign-in' aria-hidden='true'></i>  Log in</a>
+            <a href='login.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Login'><i class='fa fa-sign-in' aria-hidden='true'></i>  Log in</a>
         </div>
       </div>
 
