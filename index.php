@@ -137,6 +137,25 @@
   <p>Blablabla</p>
   <p>Blablabla</p>
   <p>Blablabla</p>
+  <?php
+  if(isset($_SESSION['type'])){
+    switch ($_SESSION['type']) {
+      case 'user':
+        echo "user";
+        break;
+      case 'admin':
+        echo "admin";
+        echo "admin2";
+        break;
+    }
+  }
+  else{
+    echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><i class='fa fa-sign-in' aria-hidden='true'></i> Login</a>";
+  }
+
+   ?>
+
+
   </div>
   </div>
 </div>
