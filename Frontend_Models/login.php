@@ -54,7 +54,7 @@
             // Initialize the variables and object for Common.php
             $error_string = NULL;
             $admin_check = "";
-            $common = new common;
+            $common = new Common;
 
             if (isset($_SESSION['type']))
                 redirectUser();
@@ -82,7 +82,7 @@
                 // Validate the password and set session variables
                 if ($result)
                 {
-                    $token = $common->hashPassword();
+                    $token = $common->hashPassword($pw_temp);
 
                     if ($token == $result[0]['password'])
                     {
