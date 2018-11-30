@@ -37,7 +37,7 @@
             input[type=text], input[type=password] {
                 width: 25%;
                 padding: 15px;
-                margin: 5px 0 22px 0;
+                margin: 5px 0 5px 0;
                 display: inline-block;
                 border: none;
                 background: #f1f1f1;
@@ -109,7 +109,7 @@
             <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
             <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
 
-            <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
+            <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
         </div>
     </div>
                 
@@ -144,13 +144,13 @@
                         </div>
 						
                         <div class="form-group-submit">
-                            <input type="submit" value="Log in">
+                            <input style="background-color: #4CAF50; color: white" type="submit" value="Log in">
                         </div>
                     </form>
                 </div>
                 <br>
                 <div id="register-link" class="text-right">
-                    <p style="font-style:italic">I am new here.<a style="color: teal;padding-left: 100px" href="signup.php" class="text-info">Register here</a></p>
+                    <p style="font-style:italic">I am new here.<a style="margin-left:100px" href="#" class="w3-bar-item w3-button w3-teal">Sign Up here</a></p>
                 </div>
             </div>
         </div>
