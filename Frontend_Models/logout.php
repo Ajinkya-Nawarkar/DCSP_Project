@@ -44,14 +44,14 @@
         </div>
     </div>
 
-        <h2 style="margin-left:20px; margin-top: 10px" class="text-center text-info"><b>Log Out</b></h2>
+        <h2 style="margin-left:20px; margin-top: 60px" class="text-center text-info"><b>Log Out</b></h2>
         <p style="margin-left:20px" class="text-center text-info" style="margin-top: 5px"><b>You are now logged out of the website.</b></p>
         
-        <a style="margin-left:20px; margin-top: 10px" href="login.php" class="w3-bar-item w3-button"> Log Back In</a>
+        <a style="margin-left:20px; margin-top: 10px; background-color: grey; color: white" href="login.php" class="w3-bar-item w3-button"> Log Back In</a>
 
         <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
           <h4>Maroon Gaming Co. @ 2018</h4>
       </footer>
-      
+
     </body>
 </html>

@@ -25,7 +25,7 @@
                 padding-bottom: 2px;
             }
             footer{
-                margin-top: 200px;
+                margin-top: 160px;
                 padding-bottom: 200px;
             }
             body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
