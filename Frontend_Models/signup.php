@@ -11,10 +11,6 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
-            #login-column{
-                margin-left: 30px;
-                padding-left: 10px;
-            }
             .text-center{
             margin-top: -10px;
             }
@@ -29,6 +25,75 @@
             footer{
                 margin-top: 200px;
                 padding-bottom: 200px;
+            }
+            body {font-family: Arial, Helvetica, sans-serif;}
+            * {box-sizing: border-box}
+
+            /* Full-width input fields */
+            input[type=text], input[type=password] {
+                width: 100%;
+                padding: 15px;
+                margin: 5px 0 22px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
+
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+
+            hr {
+                border: 1px solid #f1f1f1;
+                margin-bottom: 25px;
+            }
+
+            /* Set a style for all buttons */
+            button {
+                background-color: #4CAF50;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                cursor: pointer;
+                width: 100%;
+                opacity: 0.9;
+            }
+
+            button:hover {
+                opacity:1;
+            }
+
+            /* Extra styles for the cancel button */
+            .cancelbtn {
+                padding: 14px 20px;
+                background-color: #f44336;
+            }
+
+            /* Float cancel and signup buttons and add an equal width */
+            .cancelbtn, .signupbtn {
+              float: left;
+              width: 50%;
+            }
+
+            /* Add padding to container elements */
+            .container {
+                padding: 16px;
+            }
+
+            /* Clear floats */
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+            /* Change styles for cancel button and signup button on extra small screens */
+            @media screen and (max-width: 300px) {
+                .cancelbtn, .signupbtn {
+                   width: 100%;
+                }
             }
         </style>
     </head>
@@ -147,33 +212,58 @@
         </div>
       </div>
 
+      <div class="w3-top">
+        <div class="w3-bar w3-theme-d2 w3-left-align">
 
-      <form method="post" action="signup.php">
-        <label>First Name: </label>
-        <input type="text" name="firstName" value="<?php echo $firstName; ?>">
-        <span class="error"><?php echo $fnErr; ?></span><br>
+            <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
+            <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
 
-        <label>Last Name: </label>
-        <input type="text" name="lastName" value="<?php echo $lastName; ?>">
-        <span class="error"><?php echo $lnErr; ?></span><br>
-
-        <label>Username: </label>
-        <input type="text" name="username" value="<?php echo $username; ?>">
-        <span class="error"><?php echo $unErr; ?></span><br>
-
-        <label>Password: </label>
-        <input type="text" name="password1" value="<?php echo $password1; ?>">
-        <span class="error"><?php echo $pw1Err; ?></span><br>
-
-        <label>Confirm Password: </label>
-        <input type="text" name="password2" value="<?php echo $password2; ?>">
-        <span class="error"><?php echo $pw2Err; ?></span><br>
-
-        <input type="submit" value="Sign Up">
-      </form>
+            <a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Login'><i class='fa fa-sign-in' aria-hidden='true'></i>  Log In</a>
+        </div>
+      </div>
     
+      <form action="/action_page.php" style="border:1px solid #ccc">
+        <div align="center" class="container">
+          
+          <h2 class="text-center text-info"><b>Sign Up</b></h2>
+          <p class="text-center text-info"><b>Please fill in this form to create an account.</b></p>
 
+          <label for="firstName"><b>First Name</b></label>
+          <input type="text" placeholder="Enter your first name" name="firstName" required value="<?php echo $firstName; ?>">
+          <span class="error"><?php echo $fnErr; ?></span><br>
 
+          <label for="lastName"><b>Last Name</b></label>
+          <input type="text" placeholder="Enter your last name" name="lastName" required value="<?php echo $lastName; ?>">
+          <span class="error"><?php echo $lnErr; ?></span><br>
+
+          <label for="username"><b>Username</b></label>
+          <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>">
+          <span class="error"><?php echo $unErr; ?></span><br>
+
+          <label for="password1"><b>Password</b></label>
+          <input type="password" placeholder="Enter Password" name="password1" required>
+          <span class="error"><?php echo $pw1Err; ?></span><br>
+
+          <label for="password2"><b>Repeat Password</b></label>
+          <input type="password" placeholder="Repeat Password" name="password2" required>
+          <span class="error"><?php echo $pw2Err; ?></span><br>
+          
+          <label>
+            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
+          </label>
+          
+          <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
+
+          <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" value="Sign Up" class="signupbtn">Sign Up</button>
+          </div>
+        </div>
+      </form>
+
+      <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+          <h4>Maroon Gaming Co. @ 2018</h4>
+      </footer>
 
     </body>
 </html>
