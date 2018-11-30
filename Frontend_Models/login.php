@@ -146,7 +146,7 @@
                 </div>
                 <br>
                 <div id="register-link" class="text-right">
-                    <p style="font-style:italic">I am new here.<a style="margin-left:100px" href="#" class="w3-bar-item w3-button w3-teal">Sign Up here</a></p>
+                    <p style="font-style:italic">I am new here.<a style="margin-left:100px" href="signup.php" class="w3-bar-item w3-button w3-teal">Sign Up here</a></p>
                 </div>
             </div>
         </div>
@@ -164,7 +164,7 @@
     // redirect user to index.php
     function redirectUser()
     {
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     }
 
