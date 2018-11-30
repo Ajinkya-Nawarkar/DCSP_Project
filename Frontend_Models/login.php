@@ -49,11 +49,11 @@
         <?php
 
             require_once(dirname(__DIR__)."/Backend_Models/Common.php");
-            //require_once(dirname(__DIR__)."/Database/dbAPI.php");
+            require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
+            // Initialize the variables and object for Common.php
             $error_string = NULL;
             $admin_check = "";
-            // Initialize the object for Common.php
             $common = new common;
 
             if (isset($_SESSION['type']))
@@ -126,12 +126,12 @@
                         
                         <div class="form-group" style="margin-top: 30px">
                             <label for="username" class="text-info" style="margin-right: 10px;"><b>Username:</b></label>
-                            <input type="text" name="username" id="username" placeholder="&nbsp;&emsp;Email Address / Username" class="form-control" style="width: 235px;">
+                            <input type="text" name="username" id="username" placeholder="&nbsp;&emsp;Email Address / Username" class="form-control" style="width: 235px;" required>
                         </div>
                         
                         <div class="form-group">
                             <label for="password" class="text-info" style="margin-right: 13px"><b>Password:</b></label>
-                            <input type="text" name="password" id="password" placeholder="&emsp;&nbsp;Password" class="form-control" style="width: 235px;">
+                            <input type="text" name="password" id="password" placeholder="&emsp;&nbsp;Password" class="form-control" style="width: 235px;" required>
                         </div>
 						    
                         <div class="form-group" style="margin-top: 10px">
