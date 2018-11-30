@@ -9,9 +9,9 @@ REMOTE=git ls-remote https://github.com/Ajinkya-Nawarkar/DCSP_Project.git HEAD
 
 if ["$LOCAL" != "$REMOTE"]
 then
-    git checkout master
+    git checkout db_login_signup
     git checkout .
-    git pull origin master
+    git pull origin db_login_signup
 fi
 
 chmod -R 777 .
