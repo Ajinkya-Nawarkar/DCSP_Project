@@ -26,12 +26,12 @@
                 margin-top: 200px;
                 padding-bottom: 200px;
             }
-            body {font-family: Arial, Helvetica, sans-serif;}
-            * {box-sizing: border-box}
+            
+            body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
 
             /* Full-width input fields */
             input[type=text], input[type=password] {
-                width: 100%;
+                width: 25%;
                 padding: 15px;
                 margin: 5px 0 22px 0;
                 display: inline-block;
@@ -228,23 +228,23 @@
           <h2 class="text-center text-info"><b>Sign Up</b></h2>
           <p class="text-center text-info"><b>Please fill in this form to create an account.</b></p>
 
-          <label for="firstName"><b>First Name</b></label>
+          <label for="firstName"><b>First Name</b></label><br>
           <input type="text" placeholder="Enter your first name" name="firstName" required value="<?php echo $firstName; ?>">
           <span class="error"><?php echo $fnErr; ?></span><br>
 
-          <label for="lastName"><b>Last Name</b></label>
+          <label for="lastName"><b>Last Name</b></label><br>
           <input type="text" placeholder="Enter your last name" name="lastName" required value="<?php echo $lastName; ?>">
           <span class="error"><?php echo $lnErr; ?></span><br>
 
-          <label for="username"><b>Username</b></label>
+          <label for="username"><b>Username</b></label><>br
           <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>">
           <span class="error"><?php echo $unErr; ?></span><br>
 
-          <label for="password1"><b>Password</b></label>
+          <label for="password1"><b>Password</b></label><br>
           <input type="password" placeholder="Enter Password" name="password1" required>
           <span class="error"><?php echo $pw1Err; ?></span><br>
 
-          <label for="password2"><b>Repeat Password</b></label>
+          <label for="password2"><b>Repeat Password</b></label><br>
           <input type="password" placeholder="Repeat Password" name="password2" required>
           <span class="error"><?php echo $pw2Err; ?></span><br>
           
