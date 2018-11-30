@@ -1,8 +1,8 @@
 <?php
   
-  require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
+  require_once(dirname(__DIR__)."/Backend_Models/errException.php");
   require_once(dirname(__DIR__)."/Database/dbAPI.php");
-  require_once(dirname(__DIR__)."/Frontend_Models/cart.php");
+  //require_once(dirname(__DIR__)."/Frontend_Models/cart.php");
 
   // Model class for function implementations of User class
 
