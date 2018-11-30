@@ -1,9 +1,4 @@
 <?php
-  // include the database credentials
-    include("db_credentials.php");
-?>
-
-<?php
 class dbAPI
 {
   //Database connection information
@@ -11,6 +6,11 @@ class dbAPI
 
 
   public function __construct(){
+    private $hn = "pluto.cse.msstate.edu";
+    private $un = "cu81";
+    private $pw = "aDqhvAtAp4ny5JMr";
+    private $db = "cu81";
+
     $this->connection = new mysqli($hn, $un, $pw, $db);
     if ($this->connection->connect_error) die($this->connection->connect_error);
   }
