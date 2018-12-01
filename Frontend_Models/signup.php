@@ -223,15 +223,33 @@
 
           <label for="username"><b>Username</b></label><br>
           <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>">
-          <p style='color: red'><span class="error"><?php echo $unErr; ?></span><br></p>
+          <?php if ($unErr)
+                {
+                    echo "<p style='color: red'>";
+                    echo "<span class='error'>";
+                    echo $unErr; 
+                    echo "</span><br></p>";
+                }?>
 
           <label for="password1"><b>Password</b></label><br>
           <input type="password" placeholder="Enter Password" name="password1" required>
-          <p style='color: red'><span class="error"><?php echo $pw1Err; ?></span><br></p>
+          <?php if ($pw1Err)
+                {
+                    echo "<p style='color: red'>";
+                    echo "<span class='error'>";
+                    echo $pw1Err; 
+                    echo "</span><br></p>";
+                }?>
 
           <label for="password2"><b>Repeat Password</b></label><br>
           <input type="password" placeholder="Repeat Password" name="password2" required>
-          <p style='color: red'><span class="error"><?php echo $pw2Err; ?></span><br></p>
+          <?php if ($pw2Err)
+                {
+                    echo "<p style='color: red'>";
+                    echo "<span class='error'>";
+                    echo $pw1Err; 
+                    echo "</span><br></p>";
+                }?>
           
           <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
