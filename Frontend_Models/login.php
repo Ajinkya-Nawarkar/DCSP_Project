@@ -54,6 +54,7 @@
             // Initialize the variables and object for Common.php
             $error_string = NULL;
             $admin_check = "";
+            $type = "";
             $common = new Common;
 
             if (isset($_SESSION['type']))
@@ -75,9 +76,12 @@
                 {
                     $result = $database->getOneAdmin($un_temp);
                     $admin_check = "checked";
+                    $type = "admin";
                 }
-                else
+                else{
                     $result = $database->getOneUser($un_temp);   
+                    $type = "user";
+                }
             
                 // Validate the password and set session variables
                 if ($result)
@@ -87,7 +91,7 @@
                     if ($token == $result[1])
                     {
                         $error_string = NULL;
-                        $common->setSession($un_temp, $result[2]);
+                        $common->setSession($un_temp, $type);
                         redirectUser();
                     }
                 }

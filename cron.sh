@@ -9,7 +9,7 @@ REMOTE=git ls-remote https://github.com/Ajinkya-Nawarkar/DCSP_Project.git HEAD
 
 if ["$LOCAL" != "$REMOTE"]
 then
-    git checkout master
+    git checkout master 
     git checkout .
     git pull origin master
 fi
