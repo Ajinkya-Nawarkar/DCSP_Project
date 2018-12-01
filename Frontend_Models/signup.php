@@ -153,7 +153,7 @@
             else 
             {
               # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
-              if ($db.query("SELECT username FROM users WHERE username='$username'")) 
+              if ($db->query("SELECT username FROM users WHERE username='$username'")) 
               {
                 $check = True;
               }
