@@ -115,12 +115,6 @@
             <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
         </div>
     </div>
-                
-        <p style="color: red">
-        <!--Placeholder for error messages-->
-        <span class="error"><?php echo $error_string; ?></span>
-            <br><br>
-        </p>
         
 	<div align="center" id="login">
     <div class="container">
