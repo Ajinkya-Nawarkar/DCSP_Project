@@ -32,12 +32,13 @@
 
     private $error; 
     private $database;
-    private $cart;
 
-    function __construct($un, $pw)
+    function __construct($un, $pw, $fn, $ln)
     {
       $this->username = $un;
       $this->password = $pw;
+      $this->firstname = $fn;
+      $this->lastname = $ln;
 
       // Initialize new objects for all required classes
       $this->error = new errExceptions;
