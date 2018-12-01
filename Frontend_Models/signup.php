@@ -216,10 +216,10 @@
           <p style="margin-top: 10px; margin-bottom:20px" class="text-center text-info"><b>Please fill in this form to create an account.</b></p>
 
           <label for="firstName"><b>First Name</b></label><br>
-          <input type="text" placeholder="Enter your first name" name="firstName" required value="<?php echo $firstName; ?>">
+          <input type="text" placeholder="Enter your first name" name="firstName" required value="<?php echo $firstName; ?>"><br>
 
           <label for="lastName"><b>Last Name</b></label><br>
-          <input type="text" placeholder="Enter your last name" name="lastName" required value="<?php echo $lastName; ?>">
+          <input type="text" placeholder="Enter your last name" name="lastName" required value="<?php echo $lastName; ?>"><br>
 
           <label for="username"><b>Username</b></label><br>
           <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>">
@@ -227,11 +227,11 @@
 
           <label for="password1"><b>Password</b></label><br>
           <input type="password" placeholder="Enter Password" name="password1" required>
-          <p style='color: red'><span class="error"><?php echo $pw1Err; ?></span><br><p style='color: red'>
+          <p style='color: red'><span class="error"><?php echo $pw1Err; ?></span><br></p>
 
           <label for="password2"><b>Repeat Password</b></label><br>
           <input type="password" placeholder="Repeat Password" name="password2" required>
-          <p style='color: red'><span class="error"><?php echo $pw2Err; ?></span><br><p style='color: red'>
+          <p style='color: red'><span class="error"><?php echo $pw2Err; ?></span><br></p>
           
           <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
