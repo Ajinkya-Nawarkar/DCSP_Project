@@ -222,7 +222,7 @@
         </div>
       </div>
     
-      <form action="/signup.php" style="border:1px solid #ccc">
+      <form action="signup.php" style="border:1px solid #ccc">
         <div align="center" class="container">
           
           <h2 style="margin-top:15px; margin-bottom: 10px" class="text-center text-info"><b>Sign Up</b></h2>
