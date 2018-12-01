@@ -129,6 +129,7 @@
 
         # Check if submission has been made
         if (!empty($_POST)) {
+          echo "yellow1";
 
           if (!empty($_POST['firstName'])) 
           {
@@ -190,6 +191,7 @@
 
         if (!$errFlg) 
         {
+          echo "yello";
           $encryptedPw = $common->hashPassword($password1);
           # ADD USER TO DATABASE HERE
           $user = new User($username, $encryptedPw, $firstName, $lastName);
