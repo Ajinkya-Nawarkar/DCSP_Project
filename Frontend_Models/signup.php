@@ -222,7 +222,7 @@
           <input type="text" placeholder="Enter your last name" name="lastName" required value="<?php echo $lastName; ?>"><br>
 
           <label for="username"><b>Username</b></label><br>
-          <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>">
+          <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>"><br>
           <?php if ($unErr)
                 {
                     echo "<p style='color: red'>";
@@ -232,7 +232,7 @@
                 }?>
 
           <label for="password1"><b>Password</b></label><br>
-          <input type="password" placeholder="Enter Password" name="password1" required>
+          <input type="password" placeholder="Enter Password" name="password1" required><br>
           <?php if ($pw1Err)
                 {
                     echo "<p style='color: red'>";
@@ -242,7 +242,7 @@
                 }?>
 
           <label for="password2"><b>Repeat Password</b></label><br>
-          <input type="password" placeholder="Repeat Password" name="password2" required>
+          <input type="password" placeholder="Repeat Password" name="password2" required><br>
           <?php if ($pw2Err)
                 {
                     echo "<p style='color: red'>";
