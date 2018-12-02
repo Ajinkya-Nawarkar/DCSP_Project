@@ -45,7 +45,7 @@
       $this->database = new dbAPI;
 
       // Validate the username
-      $this->validateUsername();
+      //$this->validateUsername();
 
       // Throw the validation errors if exists
       if ($this->error->hasError())
