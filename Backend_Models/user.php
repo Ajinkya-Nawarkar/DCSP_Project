@@ -58,7 +58,7 @@
         $this->error->addError("username","Username length must be greater than 3 characters.");
 
       if(!ctype_alnum($this->username))
-        $this->errs->addErr("username","Username must contain alphanumeric characters only.");
+        $this->error->addError("username","Username must contain alphanumeric characters only.");
     }
 
     // Addition of a new user to the database with its respective attributes

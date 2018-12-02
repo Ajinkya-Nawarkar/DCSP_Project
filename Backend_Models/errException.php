@@ -16,12 +16,12 @@ class errExceptions extends Exception
 			{
 				case "array":
 					if(count($exceptionItem) == 1)
-						$this->addErr($exceptionItem[0]);
+						$this->addError($exceptionItem[0]);
 					else
-						$this->addErr($exceptionItem[0],$exceptionItem[1]);
+						$this->addError($exceptionItem[0],$exceptionItem[1]);
 					break;
 				case "string":
-					$this->addErr($exceptionItem);
+					$this->addError($exceptionItem);
 					break;
 				default:
 					throw new errExeptions(["type","Type error in errException: Expected string, array, or NULL, got " . gettype($exceptionItem)]);
@@ -32,20 +32,20 @@ class errExceptions extends Exception
 	}
 
 	// Returns stored errors
-	function getErrArray()
+	function getErrorArray()
 	{		
-		return $this->errArray;
+		return $this->errMap;
 	}
 
 	// Adds an error. Overwrites previous errors of same key
-	function addErr($key, $value = "")
+	function addError($key, $value = "")
 	{
 		$this->errMap[$key] = $value;
 		$this->errPresent = true;
 	}
 
 	// Returns whether an error has been stored	
-	function hasErr()
+	function hasError()
 	{
 		return $this->errPresent;
 	}
