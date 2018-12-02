@@ -41,7 +41,7 @@
       $this->lastname = $ln;
 
       // Initialize new objects for all required classes
-      $this->error = new errExceptions;
+      $this->error = new errExceptions();
       $this->database = new dbAPI;
 
       // Validate the username
