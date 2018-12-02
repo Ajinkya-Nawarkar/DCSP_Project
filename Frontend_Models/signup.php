@@ -144,7 +144,7 @@
           if (!empty($_POST['username'])) 
           {
             $username = $_POST['username'];
-            $check = False;
+            $unExists = False;
             if (strlen($username) < 4 or !ctype_alnum($username)) 
             {
               $unErr = "Username must be at least 4 alphanumeric characters.";
@@ -155,9 +155,9 @@
               # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
               if ($db->query("SELECT username FROM users WHERE username='$username'")) 
               {
-                $check = True;
+                $unExists = True;
               }
-              if ($check) 
+              if ($unExists) 
               {
                 $unErr = "Username already exists. Please try another one.";
                 $errFlg = True;
