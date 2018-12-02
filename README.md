@@ -35,6 +35,8 @@
 
         user1           - password1
         user2           - password2
+        an839           - Qwerty123
+        an8391          - qwerty123
         cu81            - Qwerty123
         admin           - admin1
         admin2          - admin2
