@@ -24,7 +24,7 @@ class errExceptions extends Exception
 					$this->addError($exceptionItem);
 					break;
 				default:
-					throw new errExeptions(["type","Type error in errException: Expected string, array, or NULL, got " . gettype($exceptionItem)]);
+					throw new errExceptions(["type","Type error in errException: Expected string, array, or NULL, got " . gettype($exceptionItem)]);
 					break;
 			}
 		parent::__construct("", $code, $previous);
