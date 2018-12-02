@@ -1,4 +1,4 @@
-<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 0); ?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -13,6 +13,9 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
+            #login{
+                margin-top: 80px;
+            }
             .text-center{
             margin-top: -10px;
             }
@@ -94,13 +97,13 @@
                         $common->setSession($un_temp, $type);
                         redirectUser();
                     }
+                    else
+                        $error_string = "Your username/password combination is incorrect. Try Again!";
                 }
                 else 
                     $error_string = "Your username/password combination is incorrect. Try Again!";
             }
-            else
-                $error_string = "Your username/password combination is incorrect. Try Again!";
-          
+                     
         ?>
 
     <div class="w3-top">
@@ -112,12 +115,6 @@
             <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
         </div>
     </div>
-                
-        <p style="color: red">
-        <!--Placeholder for error messages-->
-        <span class="error"><?php echo $error_string; ?></span>
-            <br><br>
-        </p>
         
 	<div align="center" id="login">
     <div class="container">
@@ -143,6 +140,16 @@
 						      Are you an Admin?<br>
                         </div>
 						
+                        <?php
+                            if ($error_string)
+                            {
+                                echo "<p style='color: red'>";
+                                echo "<span class='error'>";
+                                echo $error_string; 
+                                echo "</span><br></p>";
+                            }
+                        ?>
+                        
                         <div class="form-group-submit">
                             <input style="background-color: #4CAF50; color: white" type="submit" value="Log in">
                         </div>
