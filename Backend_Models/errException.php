@@ -7,10 +7,11 @@ class errExceptions extends Exception
 	private $errMap;
 	private $errPresent;
 
-	function __construct($exceptionItem = NULL, $code = 0, Exception $previous = null)
+	function __construct()//$exceptionItem = NULL, $code = 0, Exception $previous = null)
 	{
 		$this->errPresent = false;
 		$this->errMap = array();
+		/*
 		if(isset($exceptionItem))
 			switch(gettype($exceptionItem))
 			{
@@ -27,7 +28,7 @@ class errExceptions extends Exception
 					throw new errExceptions(["type","Type error in errException: Expected string, array, or NULL, got " . gettype($exceptionItem)]);
 					break;
 			}
-		parent::__construct("", $code, $previous);
+		parent::__construct("", $code, $previous);*/
 		
 	}
 
