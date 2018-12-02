@@ -69,7 +69,7 @@
             $developer = "";
             $description = "";
             $priceUSD = 0.0;
-            $quantity = 0
+            $quantity = 0;
 
             # Error message variables
             $priceErr = "";
