@@ -5,6 +5,44 @@
 <html>
 <title>Maroon Gaming</title>
 <style>
+body {
+    font-family: Arial;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+form.example input[type=text] {
+    padding: 10px;
+    font-size: 17px;
+    border: 1px solid grey;
+    float: left;
+    width: 80%;
+    background: #f1f1f1;
+}
+
+form.example button {
+    float: left;
+    width: 20%;
+    padding: 10px;
+    background: #2196F3;
+    color: white;
+    font-size: 17px;
+    border: 1px solid grey;
+    border-left: none;
+    cursor: pointer;
+}
+
+form.example button:hover {
+    background: #0b7dda;
+}
+
+form.example::after {
+    content: "";
+    clear: both;
+    display: table;
+}
 #myInput {
   background-image: url('/css/searchicon.png');
   background-position: 10px 10px;
@@ -178,19 +216,19 @@ img {vertical-align: middle;}
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
-  <img src="Assets\banner.png" style="width:100%;min-height:350px;max-height:300px;">
+  <img src="Assets\banner.png" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 3</div>
-  <img src="Assets\switch.jpg" style="width:100%;min-height:350px;max-height:300px;">
+  <img src="Assets\switch.jpg" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 3</div>
-  <img src="Assets\ps4.jpg" style="width:100%;min-height:350px;max-height:300px;">
+  <img src="Assets\ps4.jpg" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
@@ -222,177 +260,54 @@ img {vertical-align: middle;}
   </div>
 </div>
 -->
-
-
-
-
 <div class="w3-column-paddingTop w3-row-padding w3-padding-64 w3-theme-l1" id="work">
-<input type="text" id="myInput" onsubmit="myFunction()" placeholder="Search for items.." title="Type in a name">
-
-
-<div class="w3-quarter">
-<div class="w3-card w3-white">
-  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
-  <div class="w3-container">
-  <h3>Product test</h3>
-  <h4>Trade</h4>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <?php
-  if(isset($_SESSION['type'])){
-    switch ($_SESSION['type']) {
-      case 'user':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-        break;
-      case 'admin':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
-        break;
-    }
-  }
-  else{
-    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-  }
-
-   ?>
-
-
-  </div>
-  </div>
+<div class="w3-row-padding w3-center w3-padding-64" id="pricing">
+    <h2>Welcome to Maroon Gaming!</h2>
+    <p>Please take a look at our various products.</p><br>
 </div>
 
-<div class="w3-quarter">
-<div class="w3-card w3-white">
-  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
-  <div class="w3-container">
-  <h3>Product test</h3>
-  <h4>Trade</h4>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <?php
-  if(isset($_SESSION['type'])){
-    switch ($_SESSION['type']) {
-      case 'user':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-        break;
-      case 'admin':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
-        break;
+
+
+<!--<input type="text" id="myInput" onkeyup="showUser(this.value)" placeholder="Search for items.." title="Type in a name">
+-->
+<form class="example" action="index.php" onsubmit="showUser(this.value)">
+  <input type="text" placeholder="Search.." name="search">
+  <button type="submit"><i class="fa fa-search"></i></button>
+</form>
+
+<div id="output">
+  <div class="w3-quarter">
+  <div class="w3-card w3-white">
+    <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
+    <div class="w3-container">
+    <h3>Product test</h3>
+    <h4>Trade</h4>
+    <p>Blablabla</p>
+    <p>Blablabla</p>
+    <p>Blablabla</p>
+    <p>Blablabla</p>
+    <?php
+    if(isset($_SESSION['type'])){
+      switch ($_SESSION['type']) {
+        case 'user':
+          echo "<a href='Frontend_Models\index.php'  class='cd-add-to-cart'>Add to cart</a>";
+          break;
+        case 'admin':
+          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
+          echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
+      }
     }
-  }
-  else{
-    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-  }
+    else{
+      echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+    }
 
-   ?>
+     ?>
 
 
-  </div>
+    </div>
+    </div>
   </div>
 </div>
-
-<div class="w3-quarter">
-<div class="w3-card w3-white">
-  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
-  <div class="w3-container">
-  <h3>Product test</h3>
-  <h4>Trade</h4>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <?php
-  if(isset($_SESSION['type'])){
-    switch ($_SESSION['type']) {
-      case 'user':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-        break;
-      case 'admin':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
-        break;
-    }
-  }
-  else{
-    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-  }
-
-   ?>
-
-
-  </div>
-  </div>
-</div>
-<div class="w3-quarter">
-<div class="w3-card w3-white">
-  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
-  <div class="w3-container">
-  <h3>Product test</h3>
-  <h4>Trade</h4>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <?php
-  if(isset($_SESSION['type'])){
-    switch ($_SESSION['type']) {
-      case 'user':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-        break;
-      case 'admin':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
-        break;
-    }
-  }
-  else{
-    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-  }
-
-   ?>
-
-
-  </div>
-  </div>
-</div>
-<div class="w3-quarter">
-<div class="w3-card w3-white">
-  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
-  <div class="w3-container">
-  <h3>Product test</h3>
-  <h4>Trade</h4>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <p>Blablabla</p>
-  <?php
-  if(isset($_SESSION['type'])){
-    switch ($_SESSION['type']) {
-      case 'user':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-        break;
-      case 'admin':
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-        echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Edit Inventory</a>";
-        break;
-    }
-  }
-  else{
-    echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-  }
-
-   ?>
-
-
-  </div>
-  </div>
-</div>
-
 <!--
 <div class="w3-container" style="position:relative">
   <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
@@ -471,25 +386,25 @@ img {vertical-align: middle;}
 
 <div class="w3-quarter">
 
-  <h3>Johnny Walker</h3>
+  <h3>Jack Betbeze</h3>
 
 </div>
 
 <div class="w3-quarter">
 
-  <h3>Rebecca Flex</h3>
+  <h3>Chandler Underwood</h3>
 
 </div>
 
 <div class="w3-quarter">
 
-  <h3>Jan Ringo</h3>
+  <h3>Ajinkya Nawarkar</h3>
 
 </div>
 
 <div class="w3-quarter">
 
-  <h3>Kai Ringo</h3>
+  <h3>Aaron Valenti</h3>
 
 </div>
 
@@ -507,7 +422,7 @@ img {vertical-align: middle;}
       <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  msstate.edu</p>
     </div>
     <div class="w3-col m7">
-      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
+
       <div class="w3-section">
         <label>Name</label>
         <input class="w3-input" type="text" name="Name" required>
@@ -522,8 +437,19 @@ img {vertical-align: middle;}
       </div>
       <input class="w3-check" type="checkbox" checked name="Like">
       <label>I Like it!</label>
-      <button type="submit" class="w3-button w3-right w3-theme">Send</button>
-      </form>
+      <div class="w3-container">
+  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Send</button>
+
+  <div id="id01" class="w3-modal">
+    <div class="w3-modal-content">
+      <div class="w3-container">
+        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+        <p>Fedback Revieved :)</p>
+      </div>
+    </div>
+  </div>
+</div>
+
     </div>
   </div>
 </div>
@@ -576,6 +502,22 @@ function openNav() {
 var slideIndex = 0;
 showSlides();
 
+function myFunction() {
+    var input, filter, ul, li, a, i, txtValue;
+    input = document.getElementById("myInput");
+    filter = input.value.toUpperCase();
+    ul = document.getElementById("myUL");
+    li = ul.getElementsByTagName("li");
+    for (i = 0; i < li.length; i++) {
+        a = li[i].getElementsByTagName("a")[0];
+        txtValue = a.textContent || a.innerText;
+        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
 function showSlides() {
     var i;
     var slides = document.getElementsByClassName("mySlides");
@@ -592,6 +534,26 @@ function showSlides() {
     dots[slideIndex-1].className += " active";
     setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
+function showUser(str) {
+  if (str=="") {
+    document.getElementById("output").innerHTML="";
+    return;
+  }
+  if (window.XMLHttpRequest) {
+    // code for IE7+, Firefox, Chrome, Opera, Safari
+    xmlhttp=new XMLHttpRequest();
+  } else { // code for IE6, IE5
+    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  xmlhttp.onreadystatechange=function() {
+    if (this.readyState==4 && this.status==200) {
+      document.getElementById("output").innerHTML=this.responseText;
+    }
+  }
+  xmlhttp.open("GET","dbAPI.php?q="+str,true);
+  xmlhttp.send();
+}
+
 </script>
 
 </body>
