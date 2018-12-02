@@ -33,7 +33,6 @@
         $array[$i] = 0;
       }
 
-      echo "hi";
       $query  = "INSERT INTO users (username, password, firstname, lastname, cart) "
               . "VALUES('$user->username', '$user->password', '$user->firstname', '$user->lastname', '$array')";
       $this->connection->query($query);

@@ -190,12 +190,10 @@
 
         if (!$errFlg) 
         {
-          echo "inside signup";
           $encryptedPw = $common->hashPassword($password1);
           # ADD USER TO DATABASE HERE
           $user = new User($username, $encryptedPw, $firstName, $lastName);
           $user->addUserToDB();
-          echo "all set";
           $common->setSession($username, "user");
           redirectUser();
         }
@@ -249,7 +247,7 @@
                 {
                     echo "<p style='color: red'>";
                     echo "<span class='error'>";
-                    echo $pw1Err; 
+                    echo $pw2Err; 
                     echo "</span><br></p>";
                 }?>
           
