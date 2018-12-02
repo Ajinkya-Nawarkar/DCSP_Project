@@ -5,7 +5,9 @@
 
 *Password* : aDqhvAtAp4ny5JMr
 
-## [Website in action](http://pluto.cse.msstate.edu/~an839/DCSP/DCSP_Project/index.php)
+## [Website in action LINK 1 tracking signup_front](http://pluto.cse.msstate.edu/~an839/DCSP/link1_DCSP/DCSP_Project/)
+## [Website in action LINK 2 tracking index_front](http://pluto.cse.msstate.edu/~an839/DCSP/link2_DCSP/DCSP_Project/)
+## [Website in action LINK 3 tracking master](http://pluto.cse.msstate.edu/~an839/DCSP/link3_DCSP/DCSP_Project/)
 
 ##### CronTab setting: * * * * * ( sleep 30; /path/to/cron.sh)
 
@@ -29,3 +31,12 @@
         Backend_Models/admin.php                - Implements the admin class for function implementations of a admin
         Backend_Models/item.php                 - Implements the item class for function implementations of items
          
+## Database Dummy Accounts: 
+
+        user1           - password1
+        user2           - password2
+        an839           - Qwerty123
+        an8391          - qwerty123
+        cu81            - Qwerty123
+        admin           - admin1
+        admin2          - admin2

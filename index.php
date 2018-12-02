@@ -1,6 +1,3 @@
-<?php include("frontend/design-top.php");?>
-<?php include("frontend/navigation.php");?>
-<?php include("frontend/footer.php");?>
 
 <?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
@@ -14,7 +11,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <body id="myPage">
 
-<!-- Sidebar on click -->
+<!-- Sidebar on click 
 <nav class="w3-sidebar w3-bar-block w3-white w3-card w3-animate-left w3-xxlarge" style="display:none;z-index:2" id="mySidebar">
   <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-display-topright w3-text-teal">Close
     <i class="fa fa-remove"></i>
@@ -25,6 +22,8 @@
   <a href="#" class="w3-bar-item w3-button">Link 4</a>
   <a href="#" class="w3-bar-item w3-button">Link 5</a>
 </nav>
+
+-->
 
 <!-- Navbar -->
 <div class="w3-top">
@@ -65,7 +64,8 @@
       echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><i class='fa fa-sign-in' aria-hidden='true'></i> Login</a>";
     }
     ?>
-  	<a href="#" class="w3-bar-item w3-button w3-hide-small w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
+	<input type="text" placeholder="Search.." name="search">
+  	<a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-teal" title="Search"><i class="fa fa-search"></i></a>
     <!-- >
     <div class="w3-dropdown-hover w3-hide-small">
     <button class="w3-button" title="Notifications">Dropdown <i class="fa fa-caret-down"></i></button>     
@@ -99,10 +99,11 @@
 
 <!-- Image Header -->
 <div class="w3-display-container w3-animate-opacity">
-  <img src="Assets/sailboat.jpg" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
+  <img src="Assets/banner.png" alt="boat" style="width:100%;min-height:350px;max-height:600px;">
 </div>
 
-<!-- Modal -->
+<!-- Modal 
+
 <div id="id01" class="w3-modal">
   <div class="w3-modal-content w3-card-4 w3-animate-top">
     <header class="w3-container w3-teal w3-display-container"> 
@@ -119,52 +120,30 @@
     </footer>
   </div>
 </div>
+-->
 
-<!-- Team Container -->
-<div class="w3-container w3-padding-64 w3-center" id="team">
-<h2>OUR TEAM</h2>
-<p>Meet the team - our office rats:</p>
 
-<div class="w3-row"><br>
 
-<div class="w3-quarter">
-  <img src="/w3images/avatar.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Johnny Walker</h3>
-  <p>Web Designer</p>
-</div>
 
-<div class="w3-quarter">
-  <img src="/w3images/avatar.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Rebecca Flex</h3>
-  <p>Support</p>
-</div>
-
-<div class="w3-quarter">
-  <img src="/w3images/avatar.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Jan Ringo</h3>
-  <p>Boss man</p>
-</div>
-
-<div class="w3-quarter">
-  <img src="/w3images/avatar.jpg" alt="Boss" style="width:45%" class="w3-circle w3-hover-opacity">
-  <h3>Kai Ringo</h3>
-  <p>Fixer</p>
-</div>
-
-</div>
-</div>
-
-<!-- Work Row -->
 <div class="w3-row-padding w3-padding-64 w3-theme-l1" id="work">
 
 <div class="w3-quarter">
-<h2>Our Work</h2>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+<div class="w3-card w3-white">
+  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
+  <div class="w3-container">
+  <h3>Product .5</h3>
+  <h4>Trade</h4>
+  <p>Blablabla</p>
+  <p>Blablabla</p>
+  <p>Blablabla</p>
+  <p>Blablabla</p>
+  </div>
+  </div>
 </div>
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <img src="/w3images/snow.jpg" alt="Snow" style="width:100%">
+  <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
   <div class="w3-container">
   <h3>Product 1</h3>
   <h4>Trade</h4>
@@ -192,7 +171,7 @@
 
 <div class="w3-quarter">
 <div class="w3-card w3-white">
-  <img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%">
+  <!--<img src="/w3images/mountains.jpg" alt="Mountains" style="width:100%">-->
   <div class="w3-container">
   <h3>product 3</h3>
   <h4>Trade</h4>
@@ -206,13 +185,13 @@
 
 </div>
 
-<!-- Container -->
+<!-- 
 <div class="w3-container" style="position:relative">
   <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
   style="position:absolute;top:-28px;right:24px">+</a>
 </div>
 
-<!-- Pricing Row -->
+
 <div class="w3-row-padding w3-center w3-padding-64" id="pricing">
     <h2>PRICING</h2>
     <p>Choose a pricing plan that fits your needs.</p><br>
@@ -273,17 +252,51 @@
       </ul>
     </div>
 </div>
+-->
+<!-- Team Container -->
 
-<!-- Contact Container -->
+<div class="w3-container w3-padding-64 w3-center" id="team">
+<h2>OUR TEAM</h2>
+<p>Meet the team - our office rats:</p>
+
+<div class="w3-row"><br>
+
+<div class="w3-quarter">
+  
+  <h3>Johnny Walker</h3>
+  
+</div>
+
+<div class="w3-quarter">
+  
+  <h3>Rebecca Flex</h3>
+  
+</div>
+
+<div class="w3-quarter">
+  
+  <h3>Jan Ringo</h3>
+  
+</div>
+
+<div class="w3-quarter">
+  
+  <h3>Kai Ringo</h3>
+  
+</div>
+
+</div>
+</div>
+
 <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
   <div class="w3-row">
     <div class="w3-col m5">
     <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
       <h3>Address</h3>
       <p>Swing by for a cup of coffee, or whatever.</p>
-      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Chicago, US</p>
+      <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i>  Starkville, US</p>
       <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i>  +00 1515151515</p>
-      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  test@test.com</p>
+      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  msstate.edu</p>
     </div>
     <div class="w3-col m7">
       <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
@@ -307,9 +320,10 @@
   </div>
 </div>
 
-<!-- Image of location/map -->
-<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
 
+<!-- Image of location/map 
+<img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
+-->
 <!-- Footer -->
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
   <h4>Follow Us</h4>
@@ -318,6 +332,7 @@
   <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-google-plus"></i></a>
   <a class="w3-button w3-large w3-teal" href="javascript:void(0)" title="Google +"><i class="fa fa-instagram"></i></a>
   <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
+  
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
 
   <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">

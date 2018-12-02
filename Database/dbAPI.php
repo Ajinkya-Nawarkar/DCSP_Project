@@ -1,9 +1,4 @@
 <?php
-  // include the database credentials
-    include("db_credentials.php");
-?>
-
-<?php
 class dbAPI
 {
   //Database connection information
@@ -11,6 +6,11 @@ class dbAPI
 
 
   public function __construct(){
+    $hn = "pluto.cse.msstate.edu";
+    $un = "cu81";
+    $pw = "aDqhvAtAp4ny5JMr";
+    $db = "cu81";
+
     $this->connection = new mysqli($hn, $un, $pw, $db);
     if ($this->connection->connect_error) die($this->connection->connect_error);
   }
@@ -139,26 +139,20 @@ class dbAPI
     return $result;
   }
   public function getOneUser($username){
-    $result = query("SELECT username FROM users WHERE username = '$username'");
-    if(!result){
-      return true
-    }
-    else{
-      return false
-    }
+    $array = array($username);
+    $result = mysqli_fetch_array($this->connection->query("SELECT password FROM users WHERE username = '$username'"));
+    array_push($array, $result[0]);
+    return $array;
   }
   public function getOneAdmin($username){
-    $result = query("SELECT username FROM admins WHERE username = '$username'");
-    if(!result){
-      return true
-    }
-    else{
-      return false
-    }
+    $array = array($username);
+    $result = mysqli_fetch_array($this->connection->query("SELECT password FROM admins WHERE username = '$username'"));
+    array_push($array, $result[0]);
+    return $array;
   }
 
   public function search($search) {
-    $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST($search IN NATURAL LANGUAGE MODE)";
+    $query = "SELECT sku FROM items2 WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
     $results = array();
     while ($result = mysqli_fetch_array($query)) {
       array_push($results, $result['sku']);
