@@ -25,10 +25,10 @@
 
   class User
   {
-    private $username;
-    private $password;
-    private $firstname;
-    private $lastname;
+    public $username;
+    public $password;
+    public $firstname;
+    public $lastname;
 
     private $error; 
     private $database;
