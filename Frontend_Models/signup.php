@@ -190,10 +190,12 @@
 
         if (!$errFlg) 
         {
+          echo "inside signup";
           $encryptedPw = $common->hashPassword($password1);
           # ADD USER TO DATABASE HERE
           $user = new User($username, $encryptedPw, $firstName, $lastName);
           $user->addUserToDB();
+          echo "all set";
           $common->setSession($username, "user");
           redirectUser();
         }
