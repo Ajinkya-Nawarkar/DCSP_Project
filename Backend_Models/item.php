@@ -35,12 +35,12 @@
       $this->database = new dbAPI;
 
 	   	// Validate all necessary attributes with errors exceptions
-	   	$this->validatePriceUSD();
-	   	$this->validateQuantity();
+	   	//$this->validatePriceUSD();
+	   	//$this->validateQuantity();
 
 	   	// Throw the validation errors if exists
 	   	if ($this->error->hasError())
-	   		throw $this->err; 
+	   		throw $this->error; 
    	}
 
    	function getSku()			{	return $this->sku;	}
