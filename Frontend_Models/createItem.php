@@ -14,7 +14,7 @@
 
         <style>
             #newItem{
-                margin-top: 50px;
+                margin-top: 80px;
                 margin-left: 30px;
             }
             .text-center{
@@ -22,6 +22,7 @@
             }
             .form-group{
                 margin-top: 5px;
+                margin-right: 50px;
                 padding-bottom: 3px;
             }
             .form-group-submit{
@@ -163,6 +164,7 @@
                         <h2 class="text-center text-info"><b>Add an Item to a database</b></h2>
                         <p class="text-center text-info" style="margin-top: 5px"><b>Please fill in the details of the new product</b></p>
                         
+                        <div>
                         <div class="form-group" style="margin-top: 30px">
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
                             <input type="text" name="sku" id="sku" class="form-control" placeholder="#SKU" style="width: 235px;" required value="<?php echo $sku; ?>">
@@ -171,7 +173,8 @@
                         <div class="form-group" style="margin-top: 30px">
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
                             <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>">
-                        </div>                  
+                        </div> 
+                        </div>                 
 
                         <div class="form-group" style="margin-top: 30px">
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
