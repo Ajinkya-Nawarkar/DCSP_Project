@@ -240,8 +240,8 @@ img {vertical-align: middle;}
   </div>
 </div>
 -->
-<div class="w3-column-paddingTop w3-row-padding w3-padding-64 w3-theme-l1" id="work">
-<div class="w3-row-padding w3-center w3-padding-64" id="pricing">
+<div class="w3-column-paddingTop w3-row-padding w3-padding-32 w3-theme-l1" id="work">
+<div class="w3-row-padding w3-center" id="pricing">
     <h2>Welcome to Maroon Gaming!</h2>
     <p>Please take a look at our various products.</p><br>
 </div>
