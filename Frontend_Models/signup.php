@@ -100,106 +100,103 @@
     </head>
     <body>
       <?php
-      # STILL NEED TO IMPROVE ENTRY SANITATION
+        # STILL NEED TO IMPROVE ENTRY SANITATION
 
-      if (isset($_SESSION['type'])) {
-        redirectUser();
-      }
-
-      require_once(dirname(__DIR__)."/Backend_Models/Common.php");
-      require_once(dirname(__DIR__)."/Backend_Models/user.php");
-      require_once(dirname(__DIR__)."/Database/dbAPI.php");
-
-      # Initialize database
-      $db = new dbAPI;
-
-      # Initialize the object for Common.php
-      $common = new common;
-
-      # Input variables
-      $firstName = "";
-      $lastName = "";
-      $username = "";
-      $password1 = "";
-      $password2 = "";
-
-      # Error message variables
-      $fnErr = "";
-      $lnErr = "";
-      $unErr = "";
-      $pw1Err = "";
-      $pw2Err = "";
-      $errFlg = False;
-
-      # Check if submission has been made
-      if (!empty($_POST)) {
-        if (!empty($_POST['firstName'])) {
-          $firstName = $_POST['firstName'];
-        } else {
-          $fnErr = "You must enter your first name.";
-          $errFlg = True;
+        if (isset($_SESSION['type'])) {
+          redirectUser();
         }
-        if (!empty($_POST['lastName'])) {
-          $lastName = $_POST['lastName'];
-        } else {
-          $lnErr = "You must enter your last name.";
-          $errFlg = True;
-        }
-        if (!empty($_POST['userame'])) {
-          $username = $_POST['username'];
-          $check = False;
-          if (strlen($username) < 4 or !ctype_alnum($username)) {
-            $unErr = "Username must be at least 4 alphanumeric characters.";
-            $errFlg = True;
-          } else {
-            # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
-            if ($db.query("SELECT username FROM users WHERE username='$username'")) {
-              $check = True;
+
+        require_once(dirname(__DIR__)."/Backend_Models/Common.php");
+        require_once(dirname(__DIR__)."/Backend_Models/user.php");
+        require_once(dirname(__DIR__)."/Database/dbAPI.php");
+        
+        # Initialize the object for database API and Common.php
+        $db = new dbAPI;
+        $common = new Common;
+
+        # Input variables
+        $firstName = "";
+        $lastName = "";
+        $username = "";
+        $password1 = "";
+        $password2 = "";
+
+        # Error message variables
+        $unErr = "";
+        $pw1Err = "";
+        $pw2Err = "";
+        $errFlg = False;
+
+        # Check if submission has been made
+        if (!empty($_POST)) {
+
+          if (!empty($_POST['firstName'])) 
+          {
+            $firstName = $_POST['firstName'];
+          } 
+
+          if (!empty($_POST['lastName'])) 
+          {
+            $lastName = $_POST['lastName'];
+          } 
+
+          if (!empty($_POST['username'])) 
+          {
+            $username = $_POST['username'];
+            $unExists = False;
+            if (strlen($username) < 4 or !ctype_alnum($username)) 
+            {
+              $unErr = "Username must be at least 4 alphanumeric characters.";
+              $errFlg = True;
+            } 
+            else 
+            {
+              # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
+              if ($db->query("SELECT username FROM users WHERE username='$username'")) 
+              {
+                $unExists = True;
+              }
+              if ($unExists) 
+              {
+                $unErr = "Username already exists. Please try another one.";
+                $errFlg = True;
+              }
             }
-            if ($check) {
-              $unErr = "Username already exists. Please try another one.";
+          } 
+
+          if (!empty($_POST['password1'])) 
+          {
+            $password1 = $_POST['password1'];
+            if (!preg_match('/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,}$/', $password1)) 
+            {
+              $pw1Err = "Not a valid password: must be at least 8 characters {a-z, A-Z, 0-9}.";
               $errFlg = True;
             }
-          }
-        } else {
-          $unErr = "You must enter a username.";
+            if (!empty($_POST['password2'])) 
+            {
+              $password2 = $_POST['password2'];
+              if ($password1 != $password2) 
+              {
+                $pw2Err = "Your password entries do not match.";
+                $errFlg = True;
+              }
+            } 
+          } 
+        }
+        else {
+          # While no error occurs, you still don't want to run the user entry to the database before a submission is made
           $errFlg = True;
         }
-        if (!empty($_POST['password1'])) {
-          $password1 = $_POST['password1'];
-          if (!preg_match('/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,}$/', $password1)) {
-            $pw1Err = "Not a valid password: must be at least 8 characters {a-z, A-Z, 0-9}.";
-            $errFlg = True;
-          }
-          if (!empty($_POST['password2'])) {
-            $password2 = $_POST['password2'];
-            if ($password1 != $password2) {
-              $pw2Err = "Your password entries do not match.";
-              $errFlg = True;
-            }
-          } else {
-            $pw2Err = "You must confirm your password";
-            $errFlg = True;
-          }
-        } else {
-          $pw1Err = "You must enter a password.";
-          $errFlg = True;
-        }
-      }
-      else {
-        # While no error occurs, you still don't want to run the user entry
-        # to the database before a submission is made
-        $errFlg = True;
-      }
 
-      if (!$errFlg) {
-        $encryptedPw = $common->hashPassword($password1);
-        # ADD USER TO DATABASE HERE
-        $user = new User($username, $encryptedPw, $firstName, $lastName, NULL);
-        $user->addUserToDB();
-        $common->setSession($username, "user");
-        redirectUser();
-      }
+        if (!$errFlg) 
+        {
+          $encryptedPw = $common->hashPassword($password1);
+          # ADD USER TO DATABASE HERE
+          $user = new User($username, $encryptedPw, $firstName, $lastName);
+          $user->addUserToDB();
+          $common->setSession($username, "user");
+          redirectUser();
+        }
       ?>
 
       <div class="w3-top">
@@ -211,46 +208,48 @@
             <a href='login.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Login'><i class='fa fa-sign-in' aria-hidden='true'></i>  Log in</a>
         </div>
       </div>
-
-      <div class="w3-top">
-        <div class="w3-bar w3-theme-d2 w3-left-align">
-
-            <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
-            <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
-
-            <a href='login.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Login'><i class='fa fa-sign-in' aria-hidden='true'></i>  Log In</a>
-        </div>
-      </div>
     
-      <form action="/signup.php" style="border:1px solid #ccc">
+      <form action="signup.php" method="post" style="border:1px solid #ccc">
         <div align="center" class="container">
           
           <h2 style="margin-top:15px; margin-bottom: 10px" class="text-center text-info"><b>Sign Up</b></h2>
           <p style="margin-top: 10px; margin-bottom:20px" class="text-center text-info"><b>Please fill in this form to create an account.</b></p>
 
           <label for="firstName"><b>First Name</b></label><br>
-          <input type="text" placeholder="Enter your first name" name="firstName" required value="<?php echo $firstName; ?>">
-          <span class="error"><?php echo $fnErr; ?></span><br>
+          <input type="text" placeholder="Enter your first name" name="firstName" required value="<?php echo $firstName; ?>"><br>
 
           <label for="lastName"><b>Last Name</b></label><br>
-          <input type="text" placeholder="Enter your last name" name="lastName" required value="<?php echo $lastName; ?>">
-          <span class="error"><?php echo $lnErr; ?></span><br>
+          <input type="text" placeholder="Enter your last name" name="lastName" required value="<?php echo $lastName; ?>"><br>
 
           <label for="username"><b>Username</b></label><br>
-          <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>">
-          <span class="error"><?php echo $unErr; ?></span><br>
+          <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>"><br>
+          <?php if ($unErr)
+                {
+                    echo "<p style='color: red'>";
+                    echo "<span class='error'>";
+                    echo $unErr; 
+                    echo "</span><br></p>";
+                }?>
 
           <label for="password1"><b>Password</b></label><br>
-          <input type="password" placeholder="Enter Password" name="password1" required>
-          <span class="error"><?php echo $pw1Err; ?></span><br>
+          <input type="password" placeholder="Enter Password" name="password1" required><br>
+          <?php if ($pw1Err)
+                {
+                    echo "<p style='color: red'>";
+                    echo "<span class='error'>";
+                    echo $pw1Err; 
+                    echo "</span><br></p>";
+                }?>
 
           <label for="password2"><b>Repeat Password</b></label><br>
-          <input type="password" placeholder="Repeat Password" name="password2" required>
-          <span class="error"><?php echo $pw2Err; ?></span><br>
-          
-          <label>
-            <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
-          </label>
+          <input type="password" placeholder="Repeat Password" name="password2" required><br>
+          <?php if ($pw2Err)
+                {
+                    echo "<p style='color: red'>";
+                    echo "<span class='error'>";
+                    echo $pw2Err; 
+                    echo "</span><br></p>";
+                }?>
           
           <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
 
