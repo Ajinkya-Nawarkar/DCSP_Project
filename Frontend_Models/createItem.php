@@ -14,7 +14,8 @@
 
         <style>
             #newItem{
-                margin-top: 80px;
+                margin-top: 50px;
+                margin-left: 30px;
             }
             .text-center{
             margin-top: -10px;
@@ -62,8 +63,8 @@
             $type = "";
             $developer = "";
             $description = "";
-            $priceUSD = 0.0;
-            $quantity = 0;
+            $priceUSD = "";
+            $quantity = "";
 
             # Error message variables
             $priceErr = "";
@@ -118,7 +119,7 @@
 
               if (isset($_POST['quantity'])) 
               {
-                $password1 = $_POST['password1'];
+                $quantity = $_POST['quantity'];
                 if (!is_numeric($quantity) or $quantity <= 0) 
                 {
                   $quantityErr = "Quantity must be positive integer and greater than or equal to 1";
