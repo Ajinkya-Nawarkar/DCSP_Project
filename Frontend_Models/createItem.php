@@ -53,13 +53,7 @@
 
             require_once(dirname(__DIR__)."/Backend_Models/Common.php");
             require_once(dirname(__DIR__)."/Database/dbAPI.php");
-
-            # Initialize database
-            $db = new dbAPI;
-
-            # Initialize the objects for database and Common.php
-            $db = new dbAPI;
-            $common = new Common;
+            require_once(dirname(__DIR__)."/Backend_Models/item.php");
             
             // Initialize the variables 
             $sku = "";
