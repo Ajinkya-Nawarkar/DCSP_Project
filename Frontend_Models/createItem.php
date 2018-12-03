@@ -125,6 +125,10 @@
                   $errFlg = True;
                 }
               }
+            }
+            else {
+              # While no error occurs, you still don't want to run the item entry to the database before a submission is made and redirect to index.php
+              $errFlg = True;
             }    
 
             if (!$errFlg) 
