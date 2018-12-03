@@ -115,7 +115,7 @@
               if (isset($_POST['priceUSD'])) 
               {
                 $priceUSD = $_POST['priceUSD'];
-                if (!is_float($priceUSD) or $priceUSD < 0) 
+                if (!is_float($priceUSD) or $priceUSD <= 0) 
                 {
                   $priceErr = "Price must be positive float and greater than or equal to 1";
                   $errFlg = True;
@@ -125,14 +125,21 @@
               if (isset($_POST['quantity'])) 
               {
                 $password1 = $_POST['password1'];
-                if (!is_numeric($quantity) or $quantity < 0) 
+                if (!is_numeric($quantity) or $quantity <= 0) 
                 {
                   $quantityErr = "Quantity must be positive integer and greater than or equal to 1";
                   $errFlg = True;
                 }
               }
+            }    
 
-            }           
+            if (!$errFlg) 
+            {
+                # ADD ITEM TO DATABASE HERE
+                $item = new Item($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity);
+                $item->addItemToDB();
+                redirectUser();
+            }       
         ?>
 
     <div class="w3-top">
@@ -174,7 +181,7 @@
 
                         <div class="form-group" style="margin-top: 30px">
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="type" id="type" class="form-control" placeholder="Type" style="width: 235px;" required value="<?php echo $item; ?>">
+                            <input type="text" name="type" id="type" class="form-control" placeholder="Type" style="width: 235px;" required value="<?php echo $type; ?>">
                         </div>
 
                         <div class="form-group" style="margin-top: 30px">
