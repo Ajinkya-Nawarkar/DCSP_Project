@@ -478,9 +478,12 @@ $.ajax({
   data:{name:search},
   success:
 */
-
 /*
-  function showUser(str) {
+$.ajax({
+  url:'Database/dbAPI.php',
+  type: "POST",
+  data:{functionname: 'search', argument: [search]},
+  success: function showUser(str) {
   if (str==) {
     document.getElementById("output").innerHTML="";
     return;
@@ -501,16 +504,8 @@ $.ajax({
 }
 });
 
-$.ajax({
-  url:'/Database/dbAPI.php',
-  method:'get',
-  data:{name:search},
-  success:
-function showUser(str){
-
-
-}
 */
+
 </script>
 
 </body>
