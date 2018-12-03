@@ -182,6 +182,16 @@
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
                             <input type="text" name="sku" id="sku" class="form-control" placeholder="#SKU" style="width: 235px;" required value="<?php echo $sku; ?>">
                         </div>
+
+                        <?php
+                            if ($skuErr)
+                            {
+                                echo "<p style='color: red'>";
+                                echo "<span class='error'>";
+                                echo $skuErr; 
+                                echo "</span><br></p>";
+                            }
+                        ?>
                         
                         <div class="form-group" style="margin-top: 30px">
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
