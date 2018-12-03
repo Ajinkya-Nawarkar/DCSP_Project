@@ -141,6 +141,9 @@ class dbAPI
     $this->connection->query($query);
     return true;
   }
+
+
+
   public function getAllUsers(){
     $result = query("SELECT username FROM users");
     return $result;
@@ -159,8 +162,16 @@ class dbAPI
     $array = array($username);
     $result = mysqli_fetch_array($this->connection->query("SELECT password FROM admins WHERE username = '$username'"));
     array_push($array, $result[0]);
-    return $array; 
+    return $array;
   }
-  
- }
+
+  public function search($search) {
+    $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
+    $results = array();
+    while ($result = mysqli_fetch_array($query)) {
+      array_push($results, $result['sku']);
+    }
+    return $results;
+  }
+}
 ?>
