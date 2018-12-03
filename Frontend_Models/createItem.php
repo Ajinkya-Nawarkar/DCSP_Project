@@ -144,7 +144,7 @@
                 # ADD ITEM TO DATABASE HERE
                 $item = new Item($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity);
                 $item->addItemToDB();
-                redirectUser();
+                //redirectUser();
             }       
         ?>
 
