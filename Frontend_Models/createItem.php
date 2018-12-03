@@ -55,8 +55,11 @@
 
             require_once(dirname(__DIR__)."/Database/dbAPI.php");
             require_once(dirname(__DIR__)."/Backend_Models/item.php");
+            require_once(dirname(__DIR__)."/Backend_Models/editQuantity.php");
             
+            // Initialize the objects
             $db = new dbAPI;
+            $editQ = new editQuantity;
 
             // Initialize the variables 
             $sku = "";
@@ -150,7 +153,7 @@
             {
                 # ADD ITEM TO DATABASE HERE
                 $item = new Item($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity);
-                $item->addItemToDB();
+                $editQ->addItemToDB($item);
                 echo "done";
                 redirectUser();
             }       
