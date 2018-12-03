@@ -1,4 +1,7 @@
 <?php
+
+require_once(dirname(__DIR__)."/Backend_Models/user.php");
+
 class dbAPI
 {
   //Database connection information
