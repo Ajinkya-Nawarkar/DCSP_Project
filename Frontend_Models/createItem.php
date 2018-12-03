@@ -68,6 +68,7 @@
             $quantity = "";
 
             # Error message variables
+            $skuErr = "";
             $priceErr = "";
             $quantityErr = "";
             $errFlg = False;
@@ -81,6 +82,11 @@
               if (isset($_POST['sku'])) 
               {
                 $sku = $_POST['sku'];
+                if (!is_numeric($sku) or $sku <= 0) 
+                {
+                  $skuErr = "Price must be positive float and greater than or equal to 1";
+                  $errFlg = True;
+                } 
               } 
 
               if (isset($_POST['name'])) 
@@ -111,7 +117,7 @@
               if (isset($_POST['priceUSD'])) 
               {
                 $priceUSD = $_POST['priceUSD'];
-                if (!is_float($priceUSD) or $priceUSD <= 0) 
+                if (!is_numeric($priceUSD) or $priceUSD <= 0) 
                 {
                   $priceErr = "Price must be positive float and greater than or equal to 1";
                   $errFlg = True;
@@ -164,7 +170,6 @@
                         <h2 class="text-center text-info"><b>Add an Item to a database</b></h2>
                         <p class="text-center text-info" style="margin-top: 5px"><b>Please fill in the details of the new product</b></p>
                         
-                        <div>
                         <div class="form-group" style="margin-top: 30px">
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
                             <input type="text" name="sku" id="sku" class="form-control" placeholder="#SKU" style="width: 235px;" required value="<?php echo $sku; ?>">
@@ -174,7 +179,6 @@
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
                             <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>">
                         </div> 
-                        </div>                 
 
                         <div class="form-group" style="margin-top: 30px">
                             <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
