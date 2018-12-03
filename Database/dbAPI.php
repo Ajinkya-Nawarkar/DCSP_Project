@@ -11,7 +11,7 @@ class dbAPI
   public function __construct(){
     $hn = "pluto.cse.msstate.edu";
     $un = "cu81";
-    $pw = "aDqhvAtAp4ny5JMr";
+    $pw = "maroongaming";
     $db = "cu81";
 
     $this->connection = new mysqli($hn, $un, $pw, $db);
@@ -63,8 +63,19 @@ class dbAPI
   }
 
   public function addItemToDB($item){
+
+    $sku = $item->getSku();
+    $name = $item->getName();
+    $platform = $item->getPlatform();
+    $type = $item->getType();
+    $developer = $item->getDeveloper();
+    $description = $item->getDescription();
+    $priceUSD = $item->getPrice();
+    $quantity = $item->getQuantity();
+
     $query  = "INSERT INTO items (sku, name, platform, type, developer, description, priceUSD, quantity) "
-            . "VALUES('$item->sku', '$item->name', '$item->platform', '$item->type', '$item->developer', '$item->description', '$item->priceUSD', '$item->quantity')";
+            . "VALUES('$sku', '$name', '$platform', '$type', '$developer', '$description', '$priceUSD', '$quantity')";
+
     $this->connection->query($query);
     return true;
   }
@@ -130,6 +141,9 @@ class dbAPI
     $this->connection->query($query);
     return true;
   }
+
+
+
   public function getAllUsers(){
     $result = query("SELECT username FROM users");
     return $result;
@@ -148,8 +162,16 @@ class dbAPI
     $array = array($username);
     $result = mysqli_fetch_array($this->connection->query("SELECT password FROM admins WHERE username = '$username'"));
     array_push($array, $result[0]);
-    return $array; 
+    return $array;
   }
-  
- }
+
+  public function search($search) {
+    $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
+    $results = array();
+    while ($result = mysqli_fetch_array($query)) {
+      array_push($results, $result['sku']);
+    }
+    return $results;
+  }
+}
 ?>
