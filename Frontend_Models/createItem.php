@@ -53,10 +53,11 @@
     <body>
         <?php
 
-            require_once(dirname(__DIR__)."/Backend_Models/Common.php");
             require_once(dirname(__DIR__)."/Database/dbAPI.php");
             require_once(dirname(__DIR__)."/Backend_Models/item.php");
             
+            $db = new dbAPI;
+
             // Initialize the variables 
             $sku = "";
             $name = "";
@@ -84,9 +85,15 @@
                 $sku = $_POST['sku'];
                 if (!is_numeric($sku) or $sku <= 0) 
                 {
-                  $skuErr = "Price must be positive float and greater than or equal to 1";
+                  $skuErr = "#SKU must be positive numeral and greater than or equal to 1";
                   $errFlg = True;
                 } 
+                if ($db->query("SELECT sku FROM items WHERE sku='$sku'")) 
+                {
+                    if ($sku != "") $skuErr .= "\n";
+                    $skuErr. = "The #SKU " . $sku ." is already assigned to another product. Try another #SKU.";
+                    $errFlg = True;
+                }
               } 
 
               if (isset($_POST['name'])) 
