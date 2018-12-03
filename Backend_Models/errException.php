@@ -7,45 +7,46 @@ class errExceptions extends Exception
 	private $errMap;
 	private $errPresent;
 
-	function __contruct($exceptionItem = NULL, $code = 0, Exception $previous = null)
+	function __construct()//$exceptionItem = NULL, $code = 0, Exception $previous = null)
 	{
 		$this->errPresent = false;
 		$this->errMap = array();
+		/*
 		if(isset($exceptionItem))
 			switch(gettype($exceptionItem))
 			{
 				case "array":
 					if(count($exceptionItem) == 1)
-						$this->addErr($exceptionItem[0]);
+						$this->addError($exceptionItem[0]);
 					else
-						$this->addErr($exceptionItem[0],$exceptionItem[1]);
+						$this->addError($exceptionItem[0],$exceptionItem[1]);
 					break;
 				case "string":
-					$this->addErr($exceptionItem);
+					$this->addError($exceptionItem);
 					break;
 				default:
-					throw new errExeptions(["type","Type error in errException: Expected string, array, or NULL, got " . gettype($exceptionItem)]);
+					throw new errExceptions(["type","Type error in errException: Expected string, array, or NULL, got " . gettype($exceptionItem)]);
 					break;
 			}
-		parent::__construct("", $code, $previous);
+		parent::__construct("", $code, $previous);*/
 		
 	}
 
 	// Returns stored errors
-	function getErrArray()
+	function getErrorArray()
 	{		
-		return $this->errArray;
+		return $this->errMap;
 	}
 
 	// Adds an error. Overwrites previous errors of same key
-	function addErr($key, $value = "")
+	function addError($key, $value = "")
 	{
 		$this->errMap[$key] = $value;
 		$this->errPresent = true;
 	}
 
 	// Returns whether an error has been stored	
-	function hasErr()
+	function hasError()
 	{
 		return $this->errPresent;
 	}
