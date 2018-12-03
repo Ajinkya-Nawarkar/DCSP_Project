@@ -11,7 +11,7 @@ class dbAPI
   public function __construct(){
     $hn = "pluto.cse.msstate.edu";
     $un = "cu81";
-    $pw = "aDqhvAtAp4ny5JMr";
+    $pw = "maroongaming";
     $db = "cu81";
 
     $this->connection = new mysqli($hn, $un, $pw, $db);
