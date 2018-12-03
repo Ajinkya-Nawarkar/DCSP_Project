@@ -15,6 +15,9 @@ session_start();
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
+        #view_cart {
+            margin-top: 80px;
+        }
         .text-center{
         margin-top: -10px;
         }
@@ -44,6 +47,26 @@ session_start();
         input[type=text]:focus, input[type=password]:focus {
             background-color: #ddd;
             outline: none;
+        }
+
+        #cart {
+          width:60%;
+          border-collapse:collapse;
+        }
+
+        #cart tr:nth-child(even){background-color: #f2f2f2;}
+
+        #cart th {
+          padding-top: 10px;
+          padding-bottom: 10px;
+          background-color: #000000;
+          color:white;
+        }
+
+        #cart td {
+          padding-top: 5px;
+          padding-bottom: 3px;
+          text-align:center;
         }
     </style>
 </head>
@@ -102,10 +125,17 @@ session_start();
             <div id="view_cart-row" class="row justify-content-center align-items-center">
                 <div id="view_cart-column" class="col-md-6">
                     <div class="view_cart-box col-md-12">
-                    <form action='view_cart.php' method='post'>
-                      <h2><?php $username ?>'s Cart</h2><br>
-                      <table>
-                        <tr><th>SKU</th><th>Name</th><th>Price</th><th>Quantity</th><th>Remove</th></tr>
+                    <form id="view_cart-form" class="form" action='view_cart.php' method='post'>
+                      <h2 class="text-center text-info"><b><?php $username ?>'s Cart</b></h2><br>
+                      <table id="cart">
+                        <colgroup>
+                           <col span="1" style="width: 10%;">
+                           <col span="1" style="width: 60%;">
+                           <col span="1" style="width: 10%;">
+                           <col span="1" style="width: 10%;">
+                           <col span="1" style="width: 10%;">
+                        </colgroup>
+                        <tr><th class="text-info"><b>SKU</b></th><th class="text-info"><b>Name</b></th><th class="text-info"><b>Price</b></th><th class="text-info"><b>Quantity</b></th><th class="text-info"><b>Remove</b></th></tr>
                         <?php
                         for ($i = 0; $i < sizeof($cart_all); $i++) {
                           echo "<tr><td>".$cart_all[$i]['sku']."</td><td>".$cart_all[$i]['name']."</td><td>".$cart_all[$i]['priceUSD']."</td>";
@@ -113,9 +143,9 @@ session_start();
                           echo "<td><input type='checkbox' name='remove".$cart_all[$i]['sku']."'></td></tr>";
                         }
                         ?>
-                        <tr><td></td><td></td><td></td><td></td><td><input style="background-color: #4CAF50; color: white" type='submit' name='update' value='Update'></td>
+                        <tr style="background-color:#ffffff"><td></td><td></td><td></td><td></td><td style="vertical-align:middle"><input style="background-color: #4CAF50; color: white" type='submit' name='update' value='Update'></td></tr>
                       </table><br>
-                      <input style="margin-left:100px; background-color: #4CAF50; color: white" type='submit' name='checkout' value='Checkout'>
+                      <input style="margin-left:50%" class="w3-bar-item w3-button w3-teal" type='submit' name='checkout' value='Checkout'>
                     </form>
                     </div>
                 </div>
