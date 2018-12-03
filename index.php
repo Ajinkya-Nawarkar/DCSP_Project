@@ -270,7 +270,7 @@ img {vertical-align: middle;}
     if(isset($_SESSION['type'])){
       switch ($_SESSION['type']) {
         case 'user':
-          echo "<a href='Frontend_Models\index.php'  class='cd-add-to-cart'>Add to cart</a>";
+          echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
           break;
         case 'admin':
           echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
@@ -500,6 +500,16 @@ $.ajax({
   xmlhttp.send();
 }
 });
+
+$.ajax({
+  url:'/Database/dbAPI.php',
+  method:'get',
+  data:{name:search},
+  success:
+function showUser(str){
+
+
+}
 */
 </script>
 
