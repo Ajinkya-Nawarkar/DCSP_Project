@@ -175,7 +175,7 @@
             <div id="login-column" class="col-md-6">
                 <div class="login-box col-md-12">
                     <form id="login-form" class="form" action="createItem.php" method="post">
-                        <h2 class="text-center text-info"><b>Add an Item to a database</b></h2>
+                        <h2 class="text-center text-info"><b>Add an Item to the Database</b></h2>
                         <p class="text-center text-info" style="margin-top: 5px"><b>Please fill in the details of the new product</b></p>
                         
                         <div class="form-group" style="margin-top: 30px">
