@@ -91,7 +91,7 @@
                 if ($db->query("SELECT sku FROM items WHERE sku='$sku'")) 
                 {
                     if ($sku != "") $skuErr .= "\n";
-                    $skuErr. = "The #SKU " . $sku ." is already assigned to another product. Try another #SKU.";
+                    $skuErr .= "The #SKU " . $sku ." is already assigned to another product. Try another #SKU.";
                     $errFlg = True;
                 }
               } 
