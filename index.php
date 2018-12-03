@@ -5,10 +5,6 @@
 <html>
 <title>Maroon Gaming</title>
 <style>
-body {
-    font-family: Arial;
-}
-
 * {
     box-sizing: border-box;
 }
@@ -26,7 +22,7 @@ form.example button {
     float: left;
     width: 20%;
     padding: 10px;
-    background: #2196F3;
+    background: #800000;
     color: white;
     font-size: 17px;
     border: 1px solid grey;
@@ -35,7 +31,7 @@ form.example button {
 }
 
 form.example button:hover {
-    background: #0b7dda;
+    background: #D3D3D3;
 }
 
 form.example::after {
@@ -270,11 +266,11 @@ img {vertical-align: middle;}
 
 <!--<input type="text" id="myInput" onkeyup="showUser(this.value)" placeholder="Search for items.." title="Type in a name">
 -->
-<form class="example" action="index.php" onsubmit="showUser(this.value)">
+<form class="example" action="index.php">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit"><i class="fa fa-search"></i></button>
+  <button type="submit" onsubmit="showUser(this.value)"><i class="fa fa-search"></i></button>
 </form>
-
+<br><br>
 <div id="output">
   <div class="w3-quarter">
   <div class="w3-card w3-white">
@@ -534,8 +530,15 @@ function showSlides() {
     dots[slideIndex-1].className += " active";
     setTimeout(showSlides, 5000); // Change image every 2 seconds
 }
-function showUser(str) {
-  if (str=="") {
+
+/*
+var search=$('search').val();
+$.ajax({
+  url:'/Database/dbAPI.php',
+  method:'get',
+  data:{name:search},
+  success:function showUser(str) {
+  if (str==) {
     document.getElementById("output").innerHTML="";
     return;
   }
@@ -550,10 +553,11 @@ function showUser(str) {
       document.getElementById("output").innerHTML=this.responseText;
     }
   }
-  xmlhttp.open("GET","dbAPI.php?q="+str,true);
+  xmlhttp.open("GET","Databse/dbAPI.php?q="+str,true);
   xmlhttp.send();
 }
-
+});
+*/
 </script>
 
 </body>
