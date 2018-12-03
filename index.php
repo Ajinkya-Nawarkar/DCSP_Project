@@ -287,6 +287,7 @@ img {vertical-align: middle;}
     </div>
   </div>
 </div>
+</div>
 <!--
 <div class="w3-container" style="position:relative">
   <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
@@ -351,40 +352,9 @@ img {vertical-align: middle;}
     </div>
 </div>
 -->
-<!-- Team Container -->
 
-<div class="w3-container w3-padding-64 w3-center" id="team">
-<h2>OUR TEAM</h2>
-<p>Meet the team - the maroon gamers:</p>
 
-<div class="w3-row"><br>
 
-<div class="w3-quarter">
-
-  <h3>Jack Betbeze</h3>
-
-</div>
-
-<div class="w3-quarter">
-
-  <h3>Chandler Underwood</h3>
-
-</div>
-
-<div class="w3-quarter">
-
-  <h3>Ajinkya Nawarkar</h3>
-
-</div>
-
-<div class="w3-quarter">
-
-  <h3>Aaron Valenti</h3>
-
-</div>
-
-</div>
-</div>
 
 <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
   <div class="w3-row">
