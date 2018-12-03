@@ -60,7 +60,7 @@ class dbAPI
   }
 
   public function addItemToDB($item){
-    echo "$item->getSku()";
+    echo $item->getSku();
     $query  = "INSERT INTO items (sku, name, platform, type, developer, description, priceUSD, quantity) "
             . "VALUES('$item->getSku()', '$item->getName()', '$item->getPlatform()', '$item->getType()', '$item->getDeveloper()', '$item->getDescription()', '$item->getPrice()', '$item->getQuantity()')";
     $this->connection->query($query);
