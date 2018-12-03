@@ -11,7 +11,7 @@ class dbAPI
   public function __construct(){
     $hn = "pluto.cse.msstate.edu";
     $un = "cu81";
-    $pw = "aDqhvAtAp4ny5JMr";
+    $pw = "maroongaming";
     $db = "cu81";
 
     $this->connection = new mysqli($hn, $un, $pw, $db);
@@ -63,8 +63,19 @@ class dbAPI
   }
 
   public function addItemToDB($item){
+
+    $sku = $item->getSku();
+    $name = $item->getName();
+    $platform = $item->getPlatform();
+    $type = $item->getType();
+    $developer = $item->getDeveloper();
+    $description = $item->getDescription();
+    $priceUSD = $item->getPrice();
+    $quantity = $item->getQuantity();
+
     $query  = "INSERT INTO items (sku, name, platform, type, developer, description, priceUSD, quantity) "
-            . "VALUES('$item->sku', '$item->name', '$item->platform', '$item->type', '$item->developer', '$item->description', '$item->priceUSD', '$item->quantity')";
+            . "VALUES('$sku', '$name', '$platform', '$type', '$developer', '$description', '$priceUSD', '$quantity')";
+
     $this->connection->query($query);
     return true;
   }

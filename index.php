@@ -150,6 +150,8 @@ img {vertical-align: middle;}
           break;
         case 'admin':
           echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
+          echo "<a href='Frontend_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>";
+
           break;
       }
     }
