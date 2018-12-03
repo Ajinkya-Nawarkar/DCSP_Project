@@ -1,14 +1,107 @@
 <?php
-    include("login_credentials.php");
     session_start();
 ?>
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <title>Maroon Gaming Co</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+        .text-center{
+        margin-top: -10px;
+        }
+        .form-group{
+            margin-top: 5px;
+            padding-bottom: 3px;
+        }
+        .form-group-submit{
+            margin-top: 14px;
+            padding-bottom: 2px;
+        }
+        footer{
+            margin-top: 200px;
+            padding-bottom: 200px;
+        }
+
+        body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
+
+        /* Full-width input fields */
+        input[type=text], input[type=password] {
+            width: 25%;
+            padding: 15px;
+            margin: 5px 0 22px 0;
+            display: inline-block;
+            border: none;
+            background: #f1f1f1;
+        }
+
+        input[type=text]:focus, input[type=password]:focus {
+            background-color: #ddd;
+            outline: none;
+        }
+
+        hr {
+            border: 1px solid #f1f1f1;
+            margin-bottom: 25px;
+        }
+
+        /* Set a style for all buttons */
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            opacity: 0.9;
+        }
+
+        button:hover {
+            opacity:1;
+        }
+
+        /* Extra styles for the cancel button */
+        .cancelbtn {
+            padding: 14px 20px;
+            background-color: #f44336;
+        }
+
+        /* Float cancel and signup buttons and add an equal width */
+        .cancelbtn, .signupbtn {
+          float: left;
+          width: 50%;
+          padding: 20px;
+        }
+
+        /* Add padding to container elements */
+        .container {
+            padding: 16px;
+        }
+
+        /* Clear floats */
+        .clearfix::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        /* Change styles for cancel button and signup button on extra small screens */
+        @media screen and (max-width: 300px) {
+            .cancelbtn, .signupbtn {
+               width: 100%;
+            }
+        }
+    </style>
 </head>
 <body>
   <?php
-  if ($_SESSION['type'] != "admin") {
+  /*if ($_SESSION['type'] != "admin") {
     redirectUser();
   }
 
@@ -18,7 +111,7 @@
 
   $db = new dbAPI;
 
-  $common = new common;
+  $common = new Common;
 
   # Input variables
   $fnAdmin = "";
@@ -56,7 +149,7 @@
       $unAdmin = $_POST['unAdmin'];
       $check = False;
       # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
-      if ($db.query("SELECT username FROM admins WHERE username='$unAdmin'")) {
+      if ($db.getOneAdmin($unAdmin)) {
         $check = True;
       }
       if ($check) {
@@ -109,11 +202,11 @@
       $check = False;
       # CHECK IF USER/ADMIN USERNAME EXITS IN DATABASE (dependent on $isAdmin)
       if ($isAdmin) {
-        if ($db.query("SELECT username FROM admins WHERE username='$unRemove'")) {
+        if ($db.getOneAdmin($unRemove)) {
           $check = True;
         }
       } else {
-        if ($db.query("SELECT username FROM users WHERE username='$unRemove'")) {
+        if ($db.getOneUser($unRemove)) {
           $check = True;
         }
       }
@@ -130,7 +223,7 @@
     } else {
       $unRemErr = "You must enter an accounts username.";
     }
-  }
+  }*/
   ?>
   <h4>Add New Admin</h4>
   <form method="post" action="manageAccounts.php">
