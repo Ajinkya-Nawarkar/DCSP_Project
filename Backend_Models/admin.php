@@ -13,10 +13,10 @@
 
   class Admin
   {
-    private $username;
-    private $password;
-    private $firstname;
-    private $lastname;
+    public $username;
+    public $password;
+    public $firstname;
+    public $lastname;
 
     private $error; 
     private $database;
@@ -33,7 +33,7 @@
       $this->database = new dbAPI;
 
       // Validate the username
-      $this->validateUsername();
+      //$this->validateUsername();
 
       // Throw the validation errors if exists
       if ($this->error->hasError())
