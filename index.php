@@ -367,7 +367,7 @@ img {vertical-align: middle;}
       <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  msstate.edu</p>
     </div>
     <div class="w3-col m7">
-
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="somepage.php" target="_blank">
       <div class="w3-section">
         <label>Name</label>
         <input class="w3-input" type="text" name="Name" required>
@@ -383,16 +383,10 @@ img {vertical-align: middle;}
       <input class="w3-check" type="checkbox" checked name="Like">
       <label>I Like it!</label>
       <div class="w3-container">
-  <button onclick="document.getElementById('id01').style.display='block'" class="w3-button w3-black">Send</button>
+  <button type="submit" class="w3-button w3-right w3-theme">Send</button>
+</form>
 
-  <div id="id01" class="w3-modal">
-    <div class="w3-modal-content">
-      <div class="w3-container">
-        <span onclick="document.getElementById('id01').style.display='none'" class="w3-button w3-display-topright">&times;</span>
-        <p>Fedback Revieved :)</p>
-      </div>
-    </div>
-  </div>
+
 </div>
 
     </div>
@@ -482,7 +476,11 @@ $.ajax({
   url:'/Database/dbAPI.php',
   method:'get',
   data:{name:search},
-  success:function showUser(str) {
+  success:
+*/
+
+/*
+  function showUser(str) {
   if (str==) {
     document.getElementById("output").innerHTML="";
     return;
@@ -498,7 +496,7 @@ $.ajax({
       document.getElementById("output").innerHTML=this.responseText;
     }
   }
-  xmlhttp.open("GET","Databse/dbAPI.php?q="+str,true);
+  xmlhttp.open("GET","Database/dbAPI.php?q="+str,true);
   xmlhttp.send();
 }
 });
