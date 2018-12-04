@@ -74,13 +74,15 @@
             require_once(dirname(__DIR__)."/Backend_Models/editQuantity.php");
             
             // Initialize the objects
-            global $sku;
             $db = new dbAPI;
             $editQ = new editQuantity;
 
             // Extract the 
             if (isset($_GET['varSku'])) {    
-               $sku = $_GET['varSku'];
+                $sku = $_GET['varSku'];
+            }
+            else if (isset($_POST['sku'])){
+                $sku = $_POST['sku'];
             }
 
             echo $sku;
@@ -188,6 +190,7 @@
 
                         <label for="sku" class="text-info"><b>#SKU:</b></label>
                         <label for="sku" class="text-info" style="margin-right: 15px;"><b><?php echo $sku; ?></b></label><br>
+                        <input type="hidden" name="sku" id="sku" value="<?php echo $sku; ?>">
  
                         <label for="name" class="text-info"><b>Name:</b></label><br>
                         <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>"><br>
