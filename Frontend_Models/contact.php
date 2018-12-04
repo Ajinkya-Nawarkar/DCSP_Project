@@ -127,11 +127,11 @@
 </form>
 </div>
     </div>
-  </div>
-	 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+	 </div>
+</div>
+	    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
     <h4>Maroon Gaming Co. @ 2018</h4>
 </footer>
-</div>
 <div class="w3-top">
         <div class="w3-bar w3-theme-d2 w3-left-align">
 
