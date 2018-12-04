@@ -29,7 +29,7 @@
             }
             footer{
                 margin-top: 0px;
-                padding-bottom: 180px;
+                padding-bottom: 0px;
             }
 		label {
     width:180px;
