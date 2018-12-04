@@ -252,25 +252,28 @@ img {vertical-align: middle;}
 
 <!--<input type="text" id="myInput" onkeyup="showUser(this.value)" placeholder="Search for items.." title="Type in a name">
 -->
-<form class="example" action="index.php">
+<form class="example" action="index.php" method="post">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" onsubmit="dosearch(search)"><i class="fa fa-search"></i></button>
+  <button type="submit" onsubmit= "<?php $search = $_POST['search'];dosearch($search);?>"><i class="fa fa-search"></i></button>
   <?php
-  function dosearch(search){
-  require_once('Database/dbAPI.php')
-  db = new dbAPI;
-  sku[] = db->search(search);
-  echo"<div class="w3-quarter">";
-  echo"<div class="w3-card w3-white">";
+  if(is_null($search)){
+    dosearch('');
+  }
+  function dosearch($search){
+  require_once('Database/dbAPI.php');
+  $db = new dbAPI;
+  $sku[] = $db->search($search);
+  echo"<div class='w3-quarter'>";
+  echo"<div class='w3-card w3-white'>";
 
-  for($i = 0, !is_null(sku[$i]); $i++){
-      array[] = db->getItem(sku[$i]);
+  for($i = '0', $i<'11'; $i++;){
+      $array = array($db->getItem($sku[$i]));
 
     //while($results = mysqli_fetch_array($query)){
-      echo"  <div class="w3-container">";
-      echo"  <h3>".$results['name']."</h3>";
-      echo"  <p>".$results['description']."</p>";
-      echo"  <p>".$results['priceUSD']."</p>";
+      echo"  <div class='w3-container'>";
+      echo"  <h3>".$array['name']."</h3>";
+      echo"  <p>".$array['description']."</p>";
+      echo"  <p>".$array['priceUSD']."</p>";
 
         if(isset($_SESSION['type'])){
           switch ($_SESSION['type']) {
@@ -292,6 +295,7 @@ img {vertical-align: middle;}
 
         echo"</div>";
       echo"</div>";
+}
 }
   ?>
 </form>
