@@ -390,11 +390,10 @@ img {vertical-align: middle;}
 
 
 </div>
-
+-->
     </div>
   </div>
 </div>
--->
 
 <!-- Image of location/map
 <img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
