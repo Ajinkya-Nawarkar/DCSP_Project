@@ -161,11 +161,11 @@
                         
                         <input type="hidden" name="sku" id="sku" value="<?php echo $sku; ?>"><br>
  
-                        <label for="firstName" class="text-info"><b>First Name:</b></label><br>
-                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="firstName" style="width: 235px;" required value="<?php echo $firstName; ?>"><br>
+                        <label for="firstname" class="text-info"><b>First Name:</b></label><br>
+                        <input type="text" name="firstname" id="firstname" class="form-control" placeholder="firstname" style="width: 235px;" required value="<?php echo $firstname; ?>"><br>
                          
-                        <label for="lastName"><b>Last Name: </b></label><br>
-                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="<?php echo $lastName; ?>" style="width: 235px;" required value="<?php echo $lastName; ?>"><br>
+                        <label for="lastname"><b>Last Name: </b></label><br>
+                        <input type="text" name="lastname" id="lastname" class="form-control" placeholder="<?php echo $lastname; ?>" style="width: 235px;" required value="<?php echo $lastname; ?>"><br>
                         
                         <label for="password1"><b>Password</b></label><br>
                         <input type="password" placeholder="Enter Password (optional)" name="password1"><br>
