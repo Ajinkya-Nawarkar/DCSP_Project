@@ -37,10 +37,13 @@
          
 ## Database Dummy Accounts: 
 
+        *Users*
         user1           - password1
         user2           - password2
-        an839           - Qwerty123
-        an8391          - qwerty123
-        cu81            - Qwerty123
+        kdd195          - kortni1234
+        
+        *Admins*
+        an839           - ajinkya1234
+        cu81            - chandler1234
         admin           - admin1
         admin2          - admin2
