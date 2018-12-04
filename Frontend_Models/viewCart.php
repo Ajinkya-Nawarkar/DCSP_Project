@@ -84,7 +84,7 @@ session_start();
       $cart = new Cart($username);
 
       // Check if any updates had been made to the cart and update the users cart accordingly
-      /*if (isset($_POST['update']) or isset($_POST['checkout'])) {
+      if (isset($_POST['update']) or isset($_POST['checkout'])) {
         for ($sku = 0; $sku < 50; $sku++) {
           $q = 'quant'.$sku;
           $rem = 'remove'.$sku;
@@ -103,7 +103,7 @@ session_start();
       }
 
       // If they checkedout, redirect them to checkout.php
-      if (isset($_POST['checkout'])){
+      /*if (isset($_POST['checkout'])){
         header('Location: checkout.php');
         exit();
       }
@@ -145,7 +145,7 @@ session_start();
                         <tr><th class="text-info"><b>SKU</b></th><th class="text-info"><b>Name</b></th><th class="text-info"><b>Price</b></th><th class="text-info"><b>Quantity</b></th><th class="text-info"><b>Remove</b></th></tr>
                         <?php
                         /*for ($i = 0; $i < sizeof($cart_all); $i++) {
-                          if (sizeof($cart_quants) == 0) {
+                          if ($empty) {
                             echo "<tr><td></td><td>Empty Cart</td><td></td><td></td><td></td></tr>";
                           } else {
                             echo "<tr><td>".$cart_all[$i]['sku']."</td><td>".$cart_all[$i]['name']."</td><td>".$cart_all[$i]['priceUSD']."</td>";
