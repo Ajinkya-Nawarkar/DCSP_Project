@@ -279,9 +279,9 @@ img {vertical-align: middle;}
   $cart = new Cart($_SESSION['username']);
 
   if (isset($_GET['addCartSku'])) {
-    $addSku = $_GET['addToCartSku'];
+    $addSku = $_GET['addCartSku'];
     echo "Testing!";
-    echo "$addSku";
+    echo $addSku;
     $cart->addToCart($addSku, 1);
   }
 
