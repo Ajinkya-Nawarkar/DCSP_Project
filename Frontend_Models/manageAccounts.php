@@ -75,15 +75,19 @@
         #ma .container #ma-row #ma-column .ma-box #ma-form #register-link {
           margin-top: -85px;
         }* {box-sizing: border-box}
+
+        .success {
+          color:green;
+        }
     </style>
 </head>
 <body>
   <?php
-  /*if ($_SESSION['type'] != "admin") {
+  if ($_SESSION['type'] != "admin") {
     redirectUser();
   }
 
-  require_once(dirname(__DIR__)."/Backend_Models/common.php");
+  require_once(dirname(__DIR__)."/Backend_Models/Common.php");
   require_once(dirname(__DIR__)."/Backend_Models/admin.php");
   require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
@@ -109,6 +113,9 @@
   $unRemErr = "";
   $adErrFlg = False;
 
+  $addAdminSucc = "";
+  $remAccSucc= "";
+
   # Add new Admin
   if (!empty($_POST['admin_submit'])) {
     if (!empty($_POST['firstName'])) {
@@ -127,7 +134,7 @@
       $unAdmin = $_POST['unAdmin'];
       $check = False;
       # CHECK IF USERNAME ALREADY EXISTS IN DATABASE
-      if ($db.getOneAdmin($unAdmin)) {
+      if ($db->query("SELECT username FROM admins WHERE username='$unAdmin'")) {
         $check = True;
       }
       if ($check) {
@@ -149,6 +156,8 @@
         if ($pw1Admin != $pw2Admin) {
           $pw2AdErr = "Your password entries do not match.";
           $adErrFlg = True;
+        } else {
+          $addAdminSucc = "Admin added successfully";
         }
       } else {
         $pw2AdErr = "You must confirm your password";
@@ -164,7 +173,8 @@
     $encryptedPw = $common->hashPassword($pw1Admin);
     # ADD ADMIN TO DATABASE HERE
     $admin = new Admin($unAdmin, $encryptedPw, $fnAdmin, $lnAdmin);
-    $admin.addAdminToDB();
+    $admin->addAdminToDB();
+
   }
 
   # Remove acccount (user/admin)
@@ -175,17 +185,17 @@
         $adminCheck = "checked";
         $isAdmin = True;
       } else {
-        $isAdmin = False
+        $isAdmin = False;
       }
-      $check = False;
+      $check = True;
       # CHECK IF USER/ADMIN USERNAME EXITS IN DATABASE (dependent on $isAdmin)
       if ($isAdmin) {
-        if ($db.getOneAdmin($unRemove)) {
-          $check = True;
+        if ($db->query("SELECT username FROM admins WHERE username='$unRemove'")) {
+          $check = False;
         }
       } else {
-        if ($db.getOneUser($unRemove)) {
-          $check = True;
+        if ($db->query("SELECT username FROM users WHERE username='$unRemove'")) {
+          $check = False;
         }
       }
       if ($check) {
@@ -193,15 +203,16 @@
       } else {
         # REMOVE USER/ADMIN ACCOUNT FROM RESPECTIVE DATABASE
         if ($isAdmin) {
-          $db.deleteAdmin($unRemove);
+          $db->deleteAdmin($unRemove);
         } else {
-          $db.deleteUser($unRemove);
+          $db->deleteUser($unRemove);
         }
+        $remAccSucc = "Account removed successfully";
       }
     } else {
       $unRemErr = "You must enter an accounts username.";
     }
-  }*/
+  }
   ?>
   <div class="w3-top">
       <div class="w3-bar w3-theme-d2 w3-left-align">
@@ -219,40 +230,43 @@
                 <div class="ma-box col-md-12">
                   <form id="ma-form" class="form" method="post" action="manageAccounts.php">
                     <h2 class="text-center text-info"><b>Add New Admin</b></h2><br>
+                      <span class="success"><?php echo $addAdminSucc; ?></span><br>
 
-                       <label for="firstName" class="text-info" style="margin-right: 20px;"><b>First Name: <b></label>
-                       <input type="text" name="firstName" required value="<?php echo $fnAdmin; ?>">
+                       <label for="firstName" class="text-info"><b>First Name: </b></label><br>
+                       <input type="text" name="firstName" placeholder="Enter First Name" required value="<?php echo $fnAdmin; ?>"><br>
                        <span class="error"><?php echo $fnAdErr; ?></span><br>
 
-                       <label>Last Name: </label>
-                       <input type="text" name="lastName" required value="<?php echo $lnAdmin; ?>">
+                       <label for="lastName" class="text-info"><b>Last Name: </b></label><br>
+                       <input type="text" name="lastName" placeholder="Enter Last Name" required value="<?php echo $lnAdmin; ?>"><br>
                        <span class="error"><?php echo $lnAdErr; ?></span><br>
 
-                       <label>Username: </label>
-                       <input type="text" name="unAdmin" required value="<?php echo $unAdmin; ?>">
+                       <label for="unAdmin" class="text-info"><b>Username: </b></label><br>
+                       <input type="text" name="unAdmin" placeholder="Enter Username" required value="<?php echo $unAdmin; ?>"><br>
                        <span class="error"><?php echo $unAdErr; ?></span><br>
 
-                       <label>Password: </label>
-                       <input type="text" name="password1" required value="<?php echo $pw1Admin; ?>">
+                       <label for="password1" class="text-info"><b>Password: </b></label><br>
+                       <input type="password" name="password1" placeholder="Enter Password" required value="<?php echo $pw1Admin; ?>"><br>
                        <span class="error"><?php echo $pw1AdErr; ?></span><br>
 
-                       <label>Confirm Password: </label>
-                       <input type="text" name="password2" value="<?php echo $pw2Admin; ?>">
+                       <label for="password2" class="text-info"><b>Confirm Password: </b></label><br>
+                       <input type="password" name="password2" placeholder="Repeat Password" required value="<?php echo $pw2Admin; ?>"><br>
                        <span class="error"><?php echo $pw2AdErr; ?></span><br>
 
-                       <input type="submit" name="admin_submit" value="Add Admin">
-                     </form><br><br>
+                       <input style="background-color: #4CAF50; color: white" type="submit" name="admin_submit" value="Add Admin">
+                     </form><br><br><hr width="60%"><br><br>
 
-                     <h4>Remove Account</h4>
-                     <form method="post" action="manageAccounts.php">
-                       <label>Username: </label>
-                       <input type="text" name="unRemove" vale="<?php echo $unRemove; ?>">
+                     <h2 class="text-center text-info"><b>Remove Account</b></h2><br>
+                     <span class="success"><?php echo $remAccSucc; ?></span><br>
+                     <form id="ma-form" class="form" method="post" action="manageAccounts.php">
+                       <label for="unRemove" class="text-info"><b>Username: </b></label><br>
+                       <input type="text" name="unRemove" placeholder="Enter Username" required value="<?php echo $unRemove; ?>"><br>
                        <span class="error"><?php echo $unRemErr; ?></span><br>
 
                        <input type="checkbox" name="adminCheck" value="<?php echo $adminCheck; ?>">
-                       Admin Account<br>
+                       Admin Account<br><br><br>
 
-                       <input type="submit" name="remove_submit" value="Remove Account">
+                       <input style="background-color: #4CAF50; color: white" type="submit" name="remove_submit" value="Remove Account">
+                       <br><br><br>
                      </form>
                    </div>
                </div>
@@ -264,7 +278,7 @@
     // redirect user to index.php
     function redirectUser()
     {
-        header('Location: index.php');
+        header('Location: ../index.php');
         exit();
     }
 ?>

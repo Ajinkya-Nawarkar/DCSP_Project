@@ -1,12 +1,12 @@
 <?php
-  
-  require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
+
+  require_once(dirname(__DIR__)."/Backend_Models/errException.php");
   require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
   // Model class for function implementations of User class
 
   /*
-   
+
    TODO: @JACK: removeAccountFromDB() to be implemented inside manageAccounts.php
 
    */
@@ -18,7 +18,7 @@
     private $firstname;
     private $lastname;
 
-    private $error; 
+    private $error;
     private $database;
 
     function __construct($un, $pw, $fn, $ln)
@@ -26,7 +26,7 @@
       $this->username = $un;
       $this->password = $pw;
       $this->firstname = $fn;
-      $this->lastname = $ln;      
+      $this->lastname = $ln;
 
       // Initialize new objects for all required classes
       $this->error = new errExceptions;
@@ -37,7 +37,7 @@
 
       // Throw the validation errors if exists
       if ($this->error->hasError())
-        throw $this->error; 
+        throw $this->error;
     }
 
     function getUsername()     { return $this->username;  }
@@ -51,7 +51,7 @@
         $this->error->addError("username","Username length must be greater than 3 characters.");
 
       if(!ctype_alnum($this->username))
-        $this->errs->addErr("username","Username must contain alphanumeric characters only.");
+        $this->error->addError("username","Username must contain alphanumeric characters only.");
     }
 
     // Addition of a new admin to the database with its respective attributes
@@ -63,4 +63,3 @@
   }
 
   ?>
-
