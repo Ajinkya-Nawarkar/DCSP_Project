@@ -181,7 +181,7 @@
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div class="login-box col-md-12">
-                    <form id="login-form" class="form" action="editItem.php?varSku=$sku" method="post">
+                    <form id="login-form" class="form" action="editItem.php?varSku='$sku'" method="post">
                         <h2 class="text-center text-info"><b>Edit a product in the database</b></h2>
                         <p class="text-center text-info" style="margin-top: 5px"><b>Please edit the details of the existing product</b></p>
                         
