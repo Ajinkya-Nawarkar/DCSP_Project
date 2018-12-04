@@ -11,7 +11,7 @@ class dbAPI
   public function __construct(){
     $hn = "pluto.cse.msstate.edu";
     $un = "cu81";
-    $pw = "aDqhvAtAp4ny5JMr";
+    $pw = "maroongaming";
     $db = "cu81";
 
     $this->connection = new mysqli($hn, $un, $pw, $db);
@@ -25,6 +25,10 @@ class dbAPI
   }
 
   public function newUser($user){
+    $username = $user->getUsername();
+    $password = $user->getPassword();
+    $firstname = $user->getFirstname();
+    $lastname = $user->getLastname();
     //Initialize a new user's cart with an array containing 50 indexes filled with 0's.
     //When a user adds an item to their cart the value at the index equal to the item's sku
     //will be changed to the amount of the item the user wants.
@@ -34,7 +38,7 @@ class dbAPI
       $array[$i] = 0;
     }
     $query  = "INSERT INTO users (username, password, firstname, lastname, cart) "
-            . "VALUES('$user->username', '$user->password', '$user->firstname', '$user->lastname', '$array')";
+            . "VALUES('$username', '$password', '$firstname', '$lastname', '$array')";
     $this->connection->query($query);
     return true;
   }
@@ -46,8 +50,12 @@ class dbAPI
   }
 
   public function newAdmin($admin){
-    $query  = "INSERT INTO admins (username, password) "
-            . "VALUES('$admin->username', '$admin->password')";
+    $username = $admin->getUsername();
+    $password = $admin->getPassword();
+    $firstname = $admin->getFirstname();
+    $lastname = $admin->getLastname();
+    $query  = "INSERT INTO admins (username, password, firstname, lastname) "
+            . "VALUES('$username', '$password', '$firstname', '$lastname')";
     $this->connection->query($query);
     return true;
   }
@@ -63,8 +71,19 @@ class dbAPI
   }
 
   public function addItemToDB($item){
+
+    $sku = $item->getSku();
+    $name = $item->getName();
+    $platform = $item->getPlatform();
+    $type = $item->getType();
+    $developer = $item->getDeveloper();
+    $description = $item->getDescription();
+    $priceUSD = $item->getPrice();
+    $quantity = $item->getQuantity();
+
     $query  = "INSERT INTO items (sku, name, platform, type, developer, description, priceUSD, quantity) "
-            . "VALUES('$item->sku', '$item->name', '$item->platform', '$item->type', '$item->developer', '$item->description', '$item->priceUSD', '$item->quantity')";
+            . "VALUES('$sku', '$name', '$platform', '$type', '$developer', '$description', '$priceUSD', '$quantity')";
+
     $this->connection->query($query);
     return true;
   }
@@ -130,6 +149,9 @@ class dbAPI
     $this->connection->query($query);
     return true;
   }
+
+
+
   public function getAllUsers(){
     $result = query("SELECT username FROM users");
     return $result;
@@ -148,8 +170,27 @@ class dbAPI
     $array = array($username);
     $result = mysqli_fetch_array($this->connection->query("SELECT password FROM admins WHERE username = '$username'"));
     array_push($array, $result[0]);
-    return $array; 
+    return $array;
+  }
+
+  public function search($search) {
+    $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
+    $results = array();
+    while ($result = mysqli_fetch_array($query)) {
+      array_push($results, $result['sku']);
+    }
+    return $results;
   }
   
- }
+  public function editAccount($username, $password, $firstname, $lastname){
+    $query  = "UPDATE users SET password = '$password', firstname = '$firstname', lastname = '$lastname' WHERE username = '$username'";
+    $this->connection->query($query);
+    return true;
+  }
+  public function editItem($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity){
+    $query  = "UPDATE items SET name = '$name', platform = '$platform', type = '$type', developer = '$developer', description = '$description', priceUSD = '$priceUSD', quantity = '$quantity' WHERE sku = '$sku'";
+    $this->connection->query($query);
+    return true;
+  }
+}
 ?>

@@ -150,6 +150,8 @@ img {vertical-align: middle;}
           break;
         case 'admin':
           echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
+          echo "<a href='Frontend_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>";
+
           break;
       }
     }
@@ -543,46 +545,17 @@ $.ajax({
 }
 });
 */
-
+/*
 function showUser(str){
   jQuery.ajax({
     type: "POST",
     url: 'Database/dbAPI.php',
     data: {functionname: 'search', argument: [search]},
     success:function(data)){
-      <?php
-      echo"<div class="w3-quarter">";
-      echo"<div class="w3-card w3-white">";
 
-      echo"  <div class="w3-container">";
-      echo"  <h3>".$results['priceUSD']."</h3>";
-      echo"  <p>".$results['priceUSD']."</p>";
-      echo"  <p>".$results['description']."</p>";
-      echo"  <p>".$results['priceUSD']."</p>";
-
-        if(isset($_SESSION['type'])){
-          switch ($_SESSION['type']) {
-            case 'user':
-              echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
-              break;
-            case 'admin':
-              echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-              echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
-          }
-        }
-        else{
-          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-        }
-
-
-
-        echo"</div>";
-        echo"</div>";
-      echo"</div>";
-      ?>
     }
   });
-
+*/
 
 
 </script>

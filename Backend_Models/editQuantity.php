@@ -2,7 +2,7 @@
 
 	// Model for edit Quantity class function implementations
 	
-	require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
+	require_once(dirname(__DIR__)."/Backend_Models/errException.php");
 	require_once(dirname(__DIR__)."/Backend_Models/item.php");
   	require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
