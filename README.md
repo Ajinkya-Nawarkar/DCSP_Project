@@ -9,7 +9,7 @@
 ## [Website in action LINK 1 tracking editItem](http://pluto.cse.msstate.edu/~an839/DCSP/link1_DCSP/DCSP_Project/)
 ## [Website in action LINK 2 tracking index_front](http://pluto.cse.msstate.edu/~an839/DCSP/link2_DCSP/DCSP_Project/)
 ## [Website in action LINK 3 tracking master](http://pluto.cse.msstate.edu/~an839/DCSP/link3_DCSP/DCSP_Project/)
-## [Website in action LINK 4 tracking master](http://pluto.cse.msstate.edu/~an839/DCSP/link4_DCSP/DCSP_Project/)
+## [Website in action LINK 4 tracking viewcart_front](http://pluto.cse.msstate.edu/~an839/DCSP/link4_DCSP/DCSP_Project/)
 
 ##### CronTab setting: * * * * * ( sleep 30; /path/to/cron.sh)
 
