@@ -258,28 +258,6 @@ img {vertical-align: middle;}
   <button type="submit" name="submit"><i class="fa fa-search"></i></button>
 
 <br><br>
-<<<<<<< HEAD
-<div id="output">
-  <div class="w3-quarter">
-  <div class="w3-card w3-white">
-    <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
-    <div class="w3-container">
-    <h3>Product test</h3>
-    <h4>Trade</h4>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <?php
-    if(isset($_SESSION['type'])){
-      switch ($_SESSION['type']) {
-        case 'user':
-          echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
-          break;
-        case 'admin':
-          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-          echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
-=======
   <?php
   $search = '';
   if(isset($_POST['search']))  {
@@ -306,7 +284,6 @@ img {vertical-align: middle;}
       $array = $db->getItem($sku[$i]);
       if(is_null($array)){
         break;
->>>>>>> index_search_front
       }
 
 
@@ -567,8 +544,7 @@ $.ajax({
 });
 
 */
-<<<<<<< HEAD
-=======
+
 /*
 function showUser(str){
   jQuery.ajax({
@@ -583,7 +559,7 @@ function showUser(str){
 function displayitems(){
   document.getElementById("items").innerHTML = "<?php echo $temp;?>";
 }
->>>>>>> index_search_front
+
 
 </script>
 
