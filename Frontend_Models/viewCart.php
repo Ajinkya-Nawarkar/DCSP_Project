@@ -137,7 +137,7 @@ session_start();
                         </colgroup>
                         <tr><th class="text-info"><b>SKU</b></th><th class="text-info"><b>Name</b></th><th class="text-info"><b>Price</b></th><th class="text-info"><b>Quantity</b></th><th class="text-info"><b>Remove</b></th></tr>
                         <?php
-                        for ($i = 0; $i < sizeof($cart_all); $i++) {
+                        /*for ($i = 0; $i < sizeof($cart_all); $i++) {
                           if (sizeof($cart_quants) == 0) {
                             echo "<tr><td></td><td>Empty Cart</td><td></td><td></td><td></td></tr>";
                           } else {
@@ -145,7 +145,7 @@ session_start();
                             echo "<td><input type='number' name='quant".$cart_all[$i]['sku']."' min='0' max='".$cart_all[$i]['quantity']."' value='".$cart_quants[$cart_all[$i]['sku']]."' required></td>";
                             echo "<td><input type='checkbox' name='remove".$cart_all[$i]['sku']."'></td></tr>";
                           }
-                        }
+                        }*/
                         ?>
                         <tr style="background-color:#ffffff"><td></td><td></td><td></td><td></td><td style="vertical-align:middle"><input style="background-color: #4CAF50; color: white" type='submit' name='update' value='Update'></td></tr>
                       </table><br>
