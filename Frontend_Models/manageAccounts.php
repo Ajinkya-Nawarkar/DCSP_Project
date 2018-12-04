@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    session_start(); error_reporting(E_ALL); ini_set('display_errors', 0);
 ?>
 <!DOCTYPE html>
 <html>
@@ -12,6 +12,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <style>
+        #ma {
+          margin-top:80px;
+        }
         .text-center{
         margin-top: -10px;
         }
@@ -66,37 +69,12 @@
             opacity:1;
         }
 
-        /* Extra styles for the cancel button */
-        .cancelbtn {
-            padding: 14px 20px;
-            background-color: #f44336;
-        }
-
-        /* Float cancel and signup buttons and add an equal width */
-        .cancelbtn, .signupbtn {
-          float: left;
-          width: 50%;
+        #ma .container #ma-row #ma-column .ma-box #ma-form {
           padding: 20px;
         }
-
-        /* Add padding to container elements */
-        .container {
-            padding: 16px;
-        }
-
-        /* Clear floats */
-        .clearfix::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
-
-        /* Change styles for cancel button and signup button on extra small screens */
-        @media screen and (max-width: 300px) {
-            .cancelbtn, .signupbtn {
-               width: 100%;
-            }
-        }
+        #ma .container #ma-row #ma-column .ma-box #ma-form #register-link {
+          margin-top: -85px;
+        }* {box-sizing: border-box}
     </style>
 </head>
 <body>
@@ -225,42 +203,61 @@
     }
   }*/
   ?>
-  <h4>Add New Admin</h4>
-  <form method="post" action="manageAccounts.php">
-       <label>First Name: </label>
-       <input type="text" name="firstName" value="<?php echo $fnAdmin; ?>">
-       <span class="error"><?php echo $fnAdErr; ?></span><br>
+  <div class="w3-top">
+      <div class="w3-bar w3-theme-d2 w3-left-align">
 
-       <label>Last Name: </label>
-       <input type="text" name="lastName" value="<?php echo $lnAdmin; ?>">
-       <span class="error"><?php echo $lnAdErr; ?></span><br>
+          <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
+          <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
 
-       <label>Username: </label>
-       <input type="text" name="unAdmin" value="<?php echo $unAdmin; ?>">
-       <span class="error"><?php echo $unAdErr; ?></span><br>
+      </div>
+  </div>
 
-       <label>Password: </label>
-       <input type="text" name="password1" value="<?php echo $pw1Admin; ?>">
-       <span class="error"><?php echo $pw1AdErr; ?></span><br>
+  <div align="center" id="ma">
+    <div class="container">
+        <div id="ma-row" class="row justify-content-center align-items-center">
+            <div id="ma-column" class="col-md-6">
+                <div class="ma-box col-md-12">
+                  <form id="ma-form" class="form" method="post" action="manageAccounts.php">
+                    <h2 class="text-center text-info"><b>Add New Admin</b></h2><br>
 
-       <label>Confirm Password: </label>
-       <input type="text" name="password2" value="<?php echo $pw2Admin; ?>">
-       <span class="error"><?php echo $pw2AdErr; ?></span><br>
+                       <label for="firstName" class="text-info" style="margin-right: 20px;"><b>First Name: <b></label>
+                       <input type="text" name="firstName" required value="<?php echo $fnAdmin; ?>">
+                       <span class="error"><?php echo $fnAdErr; ?></span><br>
 
-       <input type="submit" name="admin_submit" value="Add Admin">
-     </form><br><br>
+                       <label>Last Name: </label>
+                       <input type="text" name="lastName" required value="<?php echo $lnAdmin; ?>">
+                       <span class="error"><?php echo $lnAdErr; ?></span><br>
 
-     <h4>Remove Account</h4>
-     <form method="post" action="manageAccounts.php">
-       <label>Username: </label>
-       <input type="text" name="unRemove" vale="<?php echo $unRemove; ?>">
-       <span class="error"><?php echo $unRemErr; ?></span><br>
+                       <label>Username: </label>
+                       <input type="text" name="unAdmin" required value="<?php echo $unAdmin; ?>">
+                       <span class="error"><?php echo $unAdErr; ?></span><br>
 
-       <input type="checkbox" name="adminCheck" value="<?php echo $adminCheck; ?>">
-       Admin Account<br>
+                       <label>Password: </label>
+                       <input type="text" name="password1" required value="<?php echo $pw1Admin; ?>">
+                       <span class="error"><?php echo $pw1AdErr; ?></span><br>
 
-       <input type="submit" name="remove_submit" value="Remove Account">
-     </form>
+                       <label>Confirm Password: </label>
+                       <input type="text" name="password2" value="<?php echo $pw2Admin; ?>">
+                       <span class="error"><?php echo $pw2AdErr; ?></span><br>
+
+                       <input type="submit" name="admin_submit" value="Add Admin">
+                     </form><br><br>
+
+                     <h4>Remove Account</h4>
+                     <form method="post" action="manageAccounts.php">
+                       <label>Username: </label>
+                       <input type="text" name="unRemove" vale="<?php echo $unRemove; ?>">
+                       <span class="error"><?php echo $unRemErr; ?></span><br>
+
+                       <input type="checkbox" name="adminCheck" value="<?php echo $adminCheck; ?>">
+                       Admin Account<br>
+
+                       <input type="submit" name="remove_submit" value="Remove Account">
+                     </form>
+                   </div>
+               </div>
+           </div>
+       </div>
 </body>
 </html>
 <?php
