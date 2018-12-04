@@ -81,7 +81,7 @@ session_start();
 
       // Initalize cart
       $username = $_SESSION['username'];
-      $cart = new Cart($username);
+      //$cart = new Cart($username);
 
       // Check if any updates had been made to the cart and update the users cart accordingly
       if (isset($_POST['update']) or isset($_POST['checkout'])) {
