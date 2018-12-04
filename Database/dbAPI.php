@@ -97,13 +97,13 @@ class dbAPI
     $currentInventoryQuant = mysqli_fetch_array($this->connection->query("SELECT quantity FROM items WHERE sku = '$sku'"));
 
     //Update overall inventory
-    $updatedInventory = $cartQuery[0][$sku] - $amount;
+    $updatedInventory = $cartQuery['cart'][$sku-1] - $amount;
     $updatedInventory = $currentInventoryQuant[0] + $updatedInventory;
     $query  = "UPDATE items SET quantity = '$updatedInventory' WHERE sku = '$sku'";
     $this->connection->query($query);
 
     //Send an updated query using the new cartQuery array
-    $cartQuery[0][$sku] = $amount;
+    $cartQuery['cart'][$sku-1] = $amount;
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
@@ -119,7 +119,7 @@ class dbAPI
     $this->connection->query($query);
 
     //Send an updated query using the new cartQuery array
-    $cartQuery[0][$sku] = $amount;
+    $cartQuery['cart'][$sku-1] = $amount;
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
@@ -130,12 +130,12 @@ class dbAPI
     $currentInventoryQuant = mysqli_fetch_array($this->connection->query("SELECT quantity FROM items WHERE sku = '$sku'"));
 
     //Add queries to update overall inventory
-    $updatedInventory = $currentInventoryQuant[0] + $cartQuery[0][$sku];
+    $updatedInventory = $currentInventoryQuant[0] + $cartQuery['cart'][$sku-1];
     $query  = "UPDATE items SET quantity = '$updatedInventory' WHERE sku = '$sku'";
     $this->connection->query($query);
 
     //Send an updated query using the new cartQuery arrays
-    $cartQuery[0][$sku] = 0;
+    $cartQuery['cart'][$sku-1] = 0;
     $query  = "UPDATE users SET cart = '$cartQuery' WHERE username = '$username'";
     $this->connection->query($query);
     return true;
