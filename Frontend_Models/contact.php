@@ -14,7 +14,7 @@
 
         <style>
             #contact{
-                margin-top: 80px;
+                margin-top: 20px;
             }
             .text-center{
             margin-top: -10px;
@@ -29,7 +29,7 @@
             }
             footer{
                 margin-top: 160px;
-                padding-bottom: 200px;
+                padding-bottom: 0px;
             }
         		label {
             width:180px;
@@ -137,8 +137,8 @@
           <label>Message</label>
           <input class="w3-input" type="text" name="Message" required>
         </div>
-        <input class="w3-check" type="checkbox" checked name="Like">
-        <label>I Like it!</label>
+          <br><input class="w3-check" type="checkbox" checked name="Like">
+          <label>I Like it!</label>
         <div class="w3-container">
     <button type="submit" class="w3-button w3-right w3-theme">Send</button>
   </form>
