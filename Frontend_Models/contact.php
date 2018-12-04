@@ -109,7 +109,7 @@
     <div class="w3-col m7">
       <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="index.php" target="_blank">
       <div class="w3-section">
-        <label>Name    </label>
+        <label>Name----</label>
         <input class="w3-input" type="text" name="Name" required>
       </div>
       <div class="w3-section">
