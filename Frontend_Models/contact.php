@@ -96,17 +96,7 @@
   	?>
 		</div>
 	    </div>
-    <div class="w3-top">
-        <div class="w3-bar w3-theme-d2 w3-left-align">
-
-            <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
-            <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
-
-            <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
-        </div>
-    </div>
-<php
-  <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
+ <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
   <div class="w3-row">
     <div class="w3-col m5">
     <div class="w3-padding-16"><span class="w3-xlarge w3-border-teal w3-bottombar">Contact Us</span></div>
@@ -136,12 +126,12 @@
   <button type="submit" class="w3-button w3-right w3-theme">Send</button>
 </form>
 
-	      </div>
-      </div>
+
+</div>
+
     </div>
   </div>
 </div>
-?>
 <div class="w3-top">
         <div class="w3-bar w3-theme-d2 w3-left-align">
 
