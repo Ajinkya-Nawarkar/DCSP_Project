@@ -88,8 +88,8 @@ session_start();
         for ($sku = 0; $sku < 50; $sku++) {
           $q = 'quant'.$sku;
           $rem = 'remove'.$sku;
-          echo $q." ".$rem;
           if (isset($_POST[$q])) {
+            echo $q." ".$rem;
             $quant = $_POST[$q];
             if ($quant == 0) {
               $cart->removeFromCart($sku);
