@@ -192,6 +192,7 @@ class dbAPI
 
     if ($password != ""){
       $query  = "UPDATE users SET password = '$password' WHERE username = '$username'";
+      $this->connection->query($query);
     }
     return true;
   }
