@@ -15,6 +15,7 @@
         <style>
             #editItem{
                 margin-top: 80px;
+                margin-left: 30px;
             }
             .text-center{
             margin-top: -10px;
@@ -60,8 +61,10 @@
                 display: table;
             }
             b.skuOutput {
-                width: 10%;
+                margin-left: 15px;
+                width: 7%;
                 display: inline-block;
+                padding: 7px;
                 border: none;
                 background: #f1f1f1;
             }
@@ -177,6 +180,8 @@
 
             <a href='manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>
 
+            <a href='createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>
+
             <a href='logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true'></i> Logout</a>
         </div>
     </div>
@@ -190,7 +195,7 @@
                         <h2 class="text-center text-info"><b>Edit a product in the database</b></h2>
                         <p class="text-center text-info" style="margin-top: 5px"><b>Please edit the details of the existing product</b> <b class="skuOutput">#SKU: <?php echo $sku; ?></b></p>
                         
-                        <input type="hidden" name="sku" id="sku" value="<?php echo $sku; ?>">
+                        <input type="hidden" name="sku" id="sku" value="<?php echo $sku; ?>"><br>
  
                         <label for="name" class="text-info"><b>Name:</b></label><br>
                         <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>"><br>
