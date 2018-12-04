@@ -367,13 +367,14 @@ img {vertical-align: middle;}
               echo"<dev id='btncont'>";
               echo "<form action='index.php' method='post' id='remove'>";
               echo "<a href='index.php?remove=$skuVar' class='redbtn'>Remove Item</a>";
-              echo"</form>";
+              //echo"</form>";
 
 
 
               echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a>";
-              break;
               echo"</dev>";
+              break;
+
           }
         }
         else{
