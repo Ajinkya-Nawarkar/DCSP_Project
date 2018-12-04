@@ -99,6 +99,7 @@ img {vertical-align: middle;}
 }
 .btncont{
   text-align: center;
+
 }
 .redbtn{
   border: none;
@@ -120,6 +121,7 @@ img {vertical-align: middle;}
 }
 .btncont{
   text-align: center;
+
 }
 /* The dots/bullets/indicators */
 .dot {
@@ -134,6 +136,7 @@ img {vertical-align: middle;}
 .active {
   background-color: #717171;
 }
+
 .item{
   background-color: white;
   width: 350px;
@@ -143,6 +146,7 @@ img {vertical-align: middle;}
   margin-top: 20px;
   margin-bottom: 20px;
 }
+
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -325,6 +329,14 @@ img {vertical-align: middle;}
 
 <br><br>
   <?php
+  require_once("Backend_Models/cart.php");
+  $cart = new Cart($_SESSION['username']);
+
+  if (isset($_GET['addCartSku'])) {
+    $cart->addToCart($_GET['addCartSku'], 1);
+  }
+
+
   $search = '';
   if(isset($_POST['search']))  {
     $search = $_POST['search'];
@@ -340,9 +352,7 @@ img {vertical-align: middle;}
   }
   $sku = array();
   $sku = $db->search($search);
-  //require_once('Backend_Models/cartQuery.php');
-//  $cart = new Cart;
-//  $cart = $cart->newCart($_SESSION['username']);
+
   for($i = '0'; $i<sizeof($sku); $i++){
       $array = array();
       $array = $db->getItem($sku[$i]);
@@ -351,6 +361,7 @@ img {vertical-align: middle;}
       }
       echo"<div class='w3-quarter'>";
       echo"<div class='w3-card w3-white w3-margin-top w3-margin-right w3-border w3-border-red w3-padding-16'>";
+
     //while($results = mysqli_fetch_array($query)){
       echo"  <div class='w3-container'>";
       echo"  <h3>".$array['name']."</h3>";
@@ -359,13 +370,13 @@ img {vertical-align: middle;}
         if(isset($_SESSION['type'])){
           switch ($_SESSION['type']) {
             case 'user':
-              echo "<a href='index.php'  class='btn add'>Add to cart</a>";
-              //$cart->addToCart($array['sku'],1)
+              echo "<a href='index.php?addCartSku=".$array['sku']."'  class='btn add'>Add to cart</a>";
               break;
             case 'admin':
               $skuVar = $sku[$i];
               echo"<dev id='btncont'>";
               echo "<form action='index.php' method='post' id='remove'>";
+
               echo "<a href='index.php?remove=$skuVar' class='redbtn'>Remove Item</a>";
               //echo"</form>";
 
@@ -374,6 +385,7 @@ img {vertical-align: middle;}
               echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a>";
               echo"</dev>";
               break;
+
 
           }
         }
