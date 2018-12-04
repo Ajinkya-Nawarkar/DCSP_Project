@@ -83,7 +83,6 @@
             
             $firstname = $result['firstname'];
             $lastname = $result['lastname'];
-            $type = $result['type'];
             $password1 = "";
             $password2 = "";
             $encryptedPw = "";
@@ -158,7 +157,7 @@
                 <div class="login-box col-md-12">
                     <form id="login-form" class="form" action="editAccount.php" method="post">
                         <h2 class="text-center text-info"><b>Edit Account</b></h2>
-                        <p class="text-center text-info" style="margin-top: 5px"><b>Please edit your account details</b> <b class="skuOutput">#SKU: <?php echo $sku; ?></b></p>
+                        <p class="text-center text-info" style="margin-top: 5px"><b>Please edit your account details</b> <b class="unOutput">#Username: <?php echo $username; ?></b></p>
                         
                         <input type="hidden" name="sku" id="sku" value="<?php echo $sku; ?>"><br>
  
