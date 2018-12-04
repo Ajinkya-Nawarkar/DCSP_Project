@@ -101,16 +101,17 @@ session_start();
           }
         }
       }
-      echo "YO";
 
       // If they checkedout, redirect them to checkout.php
-      /*if (isset($_POST['checkout'])){
+      if (isset($_POST['checkout'])){
         header('Location: checkout.php');
         exit();
       }
 
+      echo "YO";
+
       // Get cart quantities [sku=>quant] and cart details ['sku'=>sku, 'name'=>name, etc...]
-      $cart_quants = $cart->getItems();
+      /*$cart_quants = $cart->getItems();
 
       $empty = False;
       if (sizeof($cart_quants) == 0) {
