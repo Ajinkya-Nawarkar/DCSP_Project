@@ -1,3 +1,52 @@
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 0); ?>
+
+<!DOCTYPE html>
+<html lang='en'>
+    <head>
+        <link href="css.css" rel="stylesheet" id="bootstrap-css">
+		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <meta charset="UTF-8">
+        <title>Maroon Gaming Co</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <style>
+            #login{
+                margin-top: 80px;
+            }
+            .text-center{
+            margin-top: -10px;
+            }
+            .form-group{
+                margin-top: 5px;
+                padding-bottom: 3px;
+            }
+            .form-group-submit{
+                margin-top: 14px;
+                padding-bottom: 2px;
+            }
+            footer{
+                margin-top: 160px;
+                padding-bottom: 200px;
+            }
+            body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
+            input[type=text], input[type=password] {
+                width: 25%;
+                padding: 15px;
+                margin: 5px 0 5px 0;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
+            input[type=text]:focus, input[type=password]:focus {
+                background-color: #ddd;
+                outline: none;
+            }
+        </style>
+    </head>
+    <body>
 <php
   <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
   <div class="w3-row">
