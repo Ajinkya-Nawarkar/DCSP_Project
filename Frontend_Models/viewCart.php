@@ -112,9 +112,12 @@ session_start();
       $cart_quants = $cart->getItems();
 
       $empty = False;
-      if ($cart_quants)
+      if (sizeof($cart_quants) == 0) {
+        $empty = True;
+      } else {
+        $cart_all = $cart->getItemsDetails($cart_quants);
+      }
 
-      $cart_all = $cart->getItemsDetails($cart_quants);
       ?>
 
       <div class="w3-top">
