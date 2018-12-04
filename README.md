@@ -16,23 +16,29 @@
 
 ## Folder Structure: 
 * index.php     - main file which implements and makes calls to all other php files and functions
+* cron.sh       - a bash script which reflects changes in github repo on Pluto every minute for a given branch
 * Frontend_Models      - Includes all the required php files needed for the frontend
 * Backend_Models       - Includes all required php files for backend 
+* Database             - Includes the databse API
 
-        Frontend_Models/design-top.php   - Implements the Design top for the homepage
-        Frontend_Models/footer.php       - Implements the footer and access to all quick links for the user
-        Frontend_Models/navigation.php   - Implements the navigation bar linking to inventory, login, logout, signup pages
-        Frontend_Models/signup.php       - Enables the user to create an account
-        Frontend_Models/logout.php       - Enables the user to logout while saving the current cookie session
-        Frontend_Models/login.php        - Enables user or Admin login 
-        Frontend_Models/userAccess.php   - Enables user functions 
-        Frontend_Models/adminAccess.php  - Enables admin functions 
+        Frontend_Models/signup.php              - Enables the user to create an account
+        Frontend_Models/login.php               - Enables user or Admin login 
+        Frontend_Models/logout.php              - Enables the user to logout
+        Frontend_Models/editAccount.php         - Enables user to edit Account details 
+        Frontend_Models/viewCart.php            - Enables user to view and edit their cart 
+        Frontend_Models/manageAccounts.php      - Enables admin to add or delte an admin
+        Frontend_Models/createItem.php          - Enables admin to add a new product to the database
+        Frontend_Models/editItem.php            - Enables admin to edit an existing product in the database
 
         Backend_Models/common.php               - Implements the common class for implementations of the shared functions
         Backend_Models/errException.php         - Implements the exception class for logging errors independently for different objects
         Backend_Models/user.php                 - Implements the user class for function implementations of a user
         Backend_Models/admin.php                - Implements the admin class for function implementations of a admin
         Backend_Models/item.php                 - Implements the item class for function implementations of items
+        Backend_Models/editQuantity.php         - Implements the editQuantity class for edit and add item functionalities
+        
+        Database/dbAPI.php                      - Implements all functions needed for communication with the database
+        
          
 ## Database Dummy Accounts: 
 
