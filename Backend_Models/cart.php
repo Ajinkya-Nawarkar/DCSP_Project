@@ -20,7 +20,7 @@ class Cart
     $cart = array();
     for ($i = 0; $i < 50; $i++) {
       if ($items[$i] != '0') {
-        $cart[$i] = substr($items,$i,$i+1);
+        $cart[$i] = $items[$i];
       }
     }
     return $cart;
