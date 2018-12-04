@@ -70,10 +70,13 @@
     <body>
         <?php
              // Send the #SKU using this format -> href='Frontend_Models/editItem.php?varSku=$sku'
-             require_once(dirname(__DIR__)."/Database/dbAPI.php");
+
+            require_once(dirname(__DIR__)."/Backend_Models/Common.php");
+            require_once(dirname(__DIR__)."/Database/dbAPI.php");
             
             // Initialize the objects
             $db = new dbAPI;
+            $common = new Common;
             
             // Extract the username
             $username = $_SESSION['username'];
