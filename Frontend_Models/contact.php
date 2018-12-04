@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
-            #login{
+            #contact{
                 margin-top: 80px;
             }
             .text-center{
@@ -28,8 +28,8 @@
                 padding-bottom: 2px;
             }
             footer{
-                margin-top: 0px;
-                padding-bottom: 0px;
+                margin-top: 160px;
+                padding-bottom: 200px;
             }
         		label {
             width:180px;
@@ -53,6 +53,13 @@
             input[type=text]:focus, input[type=password]:focus {
                 background-color: #ddd;
                 outline: none;
+            }
+            .w3-input {
+                padding: 8px;
+                display: block;
+                border: none;
+                border-bottom: 1px solid #ccc;
+                width: 100%;
             }
         </style>
     </head>
