@@ -77,7 +77,7 @@
             $editQ = new editQuantity;
             
             // Extract the username
-            $username = $_SESSION['username']
+            $username = $_SESSION['username'];
 
             // Initialize the variables 
             $result = $db->getUserDetails($username);
