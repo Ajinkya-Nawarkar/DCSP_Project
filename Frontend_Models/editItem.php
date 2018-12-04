@@ -4,7 +4,7 @@
 <html lang='en'>
     <head>
         <link href="css.css" rel="stylesheet" id="bootstrap-css">
-		<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+        <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
         <meta charset="UTF-8">
         <title>Maroon Gaming Co</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
-            #newItem{
+            #editItem{
                 margin-top: 80px;
                 margin-left: 30px;
             }
@@ -22,7 +22,6 @@
             }
             .form-group{
                 margin-top: 5px;
-                margin-right: 50px;
                 padding-bottom: 3px;
             }
             .form-group-submit{
@@ -30,15 +29,17 @@
                 padding-bottom: 2px;
             }
             footer{
-                margin-top: 160px;
+                margin-top: 200px;
                 padding-bottom: 200px;
             }
+            
             body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
 
+            /* Full-width input fields */
             input[type=text], input[type=password] {
                 width: 25%;
                 padding: 15px;
-                margin: 5px 0 5px 0;
+                margin: 5px 0 22px 0;
                 display: inline-block;
                 border: none;
                 background: #f1f1f1;
@@ -48,10 +49,33 @@
                 background-color: #ddd;
                 outline: none;
             }
+            /* Add padding to container elements */
+            .container {
+                padding: 16px;
+            }
+
+            /* Clear floats */
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+            b.skuOutput {
+                margin-left: 15px;
+                width: 7%;
+                display: inline-block;
+                padding: 7px;
+                border: none;
+                background: #f1f1f1;
+            }
+
+            }
         </style>
     </head>
     <body>
         <?php
+
+            // Send the #SKU using this format -> href='Frontend_Models/editItem.php?varSku=$sku'
 
             require_once(dirname(__DIR__)."/Database/dbAPI.php");
             require_once(dirname(__DIR__)."/Backend_Models/item.php");
@@ -61,42 +85,33 @@
             $db = new dbAPI;
             $editQ = new editQuantity;
 
+            // Extract the 
+            if (isset($_GET['varSku'])) {    
+                $sku = $_GET['varSku'];
+            }
+            else if (isset($_POST['sku'])){
+                $sku = $_POST['sku'];
+            }
+
             // Initialize the variables 
-            $sku = "";
-            $name = "";
-            $platform = "";
-            $type = "";
-            $developer = "";
-            $description = "";
-            $priceUSD = "";
-            $quantity = "";
+            $result = $db->getItem($sku);
+
+            $name = $result['name'];
+            $platform = $result['platform'];
+            $type = $result['type'];
+            $developer = $result['developer'];            
+            $description = $result['description'];
+            $priceUSD = $result['priceUSD'];
+            $quantity = $result['quantity'];
 
             # Error message variables
-            $skuErr = "";
             $priceErr = "";
             $quantityErr = "";
             $errFlg = False;
-
             
             # Check if submission has been made
             if (!empty($_POST)) 
             {
-              if (isset($_POST['sku'])) 
-              {
-                $sku = $_POST['sku'];
-                if (!is_numeric($sku) or $sku <= 0) 
-                {
-                  $skuErr = "#SKU must be positive numeral and greater than or equal to 1";
-                  $errFlg = True;
-                } 
-                if ($db->query("SELECT sku FROM items WHERE sku='$sku'")) 
-                {
-                    if ($sku != "") $skuErr .= "\n";
-                    $skuErr .= "The #SKU " . $sku ." is already assigned to another product. Try another #SKU.";
-                    $errFlg = True;
-                }
-              } 
-
               if (isset($_POST['name'])) 
               {
                 $name = $_POST['name'];
@@ -151,7 +166,7 @@
             {
                 # ADD ITEM TO DATABASE HERE
                 $item = new Item($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity);
-                $editQ->addItemToDB($item);
+                $editQ->editItemInDB($item);
                 redirectUser();
             }       
         ?>
@@ -165,63 +180,40 @@
 
             <a href='manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>
 
+            <a href='createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>
+
             <a href='logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true'></i> Logout</a>
         </div>
     </div>
         
-	<div align="left" id="newItem">
+    <div align="left" id="editItem">
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div class="login-box col-md-12">
-                    <form id="login-form" class="form" action="createItem.php" method="post">
-                        <h2 class="text-center text-info"><b>Add an Item to the Database</b></h2>
-                        <p class="text-center text-info" style="margin-top: 5px"><b>Please fill in the details of the new product</b></p>
+                    <form id="login-form" class="form" action="editItem.php" method="post">
+                        <h2 class="text-center text-info"><b>Edit a product in the database</b></h2>
+                        <p class="text-center text-info" style="margin-top: 5px"><b>Please edit the details of the existing product</b> <b class="skuOutput">#SKU: <?php echo $sku; ?></b></p>
                         
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="sku" id="sku" class="form-control" placeholder="#SKU" style="width: 235px;" required value="<?php echo $sku; ?>">
-                        </div>
-
-                        <?php
-                            if ($skuErr)
-                            {
-                                echo "<p style='color: red'>";
-                                echo "<span class='error'>";
-                                echo $skuErr; 
-                                echo "</span><br></p>";
-                            }
-                        ?>
+                        <input type="hidden" name="sku" id="sku" value="<?php echo $sku; ?>"><br>
+ 
+                        <label for="name" class="text-info"><b>Name:</b></label><br>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>"><br>
+                         
+                        <label for="platform"><b>Platform: </b></label><br>
+                        <input type="text" name="platform" id="platform" class="form-control" placeholder="<?php echo $platform; ?>" style="width: 235px;" required value="<?php echo $platform; ?>"><br>
                         
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>">
-                        </div> 
+                        <label for="type"><b>Type:</b></label><br>
+                        <input type="text" name="type" id="type" class="form-control" placeholder="<?php echo $type; ?>" style="width: 235px;" required value="<?php echo $type; ?>"><br>
+                        
+                        <label for="developer"><b>Developer</b></label><br>
+                        <input type="text" name="developer" id="developer" class="form-control" placeholder="<?php echo $developer; ?>" style="width: 235px;" required value="<?php echo $developer; ?>"><br>  
 
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="platform" id="platform" class="form-control" placeholder="Platform" style="width: 235px;" required value="<?php echo $platform; ?>">
-                        </div>
+                        <label for="description"><b>Description of the product</b></label><br>
+                        <input type="text" name="description" id="description" class="form-control" placeholder="<?php echo $description; ?>" style="width: 235px;" required value="<?php echo $description; ?>"><br>        
 
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="type" id="type" class="form-control" placeholder="Type" style="width: 235px;" required value="<?php echo $type; ?>">
-                        </div>
-
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="developer" id="developer" class="form-control" placeholder="Developer" style="width: 235px;" required value="<?php echo $developer; ?>">
-                        </div>
-
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="description" id="description" class="form-control" placeholder="Description of the product" style="width: 235px;" required value="<?php echo $description; ?>">
-                        </div>
-
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="priceUSD" id="priceUSD" class="form-control" placeholder="Price in USD" style="width: 235px;" required value="<?php echo $priceUSD; ?>">
-                        </div>
+                        <label for="priceUSD"><b>Price in USD</b></label><br>
+                        <input type="text" name="priceUSD" id="priceUSD" class="form-control" placeholder="<?php echo $priceUSD; ?>" style="width: 235px;" required value="<?php echo $priceUSD; ?>"><br>
 
                         <?php
                             if ($priceErr)
@@ -233,11 +225,9 @@
                             }
                         ?>
 
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="quantity" id="quantity" class="form-control" placeholder="Quantity available" style="width: 235px;" required value="<?php echo $quantity; ?>">
-                        </div>
-						
+                        <label for="quantity"><b>Quantity available:</b></label><br>
+                        <input type="text" name="quantity" id="quantity" class="form-control" placeholder="<?php echo $quantity; ?>" style="width: 235px;" required value="<?php echo $quantity; ?>"><br>           
+                        
                         <?php
                             if ($quantityErr)
                             {
@@ -249,7 +239,7 @@
                         ?>
                         
                         <div class="form-group-submit">
-                            <input style="background-color: #4CAF50; color: white" type="submit" value="Add Item">
+                            <input style="background-color: #4CAF50; color: white" type="submit" value="Edit Item">
                         </div>
                     </form>
                 </div>
