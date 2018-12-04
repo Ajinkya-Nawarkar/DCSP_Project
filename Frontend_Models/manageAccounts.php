@@ -219,9 +219,9 @@
 
           <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gaming - Administrator</a>
           <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
-          <a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>
-          <a href='Frontend_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>
-          <a href='Frontend_Models/logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true'></i> Logout</a>
+          <a href='manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>
+          <a href='createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>
+          <a href='logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true'></i> Logout</a>
 
       </div>
   </div>
