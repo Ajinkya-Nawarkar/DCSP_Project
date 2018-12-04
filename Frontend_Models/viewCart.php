@@ -109,14 +109,14 @@ session_start();
       }
 
       // Get cart quantities [sku=>quant] and cart details ['sku'=>sku, 'name'=>name, etc...]
-      $cart_quants = $cart->getItems();
+      /*$cart_quants = $cart->getItems();
 
       $empty = False;
       if (sizeof($cart_quants) == 0) {
         $empty = True;
       } else {
         $cart_all = $cart->getItemsDetails($cart_quants);
-      }
+      }*/
 
       ?>
 
