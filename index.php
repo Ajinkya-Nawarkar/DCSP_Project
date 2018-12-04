@@ -199,19 +199,19 @@ img {vertical-align: middle;}
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
-  <img src="Assets\banner.png" style="width:100%;min-height:300px;max-height:300px;">
+  <img src="Assets/banner.png" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 3</div>
-  <img src="Assets\switch.jpg" style="width:100%;min-height:300px;max-height:300px;">
+  <img src="Assets/switch.jpg" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 3</div>
-  <img src="Assets\ps4.jpg" style="width:100%;min-height:300px;max-height:300px;">
+  <img src="Assets/ps4.jpg" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
@@ -252,22 +252,41 @@ img {vertical-align: middle;}
 
 <!--<input type="text" id="myInput" onkeyup="showUser(this.value)" placeholder="Search for items.." title="Type in a name">
 -->
+
 <form class="example" action="index.php" method="post">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" onsubmit= "<?php $search = $_POST['search'];dosearch($search);?>"><i class="fa fa-search"></i></button>
+  <button type="submit" onsubmit= "
+  <?php $search = '';
+  if(isset($_POST['search']))
+  {$search = $_POST['search'];
+  }
+  dosearch($search);
+  ?>
+  "><i class="fa fa-search"></i></button>
+
+
   <?php
+  if(!isset($_POST['search'])){
+    $search = '';
+    }
   if(is_null($search)){
     dosearch('');
   }
   function dosearch($search){
+
   require_once('Database/dbAPI.php');
+
   $db = new dbAPI;
-  $sku[] = $db->search($search);
+  $sku = array();
+  $sku = $db->search($search);
+      echo"the search is $search";
+      echo"The sku is".$sku['1'];
   echo"<div class='w3-quarter'>";
   echo"<div class='w3-card w3-white'>";
 
   for($i = '0', $i<'11'; $i++;){
-      $array = array($db->getItem($sku[$i]));
+      $array = array();
+      $array = $db->getItem($sku[$i]);
 
     //while($results = mysqli_fetch_array($query)){
       echo"  <div class='w3-container'>";
@@ -281,12 +300,12 @@ img {vertical-align: middle;}
               echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
               break;
             case 'admin':
-              echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-              echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
+              echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Remove Item</a>";
+              echo "<a href='Frontend_Models/editQ.php'  class='w3-btn w3-red'>Edit</a>";
           }
         }
         else{
-          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+          echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Add to cart</a>";
         }
 
 
@@ -299,40 +318,7 @@ img {vertical-align: middle;}
 }
   ?>
 </form>
-<br><br>
-<div id="output">
-  <div class="w3-quarter">
-  <div class="w3-card w3-white">
-    <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
-    <div class="w3-container">
-    <h3>Product test</h3>
-    <h4>Trade</h4>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <?php
-    if(isset($_SESSION['type'])){
-      switch ($_SESSION['type']) {
-        case 'user':
-          echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
-          break;
-        case 'admin':
-          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-          echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
-      }
-    }
-    else{
-      echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-    }
-     ?>
 
-
-    </div>
-    </div>
-  </div>
-</div>
-</div>
 <!--
 <div class="w3-container" style="position:relative">
   <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
@@ -436,6 +422,7 @@ img {vertical-align: middle;}
 
     </div>
   </div>
+</div>
 </div>
 
 
