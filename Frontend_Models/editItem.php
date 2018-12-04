@@ -59,7 +59,12 @@
                 clear: both;
                 display: table;
             }
-
+            b.skuOutput {
+                width: 10%;
+                display: inline-block;
+                border: none;
+                background: #f1f1f1;
+            }
 
             }
         </style>
@@ -183,11 +188,8 @@
                 <div class="login-box col-md-12">
                     <form id="login-form" class="form" action="editItem.php" method="post">
                         <h2 class="text-center text-info"><b>Edit a product in the database</b></h2>
-                        <p class="text-center text-info" style="margin-top: 5px"><b>Please edit the details of the existing product</b></p>
+                        <p class="text-center text-info" style="margin-top: 5px"><b>Please edit the details of the existing product</b> <b class="skuOutput">#SKU: <?php echo $sku; ?></b></p>
                         
-
-                        <label for="sku" class="text-info"><b>#SKU:</b></label>
-                        <label for="sku" class="text-info" style="margin-right: 15px;"><b><?php echo $sku; ?></b></label><br>
                         <input type="hidden" name="sku" id="sku" value="<?php echo $sku; ?>">
  
                         <label for="name" class="text-info"><b>Name:</b></label><br>
