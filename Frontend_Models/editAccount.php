@@ -74,7 +74,6 @@
             
             // Initialize the objects
             $db = new dbAPI;
-            $editQ = new editQuantity;
             
             // Extract the username
             $username = $_SESSION['username'];
