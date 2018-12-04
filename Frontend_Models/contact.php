@@ -28,7 +28,7 @@
                 padding-bottom: 2px;
             }
             footer{
-                margin-top: 160px;
+                margin-top: 0px;
                 padding-bottom: 200px;
             }
             body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
@@ -109,11 +109,11 @@
     <div class="w3-col m7">
       <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="index.php" target="_blank">
       <div class="w3-section">
-        <label>Name</label><?php echo "    "?>
+        <label>Name</label>
         <input class="w3-input" type="text" name="Name" required>
       </div>
       <div class="w3-section">
-        <label>Email   </label>
+        <label>Email</label>
         <input margin_left: 20px; class="w3-input" type="text" name="Email" required>
       </div>
       <div class="w3-section">
