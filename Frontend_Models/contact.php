@@ -74,16 +74,16 @@
   	if(isset($_SESSION['type'])){
       switch ($_SESSION['type']) {
         case 'user':
-          echo "<a href='../Fronted_Models/cart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
+          echo "<a href='../Frontend_Models/cart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
           break;
         case 'admin':
-          echo "<a href='../Fronted_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
-          echo "<a href='../Fronted_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>";
+          echo "<a href='../Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
+          echo "<a href='../Frontend_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>";
           break;
       }
     }
     else{
-      echo "<a href='../Fronted_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><i class='fa fa-sign-in' aria-hidden='true'></i> Login</a>";
+      echo "<a href='../Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><i class='fa fa-sign-in' aria-hidden='true'></i> Login</a>";
     }
     ?>
    <?php
