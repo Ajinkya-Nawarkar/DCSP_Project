@@ -127,10 +127,10 @@ input, label {
         <input class="w3-input" type="text" name="Email" required>
       </div>
       <div class="w3-section">
-        <label>Message </label>
+        <label>Message</label>
         <input class="w3-input" type="text" name="Message" required>
       </div>
-      <input class="w3-check" type="checkbox" checked name="Like">
+	      <p><input class="w3-check" type="checkbox" checked name="Like"></p>
       <label>I Like it!</label>
       <div class="w3-container">
 <a href="../index.php" class="w3-button w3-right w3-theme">Send</a>
