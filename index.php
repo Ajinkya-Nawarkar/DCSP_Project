@@ -275,7 +275,7 @@ img {vertical-align: middle;}
 
 <br><br>
   <?php
-  require_once(dirname(__DIR__)."/Backend_Models/cart.php");
+  require_once("Backend_Models/cart.php");
   $cart = new Cart($_SESSION['username']);
 
   if (isset($_GET['addCartSku'])) {
