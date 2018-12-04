@@ -16,6 +16,14 @@ form.example input[type=text] {
     width: 80%;
     background: #f1f1f1;
 }
+.add{
+
+  color: white
+}
+.add:hover{
+
+  color: white;
+}
 form.example button {
     float: left;
     width: 20%;
@@ -63,6 +71,14 @@ img {vertical-align: middle;}
   padding: 8px 12px;
   position: absolute;
   top: 0;
+}
+.btn {
+    border: none;
+    background-color: #4CAF50;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
 }
 /* The dots/bullets/indicators */
 .dot {
@@ -277,7 +293,7 @@ img {vertical-align: middle;}
 //  $cart = $cart->newCart($_SESSION['username']);
 
 
-  for($i = '0'; $i<'1000000'; $i++){
+  for($i = '0'; $i<sizeof($sku); $i++){
 
 
       $array = array();
@@ -300,16 +316,17 @@ img {vertical-align: middle;}
         if(isset($_SESSION['type'])){
           switch ($_SESSION['type']) {
             case 'user':
-              echo "<a href='index.php'  class='cd-add-to-cart w3-btn w3-green'>Add to cart</a>";
+              echo "<a href='index.php'  class='btn add'>Add to cart</a>";
               //$cart->addToCart($array['sku'],1)
               break;
             case 'admin':
               echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Remove Item</a>";
-              echo "<a href='Frontend_Models/editQ.php'  class='w3-btn w3-blue'>Edit</a>";
+              echo "<a href='Frontend_Models/editItem.php?varSku=".$array['sku']."'  class='w3-btn w3-blue'>Edit</a>";
+              break;
           }
         }
         else{
-          echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-green'>Add to cart</a>";
+          echo "<a href='Frontend_Models/login.php'  class='btn add'>Add to cart</a>";
         }
 
 
