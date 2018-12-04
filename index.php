@@ -281,7 +281,7 @@ img {vertical-align: middle;}
   if (isset($_GET['addCartSku'])) {
     $addSku = $_GET['addToCartSku'];
     echo "Testing!";
-    echo $addSku;
+    echo "$addSku";
     $cart->addToCart($addSku, 1);
   }
 
