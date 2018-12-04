@@ -162,7 +162,7 @@
                 # ADD ITEM TO DATABASE HERE
                 $item = new Item($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity);
                 $editQ->editItemInDB($item);
-                redirectUser();
+                //redirectUser();
             }       
         ?>
 
@@ -234,7 +234,7 @@
                         ?>
                         
                         <div class="form-group-submit">
-                            <input style="background-color: #4CAF50; color: white" type="submit" value="Add Item">
+                            <input style="background-color: #4CAF50; color: white" type="submit" value="Edit Item">
                         </div>
                     </form>
                 </div>
