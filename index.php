@@ -146,7 +146,7 @@ img {vertical-align: middle;}
   	if(isset($_SESSION['type'])){
       switch ($_SESSION['type']) {
         case 'user':
-          echo "<a href='Frontend_Models/cart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
+          echo "<a href='Frontend_Models/viewCart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
           break;
         case 'admin':
           echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
@@ -252,7 +252,46 @@ img {vertical-align: middle;}
 -->
 <form class="example" action="index.php">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" onsubmit="showUser(this.value)"><i class="fa fa-search"></i></button>
+  <button type="submit" onsubmit="dosearch(search)"><i class="fa fa-search"></i></button>
+  <?php
+  function dosearch(search){
+  require_once('Database/dbAPI.php')
+  db = new dbAPI;
+  sku[] = db->search(search);
+  echo"<div class="w3-quarter">";
+  echo"<div class="w3-card w3-white">";
+
+  for($i = 0, !is_null(sku[$i]); $i++){
+      array[] = db->getItem(sku[$i]);
+
+    //while($results = mysqli_fetch_array($query)){
+      echo"  <div class="w3-container">";
+      echo"  <h3>".$results['name']."</h3>";
+      echo"  <p>".$results['description']."</p>";
+      echo"  <p>".$results['priceUSD']."</p>";
+
+        if(isset($_SESSION['type'])){
+          switch ($_SESSION['type']) {
+            case 'user':
+              echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
+              break;
+            case 'admin':
+              echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
+              echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
+          }
+        }
+        else{
+          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+        }
+
+
+
+        echo"</div>";
+
+        echo"</div>";
+      echo"</div>";
+}
+  ?>
 </form>
 <br><br>
 <div id="output">
@@ -270,7 +309,7 @@ img {vertical-align: middle;}
     if(isset($_SESSION['type'])){
       switch ($_SESSION['type']) {
         case 'user':
-          echo "<a href='Frontend_Models\index.php'  class='cd-add-to-cart'>Add to cart</a>";
+          echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
           break;
         case 'admin':
           echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
@@ -478,9 +517,12 @@ $.ajax({
   data:{name:search},
   success:
 */
-
 /*
-  function showUser(str) {
+$.ajax({
+  url:'Database/dbAPI.php',
+  type: "POST",
+  data:{functionname: 'search', argument: [search]},
+  success: function showUser(str) {
   if (str==) {
     document.getElementById("output").innerHTML="";
     return;
@@ -501,6 +543,48 @@ $.ajax({
 }
 });
 */
+
+function showUser(str){
+  jQuery.ajax({
+    type: "POST",
+    url: 'Database/dbAPI.php',
+    data: {functionname: 'search', argument: [search]},
+    success:function(data)){
+      <?php
+      echo"<div class="w3-quarter">";
+      echo"<div class="w3-card w3-white">";
+
+      echo"  <div class="w3-container">";
+      echo"  <h3>".$results['priceUSD']."</h3>";
+      echo"  <p>".$results['priceUSD']."</p>";
+      echo"  <p>".$results['description']."</p>";
+      echo"  <p>".$results['priceUSD']."</p>";
+
+        if(isset($_SESSION['type'])){
+          switch ($_SESSION['type']) {
+            case 'user':
+              echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
+              break;
+            case 'admin':
+              echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
+              echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
+          }
+        }
+        else{
+          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
+        }
+
+
+
+        echo"</div>";
+        echo"</div>";
+      echo"</div>";
+      ?>
+    }
+  });
+
+
+
 </script>
 
 </body>
