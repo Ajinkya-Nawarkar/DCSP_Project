@@ -101,6 +101,7 @@ session_start();
           }
         }
       }
+      echo "YO";
 
       // If they checkedout, redirect them to checkout.php
       /*if (isset($_POST['checkout'])){
