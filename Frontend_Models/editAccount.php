@@ -95,13 +95,13 @@
             # Check if submission has been made
             if (!empty($_POST)) 
             {
-              if (isset($_POST['firstName'])) 
+              if (isset($_POST['firstname'])) 
               {
-                $firstName = $_POST['firstName'];
+                $firstname = $_POST['firstname'];
               }
-               if (isset($_POST['lastName'])) 
+               if (isset($_POST['lastname'])) 
               {
-                $lastName = $_POST['lastName'];
+                $lastname = $_POST['lastname'];
               } 
               if (!empty($_POST['password1'])) 
               {
