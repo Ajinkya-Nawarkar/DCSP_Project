@@ -109,15 +109,15 @@
     <div class="w3-col m7">
       <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="index.php" target="_blank">
       <div class="w3-section">
-        <label>Name</label>
+        <label>Name    </label>
         <input class="w3-input" type="text" name="Name" required>
       </div>
       <div class="w3-section">
-        <label>Email</label>
+        <label>Email   </label>
         <input margin_left: 20px; class="w3-input" type="text" name="Email" required>
       </div>
       <div class="w3-section">
-        <label>Message</label>
+        <label>Message </label>
         <input class="w3-input" type="text" name="Message" required>
       </div>
       <input class="w3-check" type="checkbox" checked name="Like">
