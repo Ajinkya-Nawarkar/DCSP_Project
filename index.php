@@ -20,6 +20,10 @@ form.example input[type=text] {
 
   color: white
 }
+.w3-card{
+position:relative;
+
+}
 .add:hover{
 
   color: white;
@@ -349,9 +353,9 @@ img {vertical-align: middle;}
         if(isset($_SESSION['type'])){
           switch ($_SESSION['type']) {
             case 'user':
-              echo "<a href='index.php'  class='btn add'>Add to cart</a>";
+            echo "<a href='index.php?addCartSku=".$array['sku']."'  class='btn add'>Add to cart</a>";
+            break;
               //$cart->addToCart($array['sku'],1)
-              break;
             case 'admin':
               $skuVar = $sku[$i];
               echo"<dev id='btncont'>";
@@ -359,9 +363,10 @@ img {vertical-align: middle;}
               echo "<button type='submit' name='remove' value='remove' class='redbtn'>Remove Item</a></button>";
               if(isset($_POST['remove'])){
                 $remove = $_POST['remove'];
-                $db->removeItemfromDB($remove);
+                $db->removeItemfromDB($skuVar);
+                break;
               }
-              echo "<button type='submit' a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
+              echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
               break;
               echo"</dev>";
           }
