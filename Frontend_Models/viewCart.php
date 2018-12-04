@@ -72,7 +72,7 @@ session_start();
 </head>
     <body>
       <?php
-      require_once(dirname(__DIR__)."/Backend_Models/cart.php");
+      /*require_once(dirname(__DIR__)."/Backend_Models/cart.php");
 
       // Only users allowed on this page
       if ($_SESSION['type'] != "user") {
@@ -110,7 +110,7 @@ session_start();
 
       // Get cart quantities [sku=>quant] and cart details ['sku'=>sku, 'name'=>name, etc...]
       //$cart_quants = $cart->getItems();
-      //$cart_all = $cart->getItemsDetails($cart_quants);
+      //$cart_all = $cart->getItemsDetails($cart_quants);*/
       ?>
 
       <div class="w3-top">
