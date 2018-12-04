@@ -110,7 +110,8 @@ session_start();
 
       // Get cart quantities [sku=>quant] and cart details ['sku'=>sku, 'name'=>name, etc...]
       $cart_quants = $cart->getItems();
-      echo $cart_quants;
+      echo $cart_quants[2][0];
+      echo $cart_quants[2][1];
       $empty = False;
       if (sizeof($cart_quants) == 0) {
         $empty = True;
