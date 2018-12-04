@@ -1,4 +1,4 @@
-<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 0); ?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -13,12 +13,14 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
         <style>
+            #editItem{
+                margin-top: 80px;
+            }
             .text-center{
             margin-top: -10px;
             }
             .form-group{
                 margin-top: 5px;
-                margin-right: 50px;
                 padding-bottom: 3px;
             }
             .form-group-submit{
@@ -26,15 +28,17 @@
                 padding-bottom: 2px;
             }
             footer{
-                margin-top: 160px;
+                margin-top: 200px;
                 padding-bottom: 200px;
             }
+            
             body{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:14px;line-height:1.42857143;color:#333;background-color:#fff}
 
+            /* Full-width input fields */
             input[type=text], input[type=password] {
                 width: 25%;
                 padding: 15px;
-                margin: 5px 0 5px 0;
+                margin: 5px 0 22px 0;
                 display: inline-block;
                 border: none;
                 background: #f1f1f1;
@@ -44,10 +48,26 @@
                 background-color: #ddd;
                 outline: none;
             }
+            /* Add padding to container elements */
+            .container {
+                padding: 16px;
+            }
+
+            /* Clear floats */
+            .clearfix::after {
+                content: "";
+                clear: both;
+                display: table;
+            }
+
+
+            }
         </style>
     </head>
     <body>
         <?php
+
+            // Send the #SKU using this format -> header('Location: http://example.com?message=Success');
 
             require_once(dirname(__DIR__)."/Database/dbAPI.php");
             require_once(dirname(__DIR__)."/Backend_Models/item.php");
@@ -57,15 +77,23 @@
             $db = new dbAPI;
             $editQ = new editQuantity;
 
+            // Extract the 
+            if (isset($_GET['varSku'])) {    
+               $sku = $_GET['varSku'];
+            }
+
+            echo $sku;
+
             // Initialize the variables 
-            $sku = "";
-            $name = "";
-            $platform = "";
-            $type = "";
-            $developer = "";
-            $description = "";
-            $priceUSD = "";
-            $quantity = "";
+            $result = $db->getItem($sku);
+
+            $name = $result['name'];
+            $platform = $result['platform'];
+            $type = $result['type'];
+            $developer = $result['developer'];            
+            $description = $result['description'];
+            $priceUSD = $result['priceUSD'];
+            $quantity = $result['quantity'];
 
             # Error message variables
             $skuErr = "";
@@ -149,7 +177,7 @@
             {
                 # ADD ITEM TO DATABASE HERE
                 $item = new Item($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity);
-                $editQ->addItemToDB($item);
+                $editQ->editItemInDB($item);
                 redirectUser();
             }       
         ?>
@@ -167,59 +195,36 @@
         </div>
     </div>
         
-    <div align="left" id="newItem">
+    <div align="left" id="editItem">
     <div class="container">
         <div id="login-row" class="row justify-content-center align-items-center">
             <div id="login-column" class="col-md-6">
                 <div class="login-box col-md-12">
-                    <form id="login-form" class="form" action="createItem.php" method="post">
-                        <h2 class="text-center text-info"><b>Add an Item to the Database</b></h2>
-                        <p class="text-center text-info" style="margin-top: 5px"><b>Please fill in the details of the new product</b></p>
+                    <form id="login-form" class="form" action="editItem.php" method="post">
+                        <h2 class="text-center text-info"><b>Edit a product in the database</b></h2>
+                        <p class="text-center text-info" style="margin-top: 5px"><b>Please edit the details of the existing product</b></p>
                         
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="sku" id="sku" class="form-control" placeholder="#SKU" style="width: 235px;" required value="<?php echo $sku; ?>">
-                        </div>
 
-                        <?php
-                            if ($skuErr)
-                            {
-                                echo "<p style='color: red'>";
-                                echo "<span class='error'>";
-                                echo $skuErr; 
-                                echo "</span><br></p>";
-                            }
-                        ?>
+                        <label for="sku" class="text-info"><b>#SKU:</b></label><br>
+                        <label for="sku" class="text-info"><b><?php echo $sku; ?></b></label><br>
+ 
+                        <label for="name" class="text-info"><b>Name:</b></label><br>
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>">
+                         
+                        <label for="platform"><b>Platform: </b></label><br>
+                        <input type="text" name="platform" id="platform" class="form-control" placeholder="<?php echo $platform; ?>" style="width: 235px;" required value="<?php echo $platform; ?>">
                         
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>">
-                        </div> 
+                        <label for="type"><b>Type:</b></label><br>
+                        <input type="text" name="type" id="type" class="form-control" placeholder="<?php echo $type; ?>" style="width: 235px;" required value="<?php echo $type; ?>">
+                        
+                        <label for="developer"><b>Developer</b></label><br>
+                        <input type="text" name="developer" id="developer" class="form-control" placeholder="<?php echo $developer; ?>" style="width: 235px;" required value="<?php echo $developer; ?>">  
 
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="platform" id="platform" class="form-control" placeholder="Platform" style="width: 235px;" required value="<?php echo $platform; ?>">
-                        </div>
+                        <label for="description"><b>Description of the product</b></label><br>
+                        <input type="text" name="description" id="description" class="form-control" placeholder="Description of the product" style="width: 235px;" required value="<?php echo $description; ?>">         
 
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="type" id="type" class="form-control" placeholder="Type" style="width: 235px;" required value="<?php echo $type; ?>">
-                        </div>
-
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="developer" id="developer" class="form-control" placeholder="Developer" style="width: 235px;" required value="<?php echo $developer; ?>">
-                        </div>
-
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="description" id="description" class="form-control" placeholder="Description of the product" style="width: 235px;" required value="<?php echo $description; ?>">
-                        </div>
-
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="priceUSD" id="priceUSD" class="form-control" placeholder="Price in USD" style="width: 235px;" required value="<?php echo $priceUSD; ?>">
-                        </div>
+                        <label for="priceUSD"><b>Price in USD</b></label><br>
+                        <input type="text" name="priceUSD" id="priceUSD" class="form-control" placeholder="Price in USD" style="width: 235px;" required value="<?php echo $priceUSD; ?>">
 
                         <?php
                             if ($priceErr)
@@ -231,10 +236,8 @@
                             }
                         ?>
 
-                        <div class="form-group" style="margin-top: 30px">
-                            <!-- ><label for="sku" class="text-info" style="margin-right: 10px;"><b>#SKU:</b></label><!-->
-                            <input type="text" name="quantity" id="quantity" class="form-control" placeholder="Quantity available" style="width: 235px;" required value="<?php echo $quantity; ?>">
-                        </div>
+                        <label for="quantity"><b>Quantity available:</b></label><br>
+                        <input type="text" name="quantity" id="quantity" class="form-control" placeholder="Quantity available" style="width: 235px;" required value="<?php echo $quantity; ?>">           
                         
                         <?php
                             if ($quantityErr)
@@ -255,59 +258,6 @@
         </div>
     </div>
 </div>
-
-
-
-    <form action="signup.php" method="post" style="border:1px solid #ccc">
-        <div align="center" class="container">
-          
-          <h2 style="margin-top:15px; margin-bottom: 10px" class="text-center text-info"><b>Edit an item in the Database</b></h2>
-          <p style="margin-top: 10px; margin-bottom:20px" class="text-center text-info"><b>Please edit the details of the existing product</b></p>
-
-          <label for="firstName"><b>First Name</b></label><br>
-          <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>">
-
-          <label for="lastName"><b>Last Name</b></label><br>
-          <input type="text" placeholder="Enter your last name" name="lastName" required value="<?php echo $lastName; ?>"><br>
-
-          <label for="username"><b>Username</b></label><br>
-          <input type="text" placeholder="Enter your username" name="username" required value="<?php echo $username; ?>"><br>
-          <?php if ($unErr)
-                {
-                    echo "<p style='color: red'>";
-                    echo "<span class='error'>";
-                    echo $unErr; 
-                    echo "</span><br></p>";
-                }?>
-
-          <label for="password1"><b>Password</b></label><br>
-          <input type="password" placeholder="Enter Password" name="password1" required><br>
-          <?php if ($pw1Err)
-                {
-                    echo "<p style='color: red'>";
-                    echo "<span class='error'>";
-                    echo $pw1Err; 
-                    echo "</span><br></p>";
-                }?>
-
-          <label for="password2"><b>Repeat Password</b></label><br>
-          <input type="password" placeholder="Repeat Password" name="password2" required><br>
-          <?php if ($pw2Err)
-                {
-                    echo "<p style='color: red'>";
-                    echo "<span class='error'>";
-                    echo $pw2Err; 
-                    echo "</span><br></p>";
-                }?>
-          
-          <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
-
-          <div class="clearfix">
-            <a href="login.php"><button type="button" class="cancelbtn">Cancel</button></a>
-            <button type="submit" value="Sign Up" class="signupbtn">Sign Up</button>
-          </div>
-        </div>
-    </form>
         
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
     <h4>Maroon Gaming Co. @ 2018</h4>
