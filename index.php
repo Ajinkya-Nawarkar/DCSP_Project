@@ -275,8 +275,8 @@ img {vertical-align: middle;}
           echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
           break;
         case 'admin':
-          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-          echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
+          echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Remove Item</a>";
+          echo "<a href='Frontend_Models/editItem.php'  class='w3-btn w3-red'>Edit</a>";
       }
     }
     else{
