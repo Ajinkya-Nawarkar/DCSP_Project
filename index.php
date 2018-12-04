@@ -146,7 +146,7 @@ img {vertical-align: middle;}
   	if(isset($_SESSION['type'])){
       switch ($_SESSION['type']) {
         case 'user':
-          echo "<a href='Frontend_Models/cart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
+          echo "<a href='Frontend_Models/viewCart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
           break;
         case 'admin':
           echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";

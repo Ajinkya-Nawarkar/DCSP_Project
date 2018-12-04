@@ -125,7 +125,7 @@ session_start();
             <div id="view_cart-row" class="row justify-content-center align-items-center">
                 <div id="view_cart-column" class="col-md-6">
                     <div class="view_cart-box col-md-12">
-                    <form id="view_cart-form" class="form" action='view_cart.php' method='post'>
+                    <form id="view_cart-form" class="form" action='viewCart.php' method='post'>
                       <h2 class="text-center text-info"><b><?php $username ?>'s Cart</b></h2><br>
                       <table id="cart">
                         <colgroup>
