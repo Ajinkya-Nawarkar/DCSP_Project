@@ -135,6 +135,7 @@
                   $encryptedPw = $common->hashPassword($password1);
                 }
 
+                echo $encryptedPw;
                 # ADD ITEM TO DATABASE HERE
                 $db->editAccount($username, $encryptedPw, $firstname, $lastname);
                 redirectUser();
