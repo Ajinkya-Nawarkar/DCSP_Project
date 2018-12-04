@@ -108,12 +108,10 @@ session_start();
         exit();
       }
 
-      echo "YO2";
-
       // Get cart quantities [sku=>quant] and cart details ['sku'=>sku, 'name'=>name, etc...]
-      /*$cart_quants = $cart->getItems();
-
-      $empty = False;
+      $cart_quants = $cart->getItems();
+      echo "YO3";
+      /*$empty = False;
       if (sizeof($cart_quants) == 0) {
         $empty = True;
       } else {
