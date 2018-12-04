@@ -1,5 +1,5 @@
 
-<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 0); ?>
 
 <!DOCTYPE html>
 <html>
@@ -271,17 +271,22 @@ img {vertical-align: middle;}
 
   $db = new dbAPI;
   $sku = array();
-  echo "1";
   $sku = $db->search($search);
-include cartQuery
-$cart - newCart($_SESSION['username'])
-$cart->addToCart($array['sku'],1)
+  //require_once('Backend_Models/cartQuery.php');
+//  $cart = new Cart;
+//  $cart = $cart->newCart($_SESSION['username']);
+
 
   for($i = '0'; $i<'11'; $i++){
-    echo"<div class='w3-quarter'>";
-    echo"<div class='w3-card w3-white'>";
+
+
       $array = array();
       $array = $db->getItem($sku[$i]);
+      if(is_null($array)){
+        break;
+      }
+      echo"<div class='w3-quarter'>";
+      echo"<div class='w3-card w3-white'>";
 
     //while($results = mysqli_fetch_array($query)){
       echo"  <div class='w3-container'>";
@@ -293,6 +298,7 @@ $cart->addToCart($array['sku'],1)
           switch ($_SESSION['type']) {
             case 'user':
               echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
+              //$cart->addToCart($array['sku'],1)
               break;
             case 'admin':
               echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Remove Item</a>";
