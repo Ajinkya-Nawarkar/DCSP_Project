@@ -176,7 +176,7 @@ class dbAPI
   public function search($search) {
     $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
     $results = array();
-    while ($result = mysqli_fetch_array($query)) {
+    while ($result = mysqli_fetch_array($this->connection->query($query))) {
       array_push($results, $result['sku']);
     }
     return $results;
