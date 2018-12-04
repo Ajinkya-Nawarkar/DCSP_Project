@@ -110,11 +110,11 @@
       <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="index.php" target="_blank">
       <div class="w3-section">
         <label>Name</label>
-        <input class="w3-input w3-right" type="text" name="Name" required>
+        <input class="w3-input" type="text" name="Name" required>
       </div>
       <div class="w3-section">
         <label>Email</label>
-        <input class="w3-input w3-right" type="text" name="Email" required>
+        <input class="w3-input" type="text" name="Email" required>
       </div>
       <div class="w3-section">
         <label>Message</label>
