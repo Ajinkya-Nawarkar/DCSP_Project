@@ -25,6 +25,10 @@ class dbAPI
   }
 
   public function newUser($user){
+    $username = $user->getUsername();
+    $password = $user->getPassword();
+    $firstname = $item->getFirstname();
+    $lastname = $item->getLastname();
     //Initialize a new user's cart with an array containing 50 indexes filled with 0's.
     //When a user adds an item to their cart the value at the index equal to the item's sku
     //will be changed to the amount of the item the user wants.
@@ -34,7 +38,7 @@ class dbAPI
       $array[$i] = 0;
     }
     $query  = "INSERT INTO users (username, password, firstname, lastname, cart) "
-            . "VALUES('$user->username', '$user->password', '$user->firstname', '$user->lastname', '$array')";
+            . "VALUES('$username', '$password', '$firstname', '$lastname', '$array')";
     $this->connection->query($query);
     return true;
   }
@@ -46,8 +50,10 @@ class dbAPI
   }
 
   public function newAdmin($admin){
+    $username = $admin->getUsername();
+    $password = $admin->getPassword();
     $query  = "INSERT INTO admins (username, password) "
-            . "VALUES('$admin->username', '$admin->password')";
+            . "VALUES('$username', '$password')";
     $this->connection->query($query);
     return true;
   }
@@ -172,6 +178,17 @@ class dbAPI
       array_push($results, $result['sku']);
     }
     return $results;
+  }
+  
+  public function editAccount($username, $password, $firstname, $lastname){
+    $query  = "UPDATE users SET password = '$password', firstname = '$firstname', lastname = '$lastname' WHERE username = '$username'";
+    $this->connection->query($query);
+    return true;
+  }
+  public function editItem($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity){
+    $query  = "UPDATE items SET name = '$name', platform = '$platform', type = '$type', developer = '$developer', description = '$description', priceUSD = '$priceUSD', quantity = '$quantity' WHERE sku = '$sku'";
+    $this->connection->query($query);
+    return true;
   }
 }
 ?>
