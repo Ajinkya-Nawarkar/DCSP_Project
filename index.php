@@ -359,7 +359,7 @@ img {vertical-align: middle;}
               echo "<button type='submit' name='remove' value='remove' class='redbtn'>Remove Item</a></button>";
               if(isset($_POST['remove'])){
                 $remove = $_POST['remove'];
-                $db->removeItemfromDB($removed);
+                $db->removeItemfromDB($remove);
               }
               echo "<button type='submit' a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
               break;
