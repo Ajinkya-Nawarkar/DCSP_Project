@@ -275,6 +275,14 @@ img {vertical-align: middle;}
 
 <br><br>
   <?php
+  require_once('Backend_Models/cart.php');
+  $cart = new Cart($_SESSION['username']);
+
+  if (isset($_GET['addCartSku'])) {
+    $cart->addToCart($_GET['addToCartSku'], 1);
+  }
+
+
   $search = '';
   if(isset($_POST['search']))  {
     $search = $_POST['search'];
@@ -288,9 +296,7 @@ img {vertical-align: middle;}
   $db = new dbAPI;
   $sku = array();
   $sku = $db->search($search);
-  //require_once('Backend_Models/cartQuery.php');
-//  $cart = new Cart;
-//  $cart = $cart->newCart($_SESSION['username']);
+
 
 
   for($i = '0'; $i<sizeof($sku); $i++){
@@ -316,8 +322,7 @@ img {vertical-align: middle;}
         if(isset($_SESSION['type'])){
           switch ($_SESSION['type']) {
             case 'user':
-              echo "<a href='index.php'  class='btn add'>Add to cart</a>";
-              //$cart->addToCart($array['sku'],1)
+              echo "<a href='index.php?addCartSku=".$array['sku']."'  class='btn add'>Add to cart</a>";
               break;
             case 'admin':
               $skuVar = $sku[$i];
