@@ -47,56 +47,45 @@
         </style>
     </head>
     <body>
-        <?php
-            require_once(dirname(__DIR__)."/Backend_Models/Common.php");
-            require_once(dirname(__DIR__)."/Database/dbAPI.php");
-            // Initialize the variables and object for Common.php
-            $error_string = NULL;
-            $admin_check = "";
-            $type = "";
-            $common = new Common;
-            if (isset($_SESSION['type']))
-                redirectUser();
-            
-            // Preserve the username to show if only password is incorrect
-            $username = isset($_POST['username']);
-            
-            if (isset($_POST['username']) && isset($_POST['password'])) 
-            {
-                // Initialize the object for Database.php
-                $database = new dbAPI;
-                $un_temp = mysql_entities_fix_string($database->connection, $_POST['username']);
-                $pw_temp = mysql_entities_fix_string($database->connection, $_POST['password']);
-                // admin_check validation
-                if(isset($_POST['admin_check']))
-                {
-                    $result = $database->getOneAdmin($un_temp);
-                    $admin_check = "checked";
-                    $type = "admin";
-                }
-                else{
-                    $result = $database->getOneUser($un_temp);   
-                    $type = "user";
-                }
-            
-                // Validate the password and set session variables
-                if ($result)
-                {
-                    $token = $common->hashPassword($pw_temp);
-                    if ($token == $result[1])
-                    {
-                        $error_string = NULL;
-                        $common->setSession($un_temp, $type);
-                        redirectUser();
-                    }
-                    else
-                        $error_string = "Your username/password combination is incorrect. Try Again!";
-                }
-                else 
-                    $error_string = "Your username/password combination is incorrect. Try Again!";
-            }
-                     
-        ?>
+        <div class="w3-top">
+ <div class="w3-bar w3-theme-d2 w3-left-align">
+  <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+  <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>
+  <?php
+      //display different banner identification based on session type
+        if(isset($_SESSION['type'])){
+        switch ($_SESSION['type']) {
+          case 'user':
+            echo "Maroon Gaming - Basic User";
+            break;
+          case 'admin':
+            echo "Maroon Gaming - Administrator";
+            break;
+        }
+      }
+      else{
+        echo "";
+      }
+      ?></a>
+
+  <a href="index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+
+  <?php
+  	if(isset($_SESSION['type'])){
+      switch ($_SESSION['type']) {
+        case 'user':
+          echo "<a href='Frontend_Models/cart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
+          break;
+        case 'admin':
+          echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
+          echo "<a href='Frontend_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>";
+          break;
+      }
+    }
+    else{
+      echo "<a href='Frontend_Models/login.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'><i class='fa fa-sign-in' aria-hidden='true'></i> Login</a>";
+    }
+    ?>
 
     <div class="w3-top">
         <div class="w3-bar w3-theme-d2 w3-left-align">
