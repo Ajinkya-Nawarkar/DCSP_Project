@@ -24,7 +24,7 @@ form.example input[type=text] {
 
   color: white;
 }
-form.example button {
+.submitbtn {
     float: left;
     width: 20%;
     padding: 10px;
@@ -79,6 +79,28 @@ img {vertical-align: middle;}
     font-size: 16px;
     cursor: pointer;
     display: inline-block;
+
+}
+.redbtn{
+  border: none;
+  background-color: #800000;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  width:200px;
+  height: 60px;
+}
+.bluebtn{
+  border: none;
+  background-color: teal;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  width:100px;
+  height: 60px;
+}
+.btncont{
+  text-align: center;
 }
 /* The dots/bullets/indicators */
 .dot {
@@ -93,6 +115,17 @@ img {vertical-align: middle;}
 .active {
   background-color: #717171;
 }
+
+.item{
+  background-color: white;
+  width: 350px;
+  height: 250px;
+  border: 3px solid #800000;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -162,6 +195,7 @@ img {vertical-align: middle;}
   	if(isset($_SESSION['type'])){
       switch ($_SESSION['type']) {
         case 'user':
+          echo "<a href='Frontend_Models/editAccount.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Account</a>";
           echo "<a href='Frontend_Models/viewCart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
           break;
         case 'admin':
@@ -271,7 +305,7 @@ img {vertical-align: middle;}
 
 <form class="example" action="index.php" method="post">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" name="submit"><i class="fa fa-search"></i></button>
+  <button type="submit" name="submit" class = "submitbtn"><i class="fa fa-search"></i></button>
 
 <br><br>
   <?php
@@ -310,7 +344,7 @@ img {vertical-align: middle;}
 
 
       echo"<div class='w3-quarter'>";
-      echo"<div class='w3-card w3-white w3-paddingTop=10px'>";
+      echo"<div class='w3-card w3-white w3-margin-top w3-margin-right w3-border w3-border-red w3-padding-16'>";
 
 
     //while($results = mysqli_fetch_array($query)){
@@ -326,9 +360,16 @@ img {vertical-align: middle;}
               break;
             case 'admin':
               $skuVar = $sku[$i];
-              echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Remove Item</a>";
-              echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='w3-btn w3-blue'>Edit</a>";
+              echo"<dev id='btncont'>";
+              echo "<form action='index.php' method='post' id='remove'>";
+              echo "<button type='submit' name='remove' value='remove' class='redbtn'>Remove Item</a></button>";
+              if(isset($_POST['remove'])){
+                $remove = $_POST['remove'];
+                $db->removeItemfromDB($remove);
+              }
+              echo "<button type='submit' a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
               break;
+              echo"</dev>";
           }
         }
         else{
@@ -340,6 +381,7 @@ img {vertical-align: middle;}
         echo"</div>";
 
         echo"</div>";
+                echo "<br><br>";
       echo"</div>";
 
     }
