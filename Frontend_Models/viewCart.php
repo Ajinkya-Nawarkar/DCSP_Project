@@ -108,7 +108,7 @@ session_start();
         exit();
       }
 
-      echo "YO";
+      echo "YO2";
 
       // Get cart quantities [sku=>quant] and cart details ['sku'=>sku, 'name'=>name, etc...]
       /*$cart_quants = $cart->getItems();
