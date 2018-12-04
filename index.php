@@ -1,5 +1,5 @@
 
-<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 0); ?>
 
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,15 @@ form.example input[type=text] {
     width: 80%;
     background: #f1f1f1;
 }
-form.example button {
+.add{
+
+  color: white
+}
+.add:hover{
+
+  color: white;
+}
+.submitbtn {
     float: left;
     width: 20%;
     padding: 10px;
@@ -64,6 +72,36 @@ img {vertical-align: middle;}
   position: absolute;
   top: 0;
 }
+.btn {
+    border: none;
+    background-color: #4CAF50;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    display: inline-block;
+
+}
+.redbtn{
+  border: none;
+  background-color: #800000;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  width:200px;
+  height: 60px;
+}
+.bluebtn{
+  border: none;
+  background-color: teal;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  width:100px;
+  height: 60px;
+}
+.btncont{
+  text-align: center;
+}
 /* The dots/bullets/indicators */
 .dot {
   height: 15px;
@@ -77,6 +115,17 @@ img {vertical-align: middle;}
 .active {
   background-color: #717171;
 }
+
+.item{
+  background-color: white;
+  width: 350px;
+  height: 250px;
+  border: 3px solid #800000;
+  position: relative;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -146,7 +195,8 @@ img {vertical-align: middle;}
   	if(isset($_SESSION['type'])){
       switch ($_SESSION['type']) {
         case 'user':
-          echo "<a href='Frontend_Models/cart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
+          echo "<a href='Frontend_Models/editAccount.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Account</a>";
+          echo "<a href='Frontend_Models/viewCart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
           break;
         case 'admin':
           echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
@@ -199,19 +249,19 @@ img {vertical-align: middle;}
 
 <div class="mySlides fade">
   <div class="numbertext">1 / 3</div>
-  <img src="Assets\banner.png" style="width:100%;min-height:300px;max-height:300px;">
+  <img src="Assets/banner.png" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">2 / 3</div>
-  <img src="Assets\switch.jpg" style="width:100%;min-height:300px;max-height:300px;">
+  <img src="Assets/switch.jpg" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
 <div class="mySlides fade">
   <div class="numbertext">3 / 3</div>
-  <img src="Assets\ps4.jpg" style="width:100%;min-height:300px;max-height:300px;">
+  <img src="Assets/ps4.jpg" style="width:100%;min-height:300px;max-height:300px;">
 
 </div>
 
@@ -252,44 +302,90 @@ img {vertical-align: middle;}
 
 <!--<input type="text" id="myInput" onkeyup="showUser(this.value)" placeholder="Search for items.." title="Type in a name">
 -->
-<form class="example" action="index.php">
+
+<form class="example" action="index.php" method="post">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" onsubmit="showUser(this.value)"><i class="fa fa-search"></i></button>
-</form>
+  <button type="submit" name="submit" class = "submitbtn"><i class="fa fa-search"></i></button>
+
 <br><br>
-<div id="output">
-  <div class="w3-quarter">
-  <div class="w3-card w3-white">
-    <!--<img src="/w3images/snow.jpg" alt="Snow" style="width:100%"><-->
-    <div class="w3-container">
-    <h3>Product test</h3>
-    <h4>Trade</h4>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <p>Blablabla</p>
-    <?php
-    if(isset($_SESSION['type'])){
-      switch ($_SESSION['type']) {
-        case 'user':
-          echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
-          break;
-        case 'admin':
-          echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Remove Item</a>";
-          echo "<a href='Frontend_Models\editQ.php'  class='w3-btn w3-red'>Edit</a>";
+  <?php
+  $search = '';
+  if(isset($_POST['search']))  {
+    $search = $_POST['search'];
+  }
+  $temp = dosearch($search);
+
+  function dosearch($search){
+
+  require_once('Database/dbAPI.php');
+
+  $db = new dbAPI;
+  $sku = array();
+  $sku = $db->search($search);
+  //require_once('Backend_Models/cartQuery.php');
+//  $cart = new Cart;
+//  $cart = $cart->newCart($_SESSION['username']);
+
+
+  for($i = '0'; $i<sizeof($sku); $i++){
+
+
+      $array = array();
+      $array = $db->getItem($sku[$i]);
+      if(is_null($array)){
+        break;
       }
-    }
-    else{
-      echo "<a href='Frontend_Models\login.php'  class='w3-btn w3-red'>Add to cart</a>";
-    }
-     ?>
 
 
-    </div>
-    </div>
-  </div>
-</div>
-</div>
+      echo"<div class='w3-quarter'>";
+      echo"<div class='w3-card w3-white w3-margin-top w3-margin-right w3-border w3-border-red w3-padding-16'>";
+
+
+    //while($results = mysqli_fetch_array($query)){
+      echo"  <div class='w3-container'>";
+      echo"  <h3>".$array['name']."</h3>";
+      echo"  <p>".$array['description']."</p>";
+      echo"  <p>".$array['priceUSD']."</p>";
+
+        if(isset($_SESSION['type'])){
+          switch ($_SESSION['type']) {
+            case 'user':
+              echo "<a href='index.php'  class='btn add'>Add to cart</a>";
+              //$cart->addToCart($array['sku'],1)
+              break;
+            case 'admin':
+              $skuVar = $sku[$i];
+              echo"<dev id='btncont'>";
+              echo "<form action='index.php' method='post' id='remove'>";
+              echo "<button type='submit' name='remove' value='remove' class='redbtn'>Remove Item</a></button>";
+              if(isset($_POST['remove'])){
+                $remove = $_POST['remove'];
+                $db->removeItemfromDB($remove);
+              }
+              echo "<button type='submit' a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
+              break;
+              echo"</dev>";
+          }
+        }
+        else{
+          echo "<a href='Frontend_Models/login.php'  class='btn add'>Add to cart</a>";
+        }
+
+
+
+        echo"</div>";
+
+        echo"</div>";
+                echo "<br><br>";
+      echo"</div>";
+
+    }
+
+}
+  ?>
+</form>
+
+<p id="items"> <?php echo $temp;?> </p>
 <!--
 <div class="w3-container" style="position:relative">
   <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
@@ -394,6 +490,7 @@ img {vertical-align: middle;}
 </div>
   </div>
 </div>
+</div>
 
 <!-- Image of location/map
 <img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
@@ -479,9 +576,12 @@ $.ajax({
   data:{name:search},
   success:
 */
-
 /*
-  function showUser(str) {
+$.ajax({
+  url:'Database/dbAPI.php',
+  type: "POST",
+  data:{functionname: 'search', argument: [search]},
+  success: function showUser(str) {
   if (str==) {
     document.getElementById("output").innerHTML="";
     return;
@@ -502,16 +602,24 @@ $.ajax({
 }
 });
 
-$.ajax({
-  url:'/Database/dbAPI.php',
-  method:'get',
-  data:{name:search},
-  success:
-function showUser(str){
-
-
-}
 */
+
+/*
+function showUser(str){
+  jQuery.ajax({
+    type: "POST",
+    url: 'Database/dbAPI.php',
+    data: {functionname: 'search', argument: [search]},
+    success:function(data)){
+
+    }
+  });
+*/
+function displayitems(){
+  document.getElementById("items").innerHTML = "<?php echo $temp;?>";
+}
+
+
 </script>
 
 </body>

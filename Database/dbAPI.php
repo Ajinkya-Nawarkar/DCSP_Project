@@ -150,7 +150,10 @@ class dbAPI
     return true;
   }
 
-
+  public function getUserDetails($username){
+    $result = mysqli_fetch_array($this->connection->query("SELECT * FROM users WHERE username = '$username'"));
+    return $result;
+  }
 
   public function getAllUsers(){
     $result = query("SELECT username FROM users");
@@ -176,15 +179,21 @@ class dbAPI
   public function search($search) {
     $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
     $results = array();
-    while ($result = mysqli_fetch_array($query)) {
+    $data = $this->connection->query($query);
+    while ($result = $data->fetch_array()) {
       array_push($results, $result['sku']);
     }
     return $results;
   }
-  
+
   public function editAccount($username, $password, $firstname, $lastname){
-    $query  = "UPDATE users SET password = '$password', firstname = '$firstname', lastname = '$lastname' WHERE username = '$username'";
+    $query  = "UPDATE users SET firstname = '$firstname', lastname = '$lastname' WHERE username = '$username'";
     $this->connection->query($query);
+
+    if ($password != ""){
+      $query  = "UPDATE users SET password = '$password' WHERE username = '$username'";
+      $this->connection->query($query);
+    }
     return true;
   }
   public function editItem($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity){
