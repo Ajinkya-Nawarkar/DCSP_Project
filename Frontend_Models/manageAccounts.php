@@ -217,8 +217,11 @@
   <div class="w3-top">
       <div class="w3-bar w3-theme-d2 w3-left-align">
 
-          <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
+          <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gaming - Administrator</a>
           <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+          <a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>
+          <a href='Frontend_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>
+          <a href='Frontend_Models/logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true'></i> Logout</a>
 
       </div>
   </div>
@@ -266,12 +269,14 @@
                        Admin Account<br><br><br>
 
                        <input style="background-color: #4CAF50; color: white" type="submit" name="remove_submit" value="Remove Account">
-                       <br><br><br>
                      </form>
                    </div>
                </div>
            </div>
        </div>
+       <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+           <h4>Maroon Gaming Co. @ 2018</h4>
+       </footer>
 </body>
 </html>
 <?php
