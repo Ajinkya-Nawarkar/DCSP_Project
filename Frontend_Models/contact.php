@@ -132,14 +132,5 @@
 	    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
     <h4>Maroon Gaming Co. @ 2018</h4>
 </footer>
-<div class="w3-top">
-        <div class="w3-bar w3-theme-d2 w3-left-align">
-
-            <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
-            <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
-
-            <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
-        </div>
-    </div>
 </body>
 </html>
