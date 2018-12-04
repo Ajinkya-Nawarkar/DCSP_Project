@@ -274,7 +274,6 @@ img {vertical-align: middle;}
   <button type="submit" name="submit"><i class="fa fa-search"></i></button>
 
 <br><br>
-
   <?php
   $search = '';
   if(isset($_POST['search']))  {
@@ -323,7 +322,6 @@ img {vertical-align: middle;}
             case 'admin':
               $skuVar = $sku[$i];
               echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Remove Item</a>";
-              //echo "<a href='Frontend_Models/editItem.php?varSku=$array['sku']'  class='w3-btn w3-blue'>Edit</a>";
               echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='w3-btn w3-blue'>Edit</a>";
               break;
           }
