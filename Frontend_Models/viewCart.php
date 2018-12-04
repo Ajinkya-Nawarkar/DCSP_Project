@@ -110,13 +110,13 @@ session_start();
 
       // Get cart quantities [sku=>quant] and cart details ['sku'=>sku, 'name'=>name, etc...]
       $cart_quants = $cart->getItems();
-      echo "YO6";
-      /*$empty = False;
+
+      $empty = False;
       if (sizeof($cart_quants) == 0) {
         $empty = True;
       } else {
         $cart_all = $cart->getItemsDetails($cart_quants);
-      }*/
+      }
 
       ?>
 
@@ -144,7 +144,7 @@ session_start();
                         </colgroup>
                         <tr><th class="text-info"><b>SKU</b></th><th class="text-info"><b>Name</b></th><th class="text-info"><b>Price</b></th><th class="text-info"><b>Quantity</b></th><th class="text-info"><b>Remove</b></th></tr>
                         <?php
-                        /*for ($i = 0; $i < sizeof($cart_all); $i++) {
+                        for ($i = 0; $i < sizeof($cart_all); $i++) {
                           if ($empty) {
                             echo "<tr><td></td><td>Empty Cart</td><td></td><td></td><td></td></tr>";
                           } else {
@@ -152,7 +152,7 @@ session_start();
                             echo "<td><input type='number' name='quant".$cart_all[$i]['sku']."' min='0' max='".$cart_all[$i]['quantity']."' value='".$cart_quants[$cart_all[$i]['sku']]."' required></td>";
                             echo "<td><input type='checkbox' name='remove".$cart_all[$i]['sku']."'></td></tr>";
                           }
-                        }*/
+                        }
                         ?>
                         <tr style="background-color:#ffffff"><td></td><td></td><td></td><td></td><td style="vertical-align:middle"><input style="background-color: #4CAF50; color: white" type='submit' name='update' value='Update'></td></tr>
                       </table><br>
