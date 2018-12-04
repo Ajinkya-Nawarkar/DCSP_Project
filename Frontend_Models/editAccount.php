@@ -171,7 +171,7 @@
                         <input type="text" name="lastname" id="lastname" class="form-control" placeholder="<?php echo $lastname; ?>" style="width: 235px;" required value="<?php echo $lastname; ?>"><br>
                         
                         <label for="password1"><b>Password</b></label><br>
-                        <input type="password" placeholder="Enter Password (optional)" name="password1"><br>
+                        <input type="password" placeholder="Enter Password (optional)" name="password1" value="<?php echo $password1; ?>"><br>
                         <?php if ($pw1Err)
                               {
                                   echo "<p style='color: red'>";
@@ -181,7 +181,7 @@
                               }?>
 
                         <label for="password2"><b>Repeat Password</b></label><br>
-                        <input type="password" placeholder="Repeat Password (optional)" name="password2"><br>
+                        <input type="password" placeholder="Repeat Password (optional)" name="password2" value="<?php echo $password2; ?>"><br>
                         <?php if ($pw2Err)
                               {
                                   echo "<p style='color: red'>";
