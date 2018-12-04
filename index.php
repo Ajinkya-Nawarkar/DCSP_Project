@@ -17,15 +17,9 @@ form.example input[type=text] {
     background: #f1f1f1;
 }
 .add{
-
   color: white
 }
-.w3-card{
-position:relative;
-
-}
 .add:hover{
-
   color: white;
 }
 .submitbtn {
@@ -83,7 +77,6 @@ img {vertical-align: middle;}
     font-size: 16px;
     cursor: pointer;
     display: inline-block;
-
 }
 .redbtn{
   border: none;
@@ -119,7 +112,6 @@ img {vertical-align: middle;}
 .active {
   background-color: #717171;
 }
-
 .item{
   background-color: white;
   width: 350px;
@@ -129,7 +121,6 @@ img {vertical-align: middle;}
   margin-top: 20px;
   margin-bottom: 20px;
 }
-
 /* Fading animation */
 .fade {
   -webkit-animation-name: fade;
@@ -199,12 +190,12 @@ img {vertical-align: middle;}
   	if(isset($_SESSION['type'])){
       switch ($_SESSION['type']) {
         case 'user':
+          echo "<a href='Frontend_Models/editAccount.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Account</a>";
           echo "<a href='Frontend_Models/viewCart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>";
           break;
         case 'admin':
           echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
           echo "<a href='Frontend_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>";
-
           break;
       }
     }
@@ -317,56 +308,44 @@ img {vertical-align: middle;}
     $search = $_POST['search'];
   }
   $temp = dosearch($search);
-
   function dosearch($search){
-
   require_once('Database/dbAPI.php');
-
   $db = new dbAPI;
   $sku = array();
   $sku = $db->search($search);
   //require_once('Backend_Models/cartQuery.php');
 //  $cart = new Cart;
 //  $cart = $cart->newCart($_SESSION['username']);
-
-
   for($i = '0'; $i<sizeof($sku); $i++){
-
-
       $array = array();
       $array = $db->getItem($sku[$i]);
       if(is_null($array)){
         break;
       }
-
-
       echo"<div class='w3-quarter'>";
       echo"<div class='w3-card w3-white w3-margin-top w3-margin-right w3-border w3-border-red w3-padding-16'>";
-
-
     //while($results = mysqli_fetch_array($query)){
       echo"  <div class='w3-container'>";
       echo"  <h3>".$array['name']."</h3>";
       echo"  <p>".$array['description']."</p>";
       echo"  <p>".$array['priceUSD']."</p>";
-
         if(isset($_SESSION['type'])){
           switch ($_SESSION['type']) {
             case 'user':
-            echo "<a href='index.php?addCartSku=".$array['sku']."'  class='btn add'>Add to cart</a>";
-            break;
+              echo "<a href='index.php'  class='btn add'>Add to cart</a>";
               //$cart->addToCart($array['sku'],1)
+              break;
             case 'admin':
               $skuVar = $sku[$i];
               echo"<dev id='btncont'>";
               echo "<form action='index.php' method='post' id='remove'>";
               echo "<button type='submit' name='remove' value='remove' class='redbtn'>Remove Item</a></button>";
+              echo"</form>";
               if(isset($_POST['remove'])){
                 $remove = $_POST['remove'];
-                $db->removeItemfromDB($skuVar);
-                break;
+                $db->removeItemfromDB($remove);
               }
-              echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
+              echo "<button type='submit' a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
               break;
               echo"</dev>";
           }
@@ -374,17 +353,11 @@ img {vertical-align: middle;}
         else{
           echo "<a href='Frontend_Models/login.php'  class='btn add'>Add to cart</a>";
         }
-
-
-
         echo"</div>";
-
         echo"</div>";
                 echo "<br><br>";
       echo"</div>";
-
     }
-
 }
   ?>
 </form>
@@ -606,9 +579,7 @@ $.ajax({
   xmlhttp.send();
 }
 });
-
 */
-
 /*
 function showUser(str){
   jQuery.ajax({
@@ -616,15 +587,12 @@ function showUser(str){
     url: 'Database/dbAPI.php',
     data: {functionname: 'search', argument: [search]},
     success:function(data)){
-
     }
   });
 */
 function displayitems(){
   document.getElementById("items").innerHTML = "<?php echo $temp;?>";
 }
-
-
 </script>
 
 </body>
