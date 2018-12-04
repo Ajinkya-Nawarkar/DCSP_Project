@@ -123,7 +123,7 @@
       <input class="w3-check" type="checkbox" checked name="Like">
       <label>I Like it!</label>
       <div class="w3-container">
-  <button type="submit" class="w3-button w3-right w3-theme">Send</button>
+<p><a href="Frontend_Models/contact.php" class="w3-button w3-right w3-theme">Send</a></p>
 </form>
 </div>
     </div>
