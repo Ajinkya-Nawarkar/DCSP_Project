@@ -148,9 +148,16 @@ session_start();
                           if ($empty) {
                             echo "<tr><td></td><td>Empty Cart</td><td></td><td></td><td></td></tr>";
                           } else {
-                            echo "<tr><td>".$cart_all[$i]['sku']."</td><td>".$cart_all[$i]['name']."</td><td>".$cart_all[$i]['priceUSD']."</td>";
-                            echo "<td><input type='number' name='quant".$cart_all[$i]['sku']."' min='0' max='".$cart_all[$i]['quantity']."' value='".$cart_quants[$cart_all[$i]['sku']]."' required></td>";
-                            echo "<td><input type='checkbox' name='remove".$cart_all[$i]['sku']."'></td></tr>";
+                            $curr_sku = $cart_all[$i]['sku'];
+                            $curr_name = $cart_all[$i]['name'];
+                            $curr_price = $cart_all[$i]['priceUSD'];
+                            $curr_quant = $cart_all[$i]['quantity'];
+                            $curr_q_num = $curr_sku - 1;
+                            $curr_q = 'quant'.$curr_q_num;
+                            $curr_rem = 'remove'.$curr_q_num;
+                            echo "<tr><td>".$curr_sku."</td><td>".$curr_name."</td><td>".$curr_price."</td>";
+                            echo "<td><input type='number' name='".$curr_q."' min='0' max='9' value='".$cart_quants[$curr_sku]."' required></td>";
+                            echo "<td><input type='checkbox' name='".$curr_rem."'></td></tr>";
                           }
                         }
                         ?>
