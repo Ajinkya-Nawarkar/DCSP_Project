@@ -72,7 +72,7 @@ session_start();
 </head>
     <body>
       <?php
-      //require_once(dirname(__DIR__)."/Backend_Models/cart.php");
+      require_once(dirname(__DIR__)."/Backend_Models/cart.php");
 
       // Only users allowed on this page
       if ($_SESSION['type'] != "user") {
@@ -81,10 +81,10 @@ session_start();
 
       // Initalize cart
       $username = $_SESSION['username'];
-      //$cart = new Cart($username);
+      $cart = new Cart($username);
 
       // Check if any updates had been made to the cart and update the users cart accordingly
-      /*if (isset($_POST['update']) or isset($_POST['checkout'])) {
+      if (isset($_POST['update']) or isset($_POST['checkout'])) {
         for ($sku = 0; $sku < 50; $sku++) {
           $q = 'quant'.$sku;
           $rem = 'remove'.$sku;
@@ -116,7 +116,7 @@ session_start();
         $empty = True;
       } else {
         $cart_all = $cart->getItemsDetails($cart_quants);
-      }*/
+      }
 
       ?>
 

@@ -37,9 +37,6 @@ class Cart
     return $items;
   }
 
-    return $result;
-  }
-
   function addToCart($sku, $amount)
   {
     $this->database->addToCart($this->username, $sku, $amount);
