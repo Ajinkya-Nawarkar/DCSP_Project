@@ -1,6 +1,6 @@
 <?php
   
-	require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
+	require_once(dirname(__DIR__)."/Backend_Models/errException.php");
   require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
   // Model class for function implementations of Item class
@@ -35,12 +35,12 @@
       $this->database = new dbAPI;
 
 	   	// Validate all necessary attributes with errors exceptions
-	   	$this->validatePriceUSD();
-	   	$this->validateQuantity();
+	   	//$this->validatePriceUSD();
+	   	//$this->validateQuantity();
 
 	   	// Throw the validation errors if exists
 	   	if ($this->error->hasError())
-	   		throw $this->err; 
+	   		throw $this->error; 
    	}
 
    	function getSku()			{	return $this->sku;	}
@@ -64,7 +64,7 @@
    	{
    		if(!is_numeric($this->quantity))
             $this->error->addError("quantity","Quantity must be numeric.");
-         if($this->quantity < 0){
+         if($this->quantity < 0)
          $this->error->addError("quantity","Quantity must be greater than or equal to 0.");
    	}
 

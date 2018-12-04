@@ -13,10 +13,10 @@
 
   class Admin
   {
-    public $username;
-    public $password;
-    public $firstname;
-    public $lastname;
+    private $username;
+    private $password;
+    private $firstname;
+    private $lastname;
 
     private $error; 
     private $database;
@@ -39,6 +39,11 @@
       if ($this->error->hasError())
         throw $this->error; 
     }
+
+    function getUsername()     { return $this->username;  }
+    function getPassword()      { return $this->password; }
+    function getFirstname()    { return $this->firstname; }
+    function getLastname()      { return $this->lastname; }
 
     function validateUsername()
     {
