@@ -78,9 +78,8 @@
   <button type="submit" class="w3-button w3-right w3-theme">Send</button>
 </form>
 
-
-</div>
-
+	      </div>
+      </div>
     </div>
   </div>
 </div>
@@ -97,26 +96,5 @@
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
     <h4>Maroon Gaming Co. @ 2018</h4>
 </footer>
-
-    </body>
+</body>
 </html>
-
-<?php
-    // redirect user to index.php
-    function redirectUser()
-    {
-        header('Location: ../index.php');
-        exit();
-    }
-    //helper functions to sanitize user entries
-    function mysql_entities_fix_string($connection, $string)
-    {
-      return htmlentities(mysql_fix_string($connection, $string));
-    }
-    
-    function mysql_fix_string($connection, $string)
-    {
-      if (get_magic_quotes_gpc()) $string = stripslashes($string);
-      return $connection->real_escape_string($string);
-    }
-?>
