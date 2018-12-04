@@ -1,4 +1,4 @@
-<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 0); ?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -208,7 +208,7 @@
     // redirect user to index.php
     function redirectUser()
     {
-        header('Location: editAccount.php');
+        header('Location: ../index.php');
         exit();
     }
      //helper functions to sanitize user entries
