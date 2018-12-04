@@ -1,4 +1,4 @@
-<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 0); ?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -205,8 +205,8 @@
                         <p class="text-center text-info" style="margin-top: 5px"><b>Please edit the details of the existing product</b></p>
                         
 
-                        <label for="sku" class="text-info"><b>#SKU:</b></label><br>
-                        <label for="sku" class="text-info"><b><?php echo $sku; ?></b></label><br>
+                        <label for="sku" class="text-info"><b>#SKU:</b></label>
+                        <label for="sku" class="text-info" style="margin-right: 15px;"><b><?php echo $sku; ?></b></label><br>
  
                         <label for="name" class="text-info"><b>Name:</b></label><br>
                         <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>"><br>
