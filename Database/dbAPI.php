@@ -151,7 +151,7 @@ class dbAPI
   }
 
   public function getUserDetails($username){
-    $result = query("SELECT * FROM users WHERE username = '$username'");
+    $result = mysqli_fetch_array($this->connection->query("SELECT * FROM users WHERE username = '$username'"));
     return $result;
   }
 
