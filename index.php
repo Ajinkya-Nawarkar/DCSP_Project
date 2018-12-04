@@ -255,9 +255,9 @@ img {vertical-align: middle;}
 
 <form class="example" action="index.php" method="post">
   <input type="text" placeholder="Search.." name="search">
-  <input type="submit" name="submit"><i class="fa fa-search"></i></button>
+  <button type="submit" name="submit"><i class="fa fa-search"></i></button>
 
-
+<br><br>
   <?php
   $search = '';
   if(isset($_POST['search']))  {
@@ -277,7 +277,7 @@ img {vertical-align: middle;}
 //  $cart = $cart->newCart($_SESSION['username']);
 
 
-  for($i = '0'; $i<'11'; $i++){
+  for($i = '0'; $i<'1000000'; $i++){
 
 
       $array = array();
@@ -285,8 +285,11 @@ img {vertical-align: middle;}
       if(is_null($array)){
         break;
       }
+
+
       echo"<div class='w3-quarter'>";
-      echo"<div class='w3-card w3-white'>";
+      echo"<div class='w3-card w3-white w3-paddingTop=10px'>";
+
 
     //while($results = mysqli_fetch_array($query)){
       echo"  <div class='w3-container'>";
@@ -297,16 +300,16 @@ img {vertical-align: middle;}
         if(isset($_SESSION['type'])){
           switch ($_SESSION['type']) {
             case 'user':
-              echo "<a href='index.php'  class='cd-add-to-cart'>Add to cart</a>";
+              echo "<a href='index.php'  class='cd-add-to-cart w3-btn w3-green'>Add to cart</a>";
               //$cart->addToCart($array['sku'],1)
               break;
             case 'admin':
               echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Remove Item</a>";
-              echo "<a href='Frontend_Models/editQ.php'  class='w3-btn w3-red'>Edit</a>";
+              echo "<a href='Frontend_Models/editQ.php'  class='w3-btn w3-blue'>Edit</a>";
           }
         }
         else{
-          echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Add to cart</a>";
+          echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-green'>Add to cart</a>";
         }
 
 
@@ -315,7 +318,9 @@ img {vertical-align: middle;}
 
         echo"</div>";
       echo"</div>";
+
     }
+
 }
   ?>
 </form>
