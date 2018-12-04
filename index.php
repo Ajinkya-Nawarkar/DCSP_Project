@@ -17,11 +17,9 @@ form.example input[type=text] {
     background: #f1f1f1;
 }
 .add{
-
   color: white
 }
 .add:hover{
-
   color: white;
 }
 .submitbtn {
@@ -101,6 +99,29 @@ img {vertical-align: middle;}
 }
 .btncont{
   text-align: center;
+
+}
+.redbtn{
+  border: none;
+  background-color: #800000;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  width:200px;
+  height: 60px;
+}
+.bluebtn{
+  border: none;
+  background-color: teal;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  width:100px;
+  height: 60px;
+}
+.btncont{
+  text-align: center;
+
 }
 /* The dots/bullets/indicators */
 .dot {
@@ -201,7 +222,6 @@ img {vertical-align: middle;}
         case 'admin':
           echo "<a href='Frontend_Models/manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>";
           echo "<a href='Frontend_Models/createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>";
-
           break;
       }
     }
@@ -321,38 +341,32 @@ img {vertical-align: middle;}
   if(isset($_POST['search']))  {
     $search = $_POST['search'];
   }
+
   $temp = dosearch($search);
-
   function dosearch($search){
-
   require_once('Database/dbAPI.php');
-
   $db = new dbAPI;
+  if (isset($_GET['remove'])){
+      $sku2 = $_GET['remove'];
+      $db->removeItemfromDB($sku2);
+  }
   $sku = array();
   $sku = $db->search($search);
 
-
-
   for($i = '0'; $i<sizeof($sku); $i++){
-
-
       $array = array();
       $array = $db->getItem($sku[$i]);
       if(is_null($array)){
         break;
       }
-
-
       echo"<div class='w3-quarter'>";
       echo"<div class='w3-card w3-white w3-margin-top w3-margin-right w3-border w3-border-red w3-padding-16'>";
-
 
     //while($results = mysqli_fetch_array($query)){
       echo"  <div class='w3-container'>";
       echo"  <h3>".$array['name']."</h3>";
       echo"  <p>".$array['description']."</p>";
       echo"  <p>".$array['priceUSD']."</p>";
-
         if(isset($_SESSION['type'])){
           switch ($_SESSION['type']) {
             case 'user':
@@ -362,30 +376,27 @@ img {vertical-align: middle;}
               $skuVar = $sku[$i];
               echo"<dev id='btncont'>";
               echo "<form action='index.php' method='post' id='remove'>";
-              echo "<button type='submit' name='remove' value='remove' class='redbtn'>Remove Item</a></button>";
-              if(isset($_POST['remove'])){
-                $remove = $_POST['remove'];
-                $db->removeItemfromDB($remove);
-              }
-              echo "<button type='submit' a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
-              break;
+
+              echo "<a href='index.php?remove=$skuVar' class='redbtn'>Remove Item</a>";
+              //echo"</form>";
+
+
+
+              echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a>";
               echo"</dev>";
+              break;
+
+
           }
         }
         else{
           echo "<a href='Frontend_Models/login.php'  class='btn add'>Add to cart</a>";
         }
-
-
-
         echo"</div>";
-
         echo"</div>";
                 echo "<br><br>";
       echo"</div>";
-
     }
-
 }
   ?>
 </form>
@@ -491,7 +502,7 @@ img {vertical-align: middle;}
 
 
 </div>
-    
+
 </div>
   </div>
 </div>
@@ -607,9 +618,7 @@ $.ajax({
   xmlhttp.send();
 }
 });
-
 */
-
 /*
 function showUser(str){
   jQuery.ajax({
@@ -617,15 +626,12 @@ function showUser(str){
     url: 'Database/dbAPI.php',
     data: {functionname: 'search', argument: [search]},
     success:function(data)){
-
     }
   });
 */
 function displayitems(){
   document.getElementById("items").innerHTML = "<?php echo $temp;?>";
 }
-
-
 </script>
 
 </body>
