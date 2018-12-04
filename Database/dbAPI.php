@@ -174,7 +174,7 @@ class dbAPI
   }
 
   public function search($search) {
-    if ($seach == "") {
+    if ($search == "") {
       $query = "SELECT sku FROM items";
     } else {
       $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
