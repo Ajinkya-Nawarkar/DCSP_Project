@@ -174,7 +174,11 @@ class dbAPI
   }
 
   public function search($search) {
-    $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
+    if ($seach == "") {
+      $query = "SELECT sku FROM items";
+    } else {
+      $query = "SELECT sku FROM items WHERE MATCH(name, platform, type, developer, description) AGAINST('$search' IN NATURAL LANGUAGE MODE)";
+    }
     $results = array();
     $data = $this->connection->query($query);
     while ($result = $data->fetch_array()) {
