@@ -74,6 +74,7 @@
             require_once(dirname(__DIR__)."/Backend_Models/editQuantity.php");
             
             // Initialize the objects
+            $sku = "";
             $db = new dbAPI;
             $editQ = new editQuantity;
 
@@ -96,13 +97,9 @@
             $quantity = $result['quantity'];
 
             # Error message variables
-            $skuErr = "";
             $priceErr = "";
             $quantityErr = "";
             $errFlg = False;
-            
-            // Preserve the username to show if only password is incorrect
-            $username = isset($_POST['username']);
             
             # Check if submission has been made
             if (!empty($_POST)) 
