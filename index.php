@@ -408,7 +408,7 @@ img {vertical-align: middle;}
   <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
 
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-	<p> <a href="contact.php" target = "_blank">Contact Us</a></p>
+	<p> <a href="Frontend_Model/contact.php" target = "_blank">Contact Us</a></p>
   <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
     <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
     <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
