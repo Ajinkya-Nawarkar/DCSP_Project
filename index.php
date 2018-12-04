@@ -357,7 +357,7 @@ img {vertical-align: middle;}
 
 
 
-<!--
+<!-- >
 <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
   <div class="w3-row">
     <div class="w3-col m5">
@@ -390,8 +390,8 @@ img {vertical-align: middle;}
 
 
 </div>
--->
-    </div>
+<-- >    
+</div>
   </div>
 </div>
 
