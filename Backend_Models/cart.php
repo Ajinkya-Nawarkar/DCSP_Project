@@ -19,7 +19,7 @@ class Cart
     $pre_items = $data->fetch_array();
     $items = $pre_items['cart'];
     $cart = array();
-    for ($int i = 0; $i < sizeof($items); $i++) {
+    for ($i = 0; $i < sizeof($items); $i++) {
       if ($items[$i] != '0') {
         $cart[$i] = $items[$i];
       }
