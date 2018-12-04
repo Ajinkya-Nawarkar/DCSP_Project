@@ -76,9 +76,7 @@
             $priceErr = "";
             $quantityErr = "";
             $errFlg = False;
-            
-            // Preserve the username to show if only password is incorrect
-            $username = isset($_POST['username']);
+
             
             # Check if submission has been made
             if (!empty($_POST)) 
