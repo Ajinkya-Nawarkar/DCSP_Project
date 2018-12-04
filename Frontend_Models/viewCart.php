@@ -124,8 +124,11 @@ session_start();
       <div class="w3-top">
           <div class="w3-bar w3-theme-d2 w3-left-align">
 
-              <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
+              <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gaming - Basic User</a>
               <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
+              <a href='editAccount.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Account</a>
+              <a href='viewCart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>
+              <a href='logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-hover-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true'></i> Logout</a>
           </div>
       </div>
       <div align="center" id="view_cart">
@@ -170,7 +173,9 @@ session_start();
             </div>
         </div>
       </div>
-
+      <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
+          <h4>Maroon Gaming Co. @ 2018</h4>
+      </footer>
 
     </body>
 </html>
