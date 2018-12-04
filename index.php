@@ -255,36 +255,31 @@ img {vertical-align: middle;}
 
 <form class="example" action="index.php" method="post">
   <input type="text" placeholder="Search.." name="search">
-  <button type="submit" onsubmit= "
-  <?php $search = '';
-  if(isset($_POST['search']))
-  {$search = $_POST['search'];
-  }
-  dosearch($search);
-  ?>
-  "><i class="fa fa-search"></i></button>
+  <input type="submit" name="submit"><i class="fa fa-search"></i></button>
 
 
   <?php
-  if(!isset($_POST['search'])){
-    $search = '';
-    }
-  if(is_null($search)){
-    dosearch('');
+  $search = '';
+  if(isset($_POST['search']))  {
+    $search = $_POST['search'];
   }
+  $temp = dosearch($search);
+
   function dosearch($search){
 
   require_once('Database/dbAPI.php');
 
   $db = new dbAPI;
   $sku = array();
+  echo "1";
   $sku = $db->search($search);
-      echo"the search is $search";
-      echo"The sku is".$sku['1'];
-  echo"<div class='w3-quarter'>";
-  echo"<div class='w3-card w3-white'>";
+include cartQuery
+$cart - newCart($_SESSION['username'])
+$cart->addToCart($array['sku'],1)
 
-  for($i = '0', $i<'11'; $i++;){
+  for($i = '0'; $i<'11'; $i++){
+    echo"<div class='w3-quarter'>";
+    echo"<div class='w3-card w3-white'>";
       $array = array();
       $array = $db->getItem($sku[$i]);
 
@@ -314,11 +309,12 @@ img {vertical-align: middle;}
 
         echo"</div>";
       echo"</div>";
-}
+    }
 }
   ?>
 </form>
 
+<p id="items"> <?php echo $temp;?> </p>
 <!--
 <div class="w3-container" style="position:relative">
   <a onclick="w3_open()" class="w3-button w3-xlarge w3-circle w3-teal"
@@ -547,7 +543,9 @@ function showUser(str){
     }
   });
 */
-
+function displayitems(){
+  document.getElementById("items").innerHTML = "<?php echo $temp;?>";
+}
 
 </script>
 
