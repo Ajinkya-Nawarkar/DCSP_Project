@@ -277,8 +277,7 @@ img {vertical-align: middle;}
         case 'admin':
           $sku = "2";
           echo "<a href='Frontend_Models/login.php'  class='w3-btn w3-red'>Remove Item</a>";
-          echo "<a href='Frontend_Models/editItem.php?varSku='$sku''  class='w3-btn w3-red'>Edit1</a>";
-          echo "<a href='Frontend_Models/editItem.php?varSku=$sku'  class='w3-btn w3-red'>Edit2</a>";
+          echo "<a href='Frontend_Models/editItem.php?varSku=$sku'  class='w3-btn w3-red'>Edit</a>";
       }
     }
     else{

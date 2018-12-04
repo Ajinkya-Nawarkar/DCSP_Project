@@ -1,4 +1,4 @@
-<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 1); ?>
+<?php session_start(); error_reporting(E_ALL); ini_set('display_errors', 0); ?>
 
 <!DOCTYPE html>
 <html lang='en'>
@@ -67,7 +67,7 @@
     <body>
         <?php
 
-            // Send the #SKU using this format -> header('Location: http://example.com?message=Success');
+            // Send the #SKU using this format -> href='Frontend_Models/editItem.php?varSku=$sku'
 
             require_once(dirname(__DIR__)."/Database/dbAPI.php");
             require_once(dirname(__DIR__)."/Backend_Models/item.php");
@@ -209,22 +209,22 @@
                         <label for="sku" class="text-info"><b><?php echo $sku; ?></b></label><br>
  
                         <label for="name" class="text-info"><b>Name:</b></label><br>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>">
+                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>"><br>
                          
                         <label for="platform"><b>Platform: </b></label><br>
-                        <input type="text" name="platform" id="platform" class="form-control" placeholder="<?php echo $platform; ?>" style="width: 235px;" required value="<?php echo $platform; ?>">
+                        <input type="text" name="platform" id="platform" class="form-control" placeholder="<?php echo $platform; ?>" style="width: 235px;" required value="<?php echo $platform; ?>"><br>
                         
                         <label for="type"><b>Type:</b></label><br>
-                        <input type="text" name="type" id="type" class="form-control" placeholder="<?php echo $type; ?>" style="width: 235px;" required value="<?php echo $type; ?>">
+                        <input type="text" name="type" id="type" class="form-control" placeholder="<?php echo $type; ?>" style="width: 235px;" required value="<?php echo $type; ?>"><br>
                         
                         <label for="developer"><b>Developer</b></label><br>
-                        <input type="text" name="developer" id="developer" class="form-control" placeholder="<?php echo $developer; ?>" style="width: 235px;" required value="<?php echo $developer; ?>">  
+                        <input type="text" name="developer" id="developer" class="form-control" placeholder="<?php echo $developer; ?>" style="width: 235px;" required value="<?php echo $developer; ?>"><br>  
 
                         <label for="description"><b>Description of the product</b></label><br>
-                        <input type="text" name="description" id="description" class="form-control" placeholder="Description of the product" style="width: 235px;" required value="<?php echo $description; ?>">         
+                        <input type="text" name="description" id="description" class="form-control" placeholder="<?php echo $description; ?>" style="width: 235px;" required value="<?php echo $description; ?>"><br>        
 
                         <label for="priceUSD"><b>Price in USD</b></label><br>
-                        <input type="text" name="priceUSD" id="priceUSD" class="form-control" placeholder="Price in USD" style="width: 235px;" required value="<?php echo $priceUSD; ?>">
+                        <input type="text" name="priceUSD" id="priceUSD" class="form-control" placeholder="<?php echo $priceUSD; ?>" style="width: 235px;" required value="<?php echo $priceUSD; ?>"><br>
 
                         <?php
                             if ($priceErr)
@@ -237,7 +237,7 @@
                         ?>
 
                         <label for="quantity"><b>Quantity available:</b></label><br>
-                        <input type="text" name="quantity" id="quantity" class="form-control" placeholder="Quantity available" style="width: 235px;" required value="<?php echo $quantity; ?>">           
+                        <input type="text" name="quantity" id="quantity" class="form-control" placeholder="<?php echo $quantity; ?>" style="width: 235px;" required value="<?php echo $quantity; ?>"><br>           
                         
                         <?php
                             if ($quantityErr)
