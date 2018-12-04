@@ -52,8 +52,10 @@ class dbAPI
   public function newAdmin($admin){
     $username = $admin->getUsername();
     $password = $admin->getPassword();
-    $query  = "INSERT INTO admins (username, password) "
-            . "VALUES('$username', '$password')";
+    $firstname = $admin->getFirstname();
+    $lastname = $admin->getLastname();
+    $query  = "INSERT INTO admins (username, password, firstname, lastname) "
+            . "VALUES('$username', '$password', '$firstname', '$lastname')";
     $this->connection->query($query);
     return true;
   }
