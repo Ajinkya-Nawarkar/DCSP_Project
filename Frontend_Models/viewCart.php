@@ -157,10 +157,10 @@ session_start();
     </body>
 </html>
 <?php
-    // redirect user to index.php
+    /*// redirect user to index.php
     function redirectUser()
     {
         header('.Location: ../index.php');
         exit();
-    }
+    }*/
 ?>
