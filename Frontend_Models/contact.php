@@ -28,8 +28,8 @@
                 padding-bottom: 2px;
             }
             footer{
-                margin-top: 160px;
-                padding-bottom: 0px;
+                margin-top: 0px;
+                padding-bottom: 180px;
             }
 		label {
     width:180px;
