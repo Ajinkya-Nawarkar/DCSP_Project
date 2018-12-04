@@ -96,7 +96,6 @@
             <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
         </div>
     </div>
-    <body>
 <php
   <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
   <div class="w3-row">
