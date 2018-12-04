@@ -133,7 +133,7 @@ session_start();
                 <div id="view_cart-column" class="col-md-6">
                     <div class="view_cart-box col-md-12">
                     <form id="view_cart-form" class="form" action='viewCart.php' method='post'>
-                      <h2 class="text-center text-info"><b><?php echo "$username"; ?>'s Cart</b></h2><br>
+                      <h2 class="text-center text-info"><b><?php echo $username; ?>'s Cart</b></h2><br>
                       <table id="cart">
                         <colgroup>
                            <col span="1" style="width: 10%;">
