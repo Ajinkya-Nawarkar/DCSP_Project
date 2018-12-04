@@ -154,8 +154,5 @@
             <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
         </div>
     </div>
-<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
-    <h4>Maroon Gaming Co. @ 2018</h4>
-</footer>
 </body>
 </html>
