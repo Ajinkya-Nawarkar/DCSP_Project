@@ -77,6 +77,28 @@ img {vertical-align: middle;}
     font-size: 16px;
     cursor: pointer;
     display: inline-block;
+
+}
+.redbtn{
+  border: none;
+  background-color: #800000;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  width:200px;
+  height: 60px;
+}
+.bluebtn{
+  border: none;
+  background-color: teal;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  width:100px;
+  height: 60px;
+}
+.btncont{
+  text-align: center;
 }
 .redbtn{
   border: none;
@@ -339,13 +361,15 @@ img {vertical-align: middle;}
               $skuVar = $sku[$i];
               echo"<dev id='btncont'>";
               echo "<form action='index.php' method='post' id='remove'>";
-              echo "<button type='submit' name='remove' value='remove' class='redbtn'>Remove Item</a></button>";
+              echo "<a href='index.php?remove=$skuVar' class='redbtn'>Remove Item</a>";
               echo"</form>";
-              if(isset($_POST['remove'])){
-                $remove = $_POST['remove'];
-                $db->removeItemfromDB($remove);
+
+              if (isset($_GET['remove'])){
+                  $sku2 = $_POST['remove'];
+                  $db->removeItemfromDB($sku2);
               }
-              echo "<button type='submit' a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a></button>";
+
+              echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a>";
               break;
               echo"</dev>";
           }
@@ -430,7 +454,7 @@ img {vertical-align: middle;}
 
 
 
-
+<!-- >
 <div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
   <div class="w3-row">
     <div class="w3-col m5">
@@ -464,11 +488,11 @@ img {vertical-align: middle;}
 
 </div>
 
-    </div>
+</div>
   </div>
 </div>
 </div>
-
+<-- >
 
 <!-- Image of location/map
 <img src="/w3images/map.jpg" class="w3-image w3-greyscale-min" style="width:100%;">
@@ -483,7 +507,7 @@ img {vertical-align: middle;}
   <a class="w3-button w3-large w3-teal w3-hide-small" href="javascript:void(0)" title="Linkedin"><i class="fa fa-linkedin"></i></a>
 
   <p>Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
-
+  <p><a href="Frontend_Models/contact.php" class="w3-bar-item w3-button w3-hide-small w3-teal">Contact Us</a></p>
   <div style="position:relative;bottom:100px;z-index:1;" class="w3-tooltip w3-right">
     <span class="w3-text w3-padding w3-teal w3-hide-small">Go To Top</span>
     <a class="w3-button w3-theme" href="#myPage"><span class="w3-xlarge">
