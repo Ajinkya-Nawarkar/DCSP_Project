@@ -82,60 +82,47 @@
             // Initialize the variables 
             $result = $db->getUserDetails($username);
             
-            $name = $result['name'];
-            $platform = $result['platform'];
+            $firstname = $result['firstname'];
+            $lastname = $result['lastname'];
             $type = $result['type'];
-            $developer = $result['developer'];            
-            $description = $result['description'];
-            $priceUSD = $result['priceUSD'];
-            $quantity = $result['quantity'];
+            $password1 = "";
+            $password2 = "";
+            $encryptedPw = "";
             
             # Error message variables
-            $priceErr = "";
-            $quantityErr = "";
+            $pw1Err = "";
+            $pw2Err = "";
             $errFlg = False;
             
             # Check if submission has been made
             if (!empty($_POST)) 
             {
-              if (isset($_POST['name'])) 
+              if (isset($_POST['firstName'])) 
               {
-                $name = $_POST['name'];
+                $firstName = $_POST['firstName'];
               }
-               if (isset($_POST['platform'])) 
+               if (isset($_POST['lastName'])) 
               {
-                $platform = $_POST['platform'];
+                $lastName = $_POST['lastName'];
               } 
-               if (isset($_POST['type'])) 
+              if (!empty($_POST['password1'])) 
               {
-                $type = $_POST['type'];
-              }
-               if (isset($_POST['developer'])) 
-              {
-                $developer = $_POST['developer'];
-              }
-               if (isset($_POST['description'])) 
-              {
-                $description = $_POST['description'];
-              }
-               if (isset($_POST['priceUSD'])) 
-              {
-                $priceUSD = $_POST['priceUSD'];
-                if (!is_numeric($priceUSD) or $priceUSD <= 0) 
+                $password1 = $_POST['password1'];
+                if (!preg_match('/^(?=.*[0-9]+.*)(?=.*[a-zA-Z]+.*)[0-9a-zA-Z]{8,}$/', $password1)) 
                 {
-                  $priceErr = "Price must be positive float and greater than or equal to 1";
-                  $errFlg = True;
-                } 
-              } 
-               if (isset($_POST['quantity'])) 
-              {
-                $quantity = $_POST['quantity'];
-                if (!is_numeric($quantity) or $quantity <= 0) 
-                {
-                  $quantityErr = "Quantity must be positive integer and greater than or equal to 1";
+                  $pw1Err = "Not a valid password: must be at least 8 characters {a-z, A-Z, 0-9}.";
                   $errFlg = True;
                 }
-              }
+                if (!empty($_POST['password2'])) 
+                {
+                  $password2 = $_POST['password2'];
+                  if ($password1 != $password2) 
+                  {
+                    $pw2Err = "Your password entries do not match.";
+                    $errFlg = True;
+                  }
+                } 
+              } 
             }
             else {
               # While no error occurs, you still don't want to run the item entry to the database before a submission is made and redirect to index.php
@@ -143,9 +130,12 @@
             }    
              if (!$errFlg) 
             {
+                if ($password1 != ""){
+                  $encryptedPw = $common->hashPassword($password1);
+                }
+
                 # ADD ITEM TO DATABASE HERE
-                $item = new Item($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity);
-                $editQ->editItemInDB($item);
+                $db->editAccount($username, $encryptedPw, $firstname, $lastname);
                 redirectUser();
             }       
         ?>
@@ -168,50 +158,39 @@
             <div id="login-column" class="col-md-6">
                 <div class="login-box col-md-12">
                     <form id="login-form" class="form" action="editAccount.php" method="post">
-                        <h2 class="text-center text-info"><b>Edit a product in the database</b></h2>
-                        <p class="text-center text-info" style="margin-top: 5px"><b>Please edit the details of the existing product</b> <b class="skuOutput">#SKU: <?php echo $sku; ?></b></p>
+                        <h2 class="text-center text-info"><b>Edit Account</b></h2>
+                        <p class="text-center text-info" style="margin-top: 5px"><b>Please edit your account details</b> <b class="skuOutput">#SKU: <?php echo $sku; ?></b></p>
                         
                         <input type="hidden" name="sku" id="sku" value="<?php echo $sku; ?>"><br>
  
-                        <label for="name" class="text-info"><b>Name:</b></label><br>
-                        <input type="text" name="name" id="name" class="form-control" placeholder="Name" style="width: 235px;" required value="<?php echo $name; ?>"><br>
+                        <label for="firstName" class="text-info"><b>First Name:</b></label><br>
+                        <input type="text" name="firstName" id="firstName" class="form-control" placeholder="firstName" style="width: 235px;" required value="<?php echo $firstName; ?>"><br>
                          
-                        <label for="platform"><b>Platform: </b></label><br>
-                        <input type="text" name="platform" id="platform" class="form-control" placeholder="<?php echo $platform; ?>" style="width: 235px;" required value="<?php echo $platform; ?>"><br>
+                        <label for="lastName"><b>Last Name: </b></label><br>
+                        <input type="text" name="lastName" id="lastName" class="form-control" placeholder="<?php echo $lastName; ?>" style="width: 235px;" required value="<?php echo $lastName; ?>"><br>
                         
-                        <label for="type"><b>Type:</b></label><br>
-                        <input type="text" name="type" id="type" class="form-control" placeholder="<?php echo $type; ?>" style="width: 235px;" required value="<?php echo $type; ?>"><br>
-                        
-                        <label for="developer"><b>Developer</b></label><br>
-                        <input type="text" name="developer" id="developer" class="form-control" placeholder="<?php echo $developer; ?>" style="width: 235px;" required value="<?php echo $developer; ?>"><br>  
-                         <label for="description"><b>Description of the product</b></label><br>
-                        <input type="text" name="description" id="description" class="form-control" placeholder="<?php echo $description; ?>" style="width: 235px;" required value="<?php echo $description; ?>"><br>        
-                         <label for="priceUSD"><b>Price in USD</b></label><br>
-                        <input type="text" name="priceUSD" id="priceUSD" class="form-control" placeholder="<?php echo $priceUSD; ?>" style="width: 235px;" required value="<?php echo $priceUSD; ?>"><br>
-                         <?php
-                            if ($priceErr)
-                            {
-                                echo "<p style='color: red'>";
-                                echo "<span class='error'>";
-                                echo $priceErr; 
-                                echo "</span><br></p>";
-                            }
-                        ?>
-                         <label for="quantity"><b>Quantity available:</b></label><br>
-                        <input type="text" name="quantity" id="quantity" class="form-control" placeholder="<?php echo $quantity; ?>" style="width: 235px;" required value="<?php echo $quantity; ?>"><br>           
-                        
-                        <?php
-                            if ($quantityErr)
-                            {
-                                echo "<p style='color: red'>";
-                                echo "<span class='error'>";
-                                echo $quantityErr; 
-                                echo "</span><br></p>";
-                            }
-                        ?>
+                        <label for="password1"><b>Password</b></label><br>
+                        <input type="password" placeholder="Enter Password (optional)" name="password1"><br>
+                        <?php if ($pw1Err)
+                              {
+                                  echo "<p style='color: red'>";
+                                  echo "<span class='error'>";
+                                  echo $pw1Err; 
+                                  echo "</span><br></p>";
+                              }?>
+
+                        <label for="password2"><b>Repeat Password</b></label><br>
+                        <input type="password" placeholder="Repeat Password (optional)" name="password2"><br>
+                        <?php if ($pw2Err)
+                              {
+                                  echo "<p style='color: red'>";
+                                  echo "<span class='error'>";
+                                  echo $pw2Err; 
+                                  echo "</span><br></p>";
+                              }?>
                         
                         <div class="form-group-submit">
-                            <input style="background-color: #4CAF50; color: white" type="submit" value="Edit Item">
+                            <input style="background-color: #4CAF50; color: white" type="submit" value="Edit Account">
                         </div>
                     </form>
                 </div>
@@ -229,7 +208,7 @@
     // redirect user to index.php
     function redirectUser()
     {
-        header('Location: ../index.php');
+        header('Location: editAccount.php');
         exit();
     }
      //helper functions to sanitize user entries
