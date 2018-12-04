@@ -110,7 +110,7 @@ session_start();
 
       // Get cart quantities [sku=>quant] and cart details ['sku'=>sku, 'name'=>name, etc...]
       $cart_quants = $cart->getItems();
-
+      echo $cart_quants;
       $empty = False;
       if (sizeof($cart_quants) == 0) {
         $empty = True;
@@ -144,7 +144,7 @@ session_start();
                         </colgroup>
                         <tr><th class="text-info"><b>SKU</b></th><th class="text-info"><b>Name</b></th><th class="text-info"><b>Price</b></th><th class="text-info"><b>Quantity</b></th><th class="text-info"><b>Remove</b></th></tr>
                         <?php
-                        for ($i = 0; $i < sizeof($cart_all); $i++) {
+                        /*for ($i = 0; $i < sizeof($cart_all); $i++) {
                           if ($empty) {
                             echo "<tr><td></td><td>Empty Cart</td><td></td><td></td><td></td></tr>";
                           } else {
@@ -159,7 +159,7 @@ session_start();
                             echo "<td><input type='number' name='".$curr_q."' min='0' max='9' value='".$cart_quants[$curr_sku]."' required></td>";
                             echo "<td><input type='checkbox' name='".$curr_rem."'></td></tr>";
                           }
-                        }
+                        }*/
                         ?>
                         <tr style="background-color:#ffffff"><td></td><td></td><td></td><td></td><td style="vertical-align:middle"><input style="background-color: #4CAF50; color: white" type='submit' name='update' value='Update'></td></tr>
                       </table><br>
