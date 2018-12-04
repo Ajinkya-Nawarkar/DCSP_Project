@@ -86,64 +86,6 @@
 </div>
 ?>
 
-    <div class="w3-top">
-        <div class="w3-bar w3-theme-d2 w3-left-align">
-
-            <a href="#" class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Maroon Gamer</a>
-            <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
-
-            <a href='signup.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Signup'><i class='fa fa-sign-in' aria-hidden='true'></i>  Signup</a>
-        </div>
-    </div>
-        
-	<div align="center" id="login">
-    <div class="container">
-        <div id="login-row" class="row justify-content-center align-items-center">
-            <div id="login-column" class="col-md-6">
-                <div class="login-box col-md-12">
-                    <form id="login-form" class="form" action="login.php" method="post">
-                        <h2 class="text-center text-info"><b>Sign In</b></h2>
-                        <p class="text-center text-info" style="margin-top: 5px"><b>Please sign in with your username and password below.</b></p>
-                        
-                        <div class="form-group" style="margin-top: 30px">
-                            <label for="username" class="text-info" style="margin-right: 10px;"><b>Username:</b></label>
-                            <input type="text" name="username" id="username" placeholder="&nbsp;&emsp;Email Address / Username" class="form-control" style="width: 235px;" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="password" class="text-info" style="margin-right: 13px"><b>Password:</b></label>
-                            <input type="password" name="password" id="password" placeholder="&emsp;&nbsp;Password" class="form-control" style="width: 235px;" required>
-                        </div>
-						    
-                        <div class="form-group" style="margin-top: 10px">
-                            <input type="checkbox" name="admin_check"  <?php echo $admin_check; ?>>
-						      Are you an Admin?<br>
-                        </div>
-						
-                        <?php
-                            if ($error_string)
-                            {
-                                echo "<p style='color: red'>";
-                                echo "<span class='error'>";
-                                echo $error_string; 
-                                echo "</span><br></p>";
-                            }
-                        ?>
-                        
-                        <div class="form-group-submit">
-                            <input style="background-color: #4CAF50; color: white" type="submit" value="Log in">
-                        </div>
-                    </form>
-                </div>
-                <br>
-                <div id="register-link" class="text-right">
-                    <p style="font-style:italic">I am new here.<a style="margin-left:100px" href="signup.php" class="w3-bar-item w3-button w3-teal">Sign Up here</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-        
 <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center">
     <h4>Maroon Gaming Co. @ 2018</h4>
 </footer>
