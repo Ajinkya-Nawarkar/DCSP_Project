@@ -329,10 +329,15 @@ img {vertical-align: middle;}
   if(isset($_POST['search']))  {
     $search = $_POST['search'];
   }
+
   $temp = dosearch($search);
   function dosearch($search){
   require_once('Database/dbAPI.php');
   $db = new dbAPI;
+  if (isset($_GET['remove'])){
+      $sku2 = $_GET['remove'];
+      $db->removeItemfromDB($sku2);
+  }
   $sku = array();
   $sku = $db->search($search);
   //require_once('Backend_Models/cartQuery.php');
@@ -364,10 +369,7 @@ img {vertical-align: middle;}
               echo "<a href='index.php?remove=$skuVar' class='redbtn'>Remove Item</a>";
               echo"</form>";
 
-              if (isset($_GET['remove'])){
-                  $sku2 = $_POST['remove'];
-                  $db->removeItemfromDB($sku2);
-              }
+
 
               echo "<a href='Frontend_Models/editItem.php?varSku=$skuVar' class='bluebtn'>Edit</a>";
               break;
