@@ -28,7 +28,7 @@
                 padding-bottom: 2px;
             }
             footer{
-                margin-top: 160px;
+                margin-top: 70px;
                 padding-bottom: 0px;
             }
         		
