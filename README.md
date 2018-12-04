@@ -3,7 +3,6 @@
 ## phpMyAdmin Database Account Details
 *Username* : cu81
 
-*Password* : aDqhvAtAp4ny5JMr
 *New Password* :maroongaming
 
 ## [Website in action LINK 1 tracking editItem](http://pluto.cse.msstate.edu/~an839/DCSP/link1_DCSP/DCSP_Project/)
