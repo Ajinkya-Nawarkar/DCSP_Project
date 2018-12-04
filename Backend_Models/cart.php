@@ -15,9 +15,10 @@ class Cart
 
   function getItems()
   {
-    $data = $this->database->query("SELECT cart FROM users WHERE username='$this->username'");
+    $data = $this->database->query("SELECT * FROM users WHERE username='$this->username'");
     $pre_items = $data->fetch_array();
     $items = $pre_items['cart'];
+    echo $items;
     $cart = array();
     for ($i = 0; $i < sizeof($items); $i++) {
       if ($items[$i] != '0') {
