@@ -33,12 +33,17 @@
       $this->database = new dbAPI;
 
       // Validate the username
-      $this->validateUsername();
+      //$this->validateUsername();
 
       // Throw the validation errors if exists
       if ($this->error->hasError())
         throw $this->error; 
     }
+
+    function getUsername()     { return $this->username;  }
+    function getPassword()      { return $this->password; }
+    function getFirstname()    { return $this->firstname; }
+    function getLastname()      { return $this->lastname; }
 
     function validateUsername()
     {

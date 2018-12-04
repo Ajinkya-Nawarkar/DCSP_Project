@@ -2,7 +2,7 @@
 
 	// Model for edit Quantity class function implementations
 	
-	require_once(dirname(__DIR__)."/Backend_Models/errExceptions.php");
+	require_once(dirname(__DIR__)."/Backend_Models/errException.php");
 	require_once(dirname(__DIR__)."/Backend_Models/item.php");
   	require_once(dirname(__DIR__)."/Database/dbAPI.php");
 
@@ -33,6 +33,20 @@
 		function modifyItemQuantityInDB($sku, $quantity)
 		{
 			$this->database->editQuantity($sku, $quantity);
+		}
+
+		function editItemInDB($item)
+		{
+			$sku = $item->getSku();
+		    $name = $item->getName();
+		    $platform = $item->getPlatform();
+		    $type = $item->getType();
+		    $developer = $item->getDeveloper();
+		    $description = $item->getDescription();
+		    $priceUSD = $item->getPrice();
+		    $quantity = $item->getQuantity();
+
+		    $this->database->editItem($sku, $name, $platform, $type, $developer, $description, $priceUSD, $quantity);
 		}
 	}
 
