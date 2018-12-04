@@ -150,7 +150,10 @@ class dbAPI
     return true;
   }
 
-
+  public function getUserDetails($username){
+    $result = query("SELECT * FROM users WHERE username = '$username'");
+    return $result;
+  }
 
   public function getAllUsers(){
     $result = query("SELECT username FROM users");
