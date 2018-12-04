@@ -28,10 +28,9 @@ class dbAPI
     //Initialize a new user's cart with an array containing 50 indexes filled with 0's.
     //When a user adds an item to their cart the value at the index equal to the item's sku
     //will be changed to the amount of the item the user wants.
-    $array = array();
+    $array = "";
     for($i = 0;$i < 50;$i++) {
-      $array[] = $i;
-      $array[$i] = 0;
+      $array = $array.'0';
     }
     $query  = "INSERT INTO users (username, password, firstname, lastname, cart) "
             . "VALUES('$user->username', '$user->password', '$user->firstname', '$user->lastname', '$array')";

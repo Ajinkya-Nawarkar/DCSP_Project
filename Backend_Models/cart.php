@@ -17,9 +17,9 @@ class Cart
   {
     $data = $this->database->query("SELECT * FROM users WHERE username='$this->username'");
     $items = $data['cart'];
-    echo $items[$i];
+    echo $items;
     $cart = array();
-    for ($i = 0; $i < sizeof($items); $i++) {
+    for ($i = 0; $i < 50; $i++) {
       if ($items[$i] != '0') {
         $cart[$i] = $items[$i];
       }
