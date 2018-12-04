@@ -107,22 +107,6 @@
             # Check if submission has been made
             if (!empty($_POST)) 
             {
-              if (isset($_POST['sku'])) 
-              {
-                $sku = $_POST['sku'];
-                if (!is_numeric($sku) or $sku <= 0) 
-                {
-                  $skuErr = "#SKU must be positive numeral and greater than or equal to 1";
-                  $errFlg = True;
-                } 
-                if ($db->query("SELECT sku FROM items WHERE sku='$sku'")) 
-                {
-                    if ($sku != "") $skuErr .= "\n";
-                    $skuErr .= "The #SKU " . $sku ." is already assigned to another product. Try another #SKU.";
-                    $errFlg = True;
-                }
-              } 
-
               if (isset($_POST['name'])) 
               {
                 $name = $_POST['name'];
