@@ -81,10 +81,10 @@ session_start();
 
       // Initalize cart
       $username = $_SESSION['username'];
-      /*$cart = new Cart($username);
+      $cart = new Cart($username);
 
       // Check if any updates had been made to the cart and update the users cart accordingly
-      if (isset($_POST['update']) or isset($_POST['checkout'])) {
+      /*if (isset($_POST['update']) or isset($_POST['checkout'])) {
         for ($sku = 0; $sku < 50; $sku++) {
           $q = 'quant'.$sku;
           $rem = 'remove'.$sku;
