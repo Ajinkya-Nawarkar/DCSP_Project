@@ -146,7 +146,7 @@
             
             <a href="../index.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Home</a>
 
-             <a href='Frontend_Models/viewCart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>
+             <a href='viewCart.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Cart</a>
              
              <a href='logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true'></i> Logout</a>
         </div>

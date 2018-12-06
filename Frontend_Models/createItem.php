@@ -165,6 +165,8 @@
 
             <a href='manageAccounts.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Manage Accounts</a>
 
+            <a href='createItem.php' class='w3-bar-item w3-button w3-hide-small w3-hover-white'>Add Item</a>
+
             <a href='logout.php' class='w3-bar-item w3-button w3-hide-small w3-right w3-teal' title='Logout'><i class='fa fa-sign-in' aria-hidden='true'></i> Logout</a>
         </div>
     </div>
