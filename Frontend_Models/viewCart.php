@@ -158,8 +158,15 @@ session_start();
                             $curr_quant = $cart_all[$i]['quantity'];
                             $curr_q = 'quant'.$curr_sku;
                             $curr_rem = 'remove'.$curr_sku;
+
+                            $max_ammount = 9;
+
+                            if ($curr_quant < $max_ammount) {
+                              $max_ammount = $curr_quant;
+                            }
+
                             echo "<tr><td>".$curr_sku."</td><td>".$curr_name."</td><td>".$curr_price."</td>";
-                            echo "<td><input type='number' name='".$curr_q."' min='0' max='9' value='".$cart_quants[$curr_sku]."' required></td>";
+                            echo "<td><input type='number' name='".$curr_q."' min='0' max='".$max_ammount."' value='".$cart_quants[$curr_sku]."' required></td>";
                             echo "<td><input type='checkbox' name='".$curr_rem."'></td></tr>";
                           }
                         }
