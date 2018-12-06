@@ -5,7 +5,8 @@
 
 *New Password* :maroongaming
 
-## [Website in action tracking master](http://pluto.cse.msstate.edu/~an839/DCSP/link3_DCSP/DCSP_Project/) You would need access to Mississippi State University's pluto server to view this website. 
+## [Website in action tracking master](http://pluto.cse.msstate.edu/~an839/DCSP/link3_DCSP/DCSP_Project/) 
+##### You would need access to Mississippi State University's pluto server to view this website. 
 
 ##### CronTab setting: * * * * * ( sleep 30; /path/to/cron.sh)
 
@@ -24,6 +25,7 @@
         Frontend_Models/manageAccounts.php      - Enables admin to add or delte an admin
         Frontend_Models/createItem.php          - Enables admin to add a new product to the database
         Frontend_Models/editItem.php            - Enables admin to edit an existing product in the database
+        Frontend_Models/checkout.php            - Just a dummy page for the checkout button
 
         Backend_Models/common.php               - Implements the common class for implementations of the shared functions
         Backend_Models/errException.php         - Implements the exception class for logging errors independently for different objects
