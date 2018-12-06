@@ -91,8 +91,7 @@ class dbAPI
     $data = $this->connection->query("SELECT * FROM users");
     while ($user = $data->fetch_array()) {
       $username = $user['username'];
-      $cartQuery = mysqli_fetch_array($this->connection->query("SELECT cart FROM users WHERE username = '$username'"));
-      $cart = $cartQuery['cart'];
+      $cart = $user['cart'];
       $cart[$sku-1] = 0;
       $query  = "UPDATE users SET cart = '$cart' WHERE username = '$username'";
       $this->connection->query($query);
