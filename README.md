@@ -10,7 +10,7 @@
 
 ##### CronTab setting: * * * * * ( sleep 30; /path/to/cron.sh)
 
-## Folder Structure: 
+## Directory Structure: 
 * index.php     - main file which implements and makes calls to all other php files and functions
 * cron.sh       - a bash script which reflects changes in github repo on Pluto every minute for a given branch
 * Frontend_Models      - Includes all the required php files needed for the frontend
