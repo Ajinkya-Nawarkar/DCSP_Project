@@ -5,7 +5,7 @@
 
 *New Password* :maroongaming
 
-## [Website in action tracking master](http://pluto.cse.msstate.edu/~an839/DCSP/link3_DCSP/DCSP_Project/)
+## [Website in action tracking master](http://pluto.cse.msstate.edu/~an839/DCSP/link3_DCSP/DCSP_Project/) You would need access to Mississippi State University's pluto server to view this website. 
 
 ##### CronTab setting: * * * * * ( sleep 30; /path/to/cron.sh)
 
