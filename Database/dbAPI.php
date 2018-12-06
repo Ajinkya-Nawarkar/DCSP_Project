@@ -88,8 +88,18 @@ class dbAPI
   }
 
   public function removeItemfromDB($sku){
+    $data = $this->connection->query("SELECT * FROM users");
+    while ($user = $data->fetch_array()) {
+      $username = $user['username'];
+      $cart = $user['cart'];
+      $cart[$sku-1] = 0;
+      $query  = "UPDATE users SET cart = '$cart' WHERE username = '$username'";
+      $this->connection->query($query);
+    }
+
     $query  = "DELETE FROM items WHERE sku = '$sku'";
     $this->connection->query($query);
+
     return true;
   }
 
