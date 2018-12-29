@@ -1,4 +1,4 @@
-# DCSP_Project
+# Maroon Gaming Co. (DCSP_Project - Fall 2018)
 
 ## phpMyAdmin Database Account Details
 *Username* : cu81
